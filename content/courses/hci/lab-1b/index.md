@@ -1,6 +1,6 @@
 ---
 title: "HCI — Lab 1B: Unity Setup"
-date: 2026-10-02
+date: 2026-10-01
 summary: "Preparing the Unity development environment and the workflow for my first 3D project."
 tags: ["HCI", "Lab", "Unity"]
 categories: ["Human-Computer Interaction"]
