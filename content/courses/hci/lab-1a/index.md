@@ -1,6 +1,6 @@
 ---
 title: "HCI — Lab 1A: Building My Course Website"
-date: 2026-10-02
+date: 2026-10-01
 summary: "Building and publishing my HCI course portfolio with Hugo, Blowfish, GitHub Desktop, and GitHub Pages."
 tags: ["HCI", "Lab", "Hugo", "Blowfish", "GitHub Pages"]
 categories: ["Human-Computer Interaction"]
