@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#f8fafc"/>
+  <rect x="110" y="105" width="980" height="410" rx="28" fill="#ffffff" stroke="#e5e7eb" stroke-width="3"/>
+  <text x="170" y="190" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#18181b">We value your privacy</text>
+  <text x="170" y="245" font-family="Arial, sans-serif" font-size="25" fill="#52525b">We use cookies to personalise content and measure performance.</text>
+  <rect x="170" y="315" width="860" height="82" rx="16" fill="#2563eb"/>
+  <text x="600" y="367" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">ACCEPT ALL</text>
+  <text x="600" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#a1a1aa">Manage preferences</text>
+  <text x="600" y="486" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#d4d4d8">reject all</text>
+</svg>

@@ -1,0 +1,9 @@
+[[main]]
+  name = "Courses"
+  pageRef = "courses"
+  weight = 10
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 20

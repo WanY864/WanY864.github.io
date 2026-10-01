@@ -1,0 +1,160 @@
+/* Refined clean blue-accent layer for Yan Wan's HCI portfolio. */
+:root {
+  --yan-blue: 37, 99, 235;
+  --yan-blue-soft: 219, 234, 254;
+  --yan-ink: 24, 24, 27;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Site-wide motion: light and smooth rather than flashy. */
+a,
+button,
+img,
+summary,
+[role="button"] {
+  transition: color 0.22s ease, background-color 0.22s ease, border-color 0.22s ease,
+    opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* Slightly tighter page feel. */
+.prose,
+article {
+  line-height: 1.72;
+}
+
+/* Homepage: tighten spacing a bit and add a cleaner visual rhythm. */
+main .prose p {
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+main article,
+main section article,
+main li article {
+  border-top: 1px solid rgba(var(--yan-blue), 0.14);
+  padding-top: 0.85rem;
+}
+
+main article:hover,
+main section article:hover,
+main li article:hover {
+  transform: translateY(-1px);
+}
+
+/* A thin line under main page titles makes the layout feel more structured. */
+.prose h1,
+article h1 {
+  position: relative;
+  padding-bottom: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.prose h1::after,
+article h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4.6rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(var(--yan-blue), 0.95), rgba(var(--yan-blue), 0.28));
+}
+
+/* Subtle section separators: more visible than before but still restrained. */
+.prose h2,
+article h2 {
+  border-bottom: 1px solid rgba(var(--yan-blue), 0.34);
+  padding-bottom: 0.38rem;
+  margin-top: 2.45rem;
+}
+
+.prose h3,
+article h3 {
+  position: relative;
+  padding-left: 0.8rem;
+}
+
+.prose h3::before,
+article h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(var(--yan-blue), 1), rgba(var(--yan-blue), 0.52));
+}
+
+/* Figure captions: restrained blue rule to keep images visually organised. */
+.prose p > em:only-child,
+article p > em:only-child {
+  display: inline-block;
+  border-left: 3px solid rgba(var(--yan-blue), 0.78);
+  padding-left: 0.72rem;
+  color: rgb(82 82 91);
+}
+
+/* Right-side table of contents: smaller, calmer, and easier to scan. */
+#TableOfContents {
+  border-left: 1px solid rgba(var(--yan-blue), 0.22);
+  padding-left: 0.78rem;
+  font-size: 0.84rem;
+  line-height: 1.48;
+}
+
+#TableOfContents ul {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+#TableOfContents li {
+  margin: 0.22rem 0;
+}
+
+#TableOfContents a {
+  color: rgb(113 113 122);
+}
+
+#TableOfContents a:hover,
+#TableOfContents a.active {
+  color: rgb(var(--yan-blue));
+}
+
+/* Links stay calm but recognisably interactive. */
+.prose a:not(.no-prose),
+article a:not(.no-prose) {
+  text-decoration-color: rgba(var(--yan-blue), 0.42);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.prose a:not(.no-prose):hover,
+article a:not(.no-prose):hover {
+  color: rgb(var(--yan-blue));
+}
+
+/* Slightly soften article images, keeping the clean Blowfish look. */
+.prose img,
+article img {
+  border-radius: 0.68rem;
+  box-shadow: 0 10px 28px -22px rgba(var(--yan-ink), 0.35);
+}
+
+.prose img:hover,
+article img:hover {
+  transform: translateY(-1px);
+}
+
+/* Utility class used by the homework article for redesign notes. */
+.design-note {
+  border-left: 3px solid rgb(var(--yan-blue));
+  background: rgba(var(--yan-blue-soft), 0.3);
+  border-radius: 0.35rem;
+  padding: 1rem 1.15rem;
+  margin: 1.4rem 0;
+}

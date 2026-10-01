@@ -1,0 +1,16 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "Yan Wan · Course Portfolio"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  description = "Course portfolio in Human-Computer Interaction and Virtual & Augmented Reality."
+
+[params.author]
+  name = "Yan Wan"
+  headline = "Virtual & Augmented Reality · Institut Polytechnique de Paris"
+  bio = "Compact HCI course portfolio with assignments, experiments, and design reflections."

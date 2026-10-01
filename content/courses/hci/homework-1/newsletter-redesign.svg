@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#f8fafc"/>
+  <rect x="190" y="120" width="820" height="360" rx="28" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="260" y="205" font-family="Arial, sans-serif" font-size="39" font-weight="700" fill="#18181b">Get new posts by email</text>
+  <text x="260" y="258" font-family="Arial, sans-serif" font-size="24" fill="#52525b">One invitation, with a clear way to decline.</text>
+  <rect x="260" y="315" width="290" height="72" rx="14" fill="#2563eb"/>
+  <text x="405" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#ffffff">Subscribe</text>
+  <rect x="585" y="315" width="290" height="72" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <text x="730" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#2563eb">No thanks</text>
+  <text x="600" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#71717a">If declined, this prompt will not appear again during this session.</text>
+</svg>

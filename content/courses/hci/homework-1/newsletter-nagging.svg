@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="670" viewBox="0 0 1200 670">
+  <rect width="1200" height="670" fill="#f8fafc"/>
+  <text x="600" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#27272a">The same interruption returns after dismissal</text>
+  <g transform="translate(70,120)">
+    <rect width="320" height="430" rx="24" fill="#ffffff" stroke="#e5e7eb" stroke-width="3"/>
+    <text x="28" y="48" font-family="Arial, sans-serif" font-size="19" fill="#71717a">Article</text>
+    <line x1="28" y1="82" x2="285" y2="82" stroke="#d4d4d8" stroke-width="12"/>
+    <line x1="28" y1="112" x2="260" y2="112" stroke="#e4e4e7" stroke-width="10"/>
+    <rect x="38" y="150" width="244" height="210" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="160" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#18181b">Join our newsletter</text>
+    <rect x="72" y="245" width="176" height="55" rx="12" fill="#2563eb"/>
+    <text x="160" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#fff">Sign up</text>
+    <text x="160" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#a1a1aa">No thanks</text>
+  </g>
+  <text x="435" y="345" font-family="Arial, sans-serif" font-size="44" fill="#94a3b8">→</text>
+  <g transform="translate(470,120)">
+    <rect width="320" height="430" rx="24" fill="#ffffff" stroke="#e5e7eb" stroke-width="3"/>
+    <text x="28" y="48" font-family="Arial, sans-serif" font-size="19" fill="#71717a">Next page</text>
+    <line x1="28" y1="82" x2="285" y2="82" stroke="#d4d4d8" stroke-width="12"/>
+    <line x1="28" y1="112" x2="245" y2="112" stroke="#e4e4e7" stroke-width="10"/>
+    <rect x="38" y="150" width="244" height="210" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="160" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#18181b">Join our newsletter</text>
+    <rect x="72" y="245" width="176" height="55" rx="12" fill="#2563eb"/>
+    <text x="160" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#fff">Sign up</text>
+    <text x="160" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#a1a1aa">No thanks</text>
+  </g>
+  <text x="835" y="345" font-family="Arial, sans-serif" font-size="44" fill="#94a3b8">→</text>
+  <g transform="translate(870,120)">
+    <rect width="260" height="430" rx="24" fill="#ffffff" stroke="#e5e7eb" stroke-width="3"/>
+    <text x="28" y="48" font-family="Arial, sans-serif" font-size="19" fill="#71717a">Later</text>
+    <rect x="28" y="150" width="204" height="210" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="130" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#18181b">Still interested?</text>
+    <rect x="58" y="245" width="144" height="55" rx="12" fill="#2563eb"/>
+    <text x="130" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#fff">Sign up</text>
+    <text x="130" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#a1a1aa">Maybe later</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+colorScheme = "one-light"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["courses"]
+
+[homepage]
+  layout = "profile"
+  showRecent = true
+  showRecentItems = 4
+  showMoreLink = true
+  showMoreLinkDest = "/courses/"
+  cardView = false
+
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = false
+  showBreadcrumbs = true
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = true
+  showHero = false
+
+[list]
+  showBreadcrumbs = true
+  showSummary = true
+  showCards = false
+  groupByYear = false
+
+[footer]
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true

@@ -1,0 +1,12 @@
+theme = "blowfish"
+baseURL = "https://example.org/"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+summaryLength = 24
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
