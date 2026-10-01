@@ -7,7 +7,7 @@ mainSections = ["courses"]
 
 [homepage]
   layout = "profile"
-  showRecent = true
+  showRecent = false
   showRecentItems = 4
   showMoreLink = true
   showMoreLinkDest = "/courses/"
