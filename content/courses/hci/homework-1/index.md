@@ -11,13 +11,13 @@ showWordCount: true
 ---
 ## Homework 1
 
-#### Introduction
+### Introduction
 
 This homework explores three foundational topics in human-computer interaction: **affordances**, **Gestalt laws**, and **dark design patterns**. Rather than treating them only as definitions, I use everyday objects and digital interfaces to examine how design influences expectation, perception, and decision-making.
 
 The goal is not simply to label a design as good or bad. The more useful question is whether the design communicates the intended action clearly, whether visual elements are organised in a way that matches the user's perception, and whether the interface supports the user's own goal instead of steering them toward another one.
 
-#### 1. Affordances
+### 1. Affordances
 
 Affordance describes how the properties of an object suggest possible actions to a user. A clear affordance makes an interaction easy to infer before any instruction is read. A weak affordance creates uncertainty between what the user expects to happen and what the product actually requires.
 
@@ -85,7 +85,7 @@ Finally, the controls should differ in both **shape and position**, not only in 
 | Feedback | Direct mechanical resistance | Partly mediated by the motor | Motor response plus clear direction/mode indication |
 | Learning required | Very low | Moderate for a first-time user | Reduced through physical mapping |
 
-#### 2. Gestalt Laws
+### 2. Gestalt Laws
 
 Gestalt laws describe how people organise visual information into meaningful groups and structures. Instead of perceiving every visual element independently, users naturally infer relationships from proximity, similarity, enclosure, continuity, closure, and figure-ground separation.
 
@@ -141,7 +141,7 @@ The demonstration could be made more clearly representational by:
 
 The goal is not to make the demonstration less attractive. It is to make the boundary between **interactive page** and **example interface** immediately clear.
 
-#### 3. Dark Design Patterns
+### 3. Dark Design Patterns
 
 Dark design patterns are interface strategies that steer users toward actions they may not otherwise choose. They exploit attention, hesitation, visual hierarchy, or persistence rather than supporting an equally clear and informed choice.
 
@@ -191,7 +191,7 @@ A user-respecting version should provide a visible **No thanks** option, remembe
 
 The objective is not to remove the website's ability to invite users to subscribe. It is to preserve the invitation without turning persistence into pressure.
 
-#### Conclusion
+### Conclusion
 
 These examples show that usability depends not only on technical functionality, but also on how clearly a design communicates action, grouping, and intention.
 
