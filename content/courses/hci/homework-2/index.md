@@ -34,9 +34,6 @@ Three projects are good examples of the HCI side of his research.
 
 ![Example from MUD.](sidong-mud.webp)
 
-**Video2Action: Reducing Human Interactions in Action Annotation of App Tutorial Videos** studies how app tutorial videos can be turned into action annotations with less manual work.
-
-![Example from Video2Action.](https://www.researchgate.net/profile/Sidong-Feng/publication/372961293/figure/fig5/AS:11431281180027161@1691482285705/The-model-architecture-to-predict-tapping-locations.png)
 
 
 These projects show that an AI system has to solve many problems that are usually natural for a human user:
