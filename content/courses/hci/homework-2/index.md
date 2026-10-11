@@ -91,15 +91,11 @@ So several parts of Sutherland's vision are already normal technologies today:
 - spatial audio,
 - basic haptic feedback.
 
-To me, this is already very close to his idea that the display should behave more like an environment than a static screen.
+To me, this is already very close to his idea that the display should behave more like an environment than a static screen. Modern XR headsets make immersive 3D and spatially tracked experiences practical, while hand tracking lets users interact with virtual interfaces directly instead of relying only on physical controllers.
 
-![Modern mixed-reality headset.](https://upload.wikimedia.org/wikipedia/commons/8/85/Meta_Quest_3_-_3.jpg)
+![Modern mixed-reality headset.](xr-headset.webp)
 
-*Figure 1. Modern XR headsets make immersive 3D and spatially tracked experiences practical.*
-
-![Hand tracking used to interact with a virtual interface.](https://dat-vr.com/images/0024_thumbnail.jpg)
-
-*Figure 2. Hand tracking lets users interact with virtual interfaces directly.*
+![Hand tracking used to interact with a virtual interface.](hand-tracking.webp)
 
 ### What Is Still Missing?
 
@@ -111,11 +107,9 @@ For example, I can see a virtual chair, walk around it, and maybe even feel a vi
 
 This shows a clear gap between visual realism and physical realism.
 
-Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space.
+Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space. Haptic gloves are one current attempt to reduce this gap by adding physical feedback to virtual interaction.
 
-![SenseGlove Nova 2 haptic glove.](https://www.senseglove.com/wp-content/uploads/2023/12/SenseGlove-Nova-2-Header-Image.png)
-
-*Figure 3. SenseGlove Nova 2 is an example of current haptic technology for adding physical feedback to virtual interaction.*
+![Haptic glove for virtual interaction.](haptic-glove.webp)
 
 ### What Could Become Possible in the Future?
 
@@ -146,9 +140,7 @@ The most impressive thing about this paper is therefore not one exact prediction
 
 ![A commercial vertical ergonomic mouse that keeps the hand in a more upright position.](vertical-mouse.webp)
 
-*Figure 4. Example of a vertical ergonomic mouse. The main change is not the cursor mapping, but the posture of the hand and forearm.*
-
-For this task, I chose the **vertical ergonomic mouse**.
+For this task, I chose the **vertical ergonomic mouse**. The main change is not the cursor mapping, but the posture of the hand and forearm.
 
 I would not call it a completely failed product because vertical mice are still sold and used today. I think it is more interesting to look at it as an alternative input device that has existed for many years but has **never replaced the conventional flat mouse**.
 
