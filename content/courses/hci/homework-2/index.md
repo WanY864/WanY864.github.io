@@ -93,11 +93,11 @@ So several parts of Sutherland's vision are already normal technologies today:
 
 To me, this is already very close to his idea that the display should behave more like an environment than a static screen.
 
-![Modern mixed-reality headset.](https://about.fb.com/wp-content/uploads/2023/11/Quest-3-Use-Case_Header.gif)
+![Modern mixed-reality headset.](https://upload.wikimedia.org/wikipedia/commons/8/85/Meta_Quest_3_-_3.jpg)
 
 *Figure 1. Modern XR headsets make immersive 3D and spatially tracked experiences practical.*
 
-![Hand tracking used to interact with a virtual interface.](https://about.fb.com/wp-content/uploads/2023/02/Quest-v50-update-MZ_Header.jpg)
+![Hand tracking used to interact with a virtual interface.](https://dat-vr.com/images/0024_thumbnail.jpg)
 
 *Figure 2. Hand tracking lets users interact with virtual interfaces directly.*
 
