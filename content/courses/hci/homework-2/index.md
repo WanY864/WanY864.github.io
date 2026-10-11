@@ -24,15 +24,21 @@ His recent research includes GUI automation, intelligent software testing, visua
 
 ### Current Research Projects
 
-Several of his recent projects made this idea very clear to me.
+Three projects are good examples of the HCI side of his research.
 
-One example is **ViBR**, which uses vision-language models to replay software bugs from video reports. Instead of reading only a text description, the system has to understand what happened visually and then reproduce the interaction.
+**Towards Human-AI Synergy in UI Design: Supporting Iterative Generation with LLMs** explores how LLMs can support an iterative UI design process while keeping the human designer involved in refinement.
 
-Another example is his work on **multi-agent testing for multi-user features**. In this case, several AI agents can act as different users and test interactions that depend on more than one person.
+![Example from Towards Human-AI Synergy in UI Design.](sidong-ui-synergy.webp)
 
-He has also worked on **retrieval-based LLMs for UI automation testing**, including a case study in WeChat, and on large-scale UI datasets for modern interface modelling.
+**MUD: Towards a Large-Scale and Noise-Filtered UI Dataset for Modern Style UI Modeling** focuses on building a large-scale, cleaner dataset of modern user interfaces for UI modelling.
 
-These projects show that an AI agent has to solve many problems that are usually natural for a human user:
+![Example from MUD.](sidong-mud.webp)
+
+**Video2Action: Reducing Human Interactions in Action Annotation of App Tutorial Videos** studies how app tutorial videos can be turned into action annotations with less manual work.
+
+![Example from Video2Action.](sidong-video2action.webp)
+
+These projects show that an AI system has to solve many problems that are usually natural for a human user:
 
 - Which object on the screen is interactive?
 - What does an icon probably mean?
@@ -87,6 +93,14 @@ So several parts of Sutherland's vision are already normal technologies today:
 
 To me, this is already very close to his idea that the display should behave more like an environment than a static screen.
 
+![Modern mixed-reality headset.](https://about.fb.com/wp-content/uploads/2023/11/Quest-3-Use-Case_Header.gif)
+
+*Figure 1. Modern XR headsets make immersive 3D and spatially tracked experiences practical.*
+
+![Hand tracking used to interact with a virtual interface.](https://about.fb.com/wp-content/uploads/2023/02/Quest-v50-update-MZ_Header.jpg)
+
+*Figure 2. Hand tracking lets users interact with virtual interfaces directly.*
+
 ### What Is Still Missing?
 
 The biggest missing part is **physical feedback**.
@@ -98,6 +112,10 @@ For example, I can see a virtual chair, walk around it, and maybe even feel a vi
 This shows a clear gap between visual realism and physical realism.
 
 Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space.
+
+![SenseGlove Nova 2 haptic glove.](https://www.senseglove.com/wp-content/uploads/2023/12/SenseGlove-Nova-2-Header-Image.png)
+
+*Figure 3. SenseGlove Nova 2 is an example of current haptic technology for adding physical feedback to virtual interaction.*
 
 ### What Could Become Possible in the Future?
 
@@ -128,7 +146,7 @@ The most impressive thing about this paper is therefore not one exact prediction
 
 ![A commercial vertical ergonomic mouse that keeps the hand in a more upright position.](vertical-mouse.webp)
 
-*Figure 1. Example of a vertical ergonomic mouse. The main change is not the cursor mapping, but the posture of the hand and forearm.*
+*Figure 4. Example of a vertical ergonomic mouse. The main change is not the cursor mapping, but the posture of the hand and forearm.*
 
 For this task, I chose the **vertical ergonomic mouse**.
 
