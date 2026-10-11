@@ -20,7 +20,7 @@ The goal is not simply to label a design as good or bad. The more useful questio
 
 Affordance describes how the properties of an object suggest possible actions to a user. A clear affordance makes an interaction easy to infer before any instruction is read. A weak affordance creates uncertainty between what the user expects to happen and what the product actually requires.
 
-## 1.1 Clear Affordance — Traditional Screwdriver
+### 1.1 Clear Affordance — Traditional Screwdriver
 
 ![A set of traditional screwdrivers with shaped rubber grips and clearly visible metal shafts.](traditional-screwdrivers.png)
 
@@ -42,7 +42,7 @@ Different tip shapes provide another immediate visual cue about compatibility. A
 - Hand rotation maps directly to tip rotation.
 - Mechanical resistance is felt immediately through the handle, providing continuous feedback.
 
-## 1.2 Ambiguous Control Affordance — Electric Screwdriver
+### 1.2 Ambiguous Control Affordance — Electric Screwdriver
 
 ![An electric screwdriver with several controls placed along the same upper surface.](electric-screwdriver.png)
 
@@ -64,7 +64,7 @@ The problem is therefore not that an electric screwdriver is inherently a poor d
 - Additional modes increase the amount of knowledge required before first use.
 - A new user may need to experiment before understanding which control produces which result.
 
-## 1.3 Redesign Proposal
+### 1.3 Redesign Proposal
 
 I would keep the compact electric form but separate the main actions more clearly.
 
@@ -90,7 +90,7 @@ Gestalt laws describe how people organise visual information into meaningful gro
 
 The following two examples show situations where this automatic organisation can produce confusion because the visual design does not match the intended interpretation.
 
-## 2.1 Figure–Ground — Removable Laptop Screen Film
+### 2.1 Figure–Ground — Removable Laptop Screen Film
 
 ![A laptop display with a transparent film being peeled from the screen.](laptop-screen-film.png)
 
@@ -104,7 +104,7 @@ The user can therefore interpret the film in two different ways: as temporary pa
 
 The design problem is therefore not simply that some users choose not to remove the film. The problem is that the visual separation between **temporary layer** and **actual screen** is weaker than it could be.
 
-## Correction
+### Correction
 
 The temporary film should be visually separated from the display more clearly. Possible changes include:
 
@@ -115,7 +115,7 @@ The temporary film should be visually separated from the display more clearly. P
 
 These changes would make the film stand out as a separate figure instead of visually merging with the screen underneath.
 
-## 2.2 Similarity and Figure–Ground — Canva Website Builder Landing Page
+### 2.2 Similarity and Figure–Ground — Canva Website Builder Landing Page
 
 ![Canva website builder landing page with a large editor mockup beneath the main call-to-action.](canva-website-builder.png)
 
@@ -146,7 +146,7 @@ Dark design patterns are interface strategies that steer users toward actions th
 
 The two examples below use simplified reconstructions of common web patterns so that the design problem and the redesign can be compared directly.
 
-## 3.1 Interface Interference — Unequal Cookie Choices
+### 3.1 Interface Interference — Unequal Cookie Choices
 
 ![Illustrative cookie banner where Accept All is visually dominant and rejection is de-emphasised.](cookie-banner-dark.svg)
 
@@ -158,7 +158,7 @@ This is a form of **interface interference** because the visual hierarchy privil
 
 The problem is not the request for consent itself. The problem is that the interface makes the website's preferred outcome easier to notice and easier to select.
 
-## Redesign — Equal Choice
+### Redesign — Equal Choice
 
 ![Redesigned cookie banner where Accept All and Reject All have equal visual weight.](cookie-banner-redesign.svg)
 
@@ -168,7 +168,7 @@ The redesign gives **Accept All** and **Reject All** equal visual weight and kee
 
 This changes the interaction from persuasion toward a particular answer to a clearer expression of user choice.
 
-## 3.2 Nagging — Repeated Newsletter Pop-up
+### 3.2 Nagging — Repeated Newsletter Pop-up
 
 ![Illustrative sequence where the same newsletter pop-up interrupts the user repeatedly after dismissal.](newsletter-nagging.svg)
 
@@ -180,7 +180,7 @@ A single invitation is not necessarily problematic. The dark pattern appears whe
 
 This is **nagging** because the redirection persists across interactions. If the pop-up also blocks access to the underlying task until the user responds, it can additionally resemble **forced action**.
 
-## Redesign — Remember the User's Decision
+### Redesign — Remember the User's Decision
 
 ![Redesigned newsletter invitation with a clear No thanks option and a note that the decision will be remembered.](newsletter-redesign.svg)
 

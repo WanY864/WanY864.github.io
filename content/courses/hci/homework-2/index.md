@@ -14,7 +14,7 @@ Homework 2 continues the lecture-based part of the course. For the first three t
 
 ## Lecture 4 — Present One HCI Researcher
 
-## Sidong Feng — Human, Software, and AI Interaction
+### Sidong Feng — Human, Software, and AI Interaction
 
 For this task, I chose **Dr. Sidong Feng**, an Assistant Professor at the School of Data Science, The Chinese University of Hong Kong, Shenzhen.
 
@@ -51,7 +51,7 @@ This is the main reason I chose Sidong Feng. His work shows how HCI is expanding
 
 ## Lecture 5 — The Ultimate Display
 
-## Reading Ivan Sutherland's 1965 Vision Today
+### Reading Ivan Sutherland's 1965 Vision Today
 
 When I read Ivan Sutherland's **The Ultimate Display**, the part that surprised me most was how modern the main idea still feels.
 
@@ -98,7 +98,7 @@ For me, the main value of *The Ultimate Display* is not that every prediction be
 
 ## Lecture 6 — Input Devices and Interaction Paradigms
 
-## The Vertical Ergonomic Mouse
+### The Vertical Ergonomic Mouse
 
 ![A commercial vertical ergonomic mouse that keeps the hand in a more upright position.](vertical-mouse.webp)
 
@@ -112,7 +112,7 @@ That leads to a simple HCI question:
 
 > If the ergonomic idea makes sense, why do most people still use a normal mouse?
 
-## Classification
+### Classification
 
 From an interaction point of view, the vertical mouse is still a normal **GUI pointing device**.
 
@@ -127,7 +127,7 @@ The cursor mapping is basically unchanged. Moving the mouse moves the pointer, w
 
 The important difference is the **posture of the hand and forearm**.
 
-## The Ergonomic Idea
+### The Ergonomic Idea
 
 With a normal flat mouse, the palm faces downward and the forearm is more pronated. A vertical mouse rotates the hand toward a more neutral, handshake-like position.
 
@@ -137,7 +137,7 @@ That trade-off is important to me because it shows that an input device can impr
 
 A second study comparing flat, angled, and vertical mice found that fully vertical designs reduced pronation, but the fully vertical mouse also produced the poorest pointing performance. Angled designs gave some of the postural benefit without the same performance cost.
 
-## Why Did It Not Replace the Normal Mouse?
+### Why Did It Not Replace the Normal Mouse?
 
 I think there are several reasons.
 
@@ -149,7 +149,7 @@ The third is **fit**. A vertical mouse usually depends more strongly on hand siz
 
 There is also a more general HCI lesson here: calling something “ergonomic” does not automatically make it the better interface for every user. Comfort, performance, familiarity, learning time, and task type all matter together.
 
-## Will It Succeed in the Future?
+### Will It Succeed in the Future?
 
 I think the vertical mouse will continue to exist, but mainly as an **alternative**, not as a universal replacement.
 
