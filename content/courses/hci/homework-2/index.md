@@ -94,7 +94,6 @@ To me, this is already very close to his idea that the display should behave mor
 
 ![Modern mixed-reality headset.](xr-headset.webp)
 
-![Hand tracking used to interact with a virtual interface.](hand-tracking.webp)
 
 ### What Is Still Missing?
 
@@ -108,7 +107,6 @@ This shows a clear gap between visual realism and physical realism.
 
 Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space. Haptic gloves are one current attempt to reduce this gap by adding physical feedback to virtual interaction.
 
-![Haptic glove for virtual interaction.](haptic-glove.webp)
 
 ### What Could Become Possible in the Future?
 
