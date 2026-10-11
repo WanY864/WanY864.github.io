@@ -36,7 +36,6 @@ Three projects are good examples of the HCI side of his research.
 
 **Video2Action: Reducing Human Interactions in Action Annotation of App Tutorial Videos** studies how app tutorial videos can be turned into action annotations with less manual work.
 
-![Example from Video2Action.](sidong-video2action.webp)
 
 These projects show that an AI system has to solve many problems that are usually natural for a human user:
 
