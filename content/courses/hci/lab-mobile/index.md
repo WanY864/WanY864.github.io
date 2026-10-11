@@ -6,7 +6,7 @@ tags: ["HCI", "Lab", "Mobile"]
 categories: ["Human-Computer Interaction"]
 draft: false
 showTableOfContents: true
-showReadingTime: false
+showReadingTime: true
 showWordCount: false
 ---
 

@@ -6,6 +6,7 @@ tags: ["HCI", "Lab", "Hugo", "Blowfish", "GitHub Pages"]
 categories: ["Human-Computer Interaction"]
 draft: false
 showTableOfContents: true
+showReadingTime: true
 ---
 
 ## Goal

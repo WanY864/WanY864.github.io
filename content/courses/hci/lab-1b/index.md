@@ -6,6 +6,7 @@ tags: ["HCI", "Lab", "Unity"]
 categories: ["Human-Computer Interaction"]
 draft: false
 showTableOfContents: true
+showReadingTime: true
 ---
 
 ## Goal
