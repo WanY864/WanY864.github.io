@@ -36,7 +36,7 @@ Three projects are good examples of the HCI side of his research.
 
 **Video2Action: Reducing Human Interactions in Action Annotation of App Tutorial Videos** studies how app tutorial videos can be turned into action annotations with less manual work.
 
-![Example from Video2Action.](https://www.researchgate.net/figure/publication/372961293/figure/fig3/AS%3A11431281180027161%401691482285705/The-model-architecture-to-predict-tapping-locations.png)
+![Example from Video2Action.](https://www.researchgate.net/profile/Sidong-Feng/publication/372961293/figure/fig5/AS:11431281180027161@1691482285705/The-model-architecture-to-predict-tapping-locations.png)
 
 
 These projects show that an AI system has to solve many problems that are usually natural for a human user:
@@ -94,9 +94,9 @@ So several parts of Sutherland's vision are already normal technologies today:
 
 To me, this is already very close to his idea that the display should behave more like an environment than a static screen. Modern XR headsets make immersive 3D and spatially tracked experiences practical, while hand tracking lets users interact with virtual interfaces directly instead of relying only on physical controllers.
 
-![Modern mixed-reality headset.](xr-headset.jpg)
+![Modern mixed-reality headset.](https://varjo.com/hs-fs/hubfs/Varjo%20XR-3/Varjo-XR-3-user-image.png?height=1800&name=Varjo-XR-3-user-image.png&width=2560)
 
-![Hand tracking used to interact with a virtual interface.](hand-tracking.jpg)
+![Hand tracking used to interact with a virtual interface.](https://docs.ultraleap.com/_images/9.png)
 
 
 ### What Is Still Missing?
@@ -111,7 +111,7 @@ This shows a clear gap between visual realism and physical realism.
 
 Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space. Haptic gloves are one current attempt to reduce this gap by adding physical feedback to virtual interaction.
 
-![Haptic glove for virtual interaction.](haptic-glove.jpg)
+![Haptic glove for virtual interaction.](https://xrshop.store/cdn/shop/files/SenseGlove-Nova-2.jpg?v=1764167993)
 
 
 ### What Could Become Possible in the Future?
