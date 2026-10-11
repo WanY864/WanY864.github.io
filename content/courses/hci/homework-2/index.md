@@ -93,11 +93,11 @@ So several parts of Sutherland's vision are already normal technologies today:
 
 To me, this is already very close to his idea that the display should behave more like an environment than a static screen.
 
-<img src="https://about.fb.com/wp-content/uploads/2023/11/Quest-3-Use-Case_Header.gif" alt="Modern mixed-reality headset." style="width:75%; display:block; margin:1.2rem auto;">
+![Modern mixed-reality headset.](https://about.fb.com/wp-content/uploads/2023/11/Quest-3-Use-Case_Header.gif)
 
 *Figure 1. Modern XR headsets make immersive 3D and spatially tracked experiences practical.*
 
-<img src="https://about.fb.com/wp-content/uploads/2023/02/Quest-v50-update-MZ_Header.jpg" alt="Hand tracking used to interact with a virtual interface." style="width:75%; display:block; margin:1.2rem auto;">
+![Hand tracking used to interact with a virtual interface.](https://about.fb.com/wp-content/uploads/2023/02/Quest-v50-update-MZ_Header.jpg)
 
 *Figure 2. Hand tracking lets users interact with virtual interfaces directly.*
 
@@ -113,7 +113,7 @@ This shows a clear gap between visual realism and physical realism.
 
 Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space.
 
-<img src="https://www.senseglove.com/wp-content/uploads/2023/12/SenseGlove-Nova-2-Header-Image.png" alt="SenseGlove Nova 2 haptic glove." style="width:75%; display:block; margin:1.2rem auto;">
+![SenseGlove Nova 2 haptic glove.](https://www.senseglove.com/wp-content/uploads/2023/12/SenseGlove-Nova-2-Header-Image.png)
 
 *Figure 3. SenseGlove Nova 2 is an example of current haptic technology for adding physical feedback to virtual interaction.*
 
@@ -144,7 +144,7 @@ The most impressive thing about this paper is therefore not one exact prediction
 
 ### The Vertical Ergonomic Mouse
 
-<img src="vertical-mouse.webp" alt="A commercial vertical ergonomic mouse that keeps the hand in a more upright position." style="width:75%; display:block; margin:1.2rem auto;">
+![A commercial vertical ergonomic mouse that keeps the hand in a more upright position.](vertical-mouse.webp)
 
 *Figure 4. Example of a vertical ergonomic mouse. The main change is not the cursor mapping, but the posture of the hand and forearm.*
 
