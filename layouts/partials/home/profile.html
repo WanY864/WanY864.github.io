@@ -8,7 +8,7 @@
   <div class="home-v5-ambient" aria-hidden="true"></div>
 
   <header class="home-v5-hero">
-    <p class="home-v5-kicker">YAN WAN · COURSE PORTFOLIO</p>
+    <p class="home-v5-kicker">YAN WAN · M2 COURSE PORTFOLIO</p>
     <h1 class="home-v5-name">Yan Wan</h1>
     <p class="home-v5-program">M2 Virtual &amp; Augmented Reality</p>
     <p class="home-v5-school">Institut Polytechnique de Paris</p>
@@ -16,18 +16,18 @@
     <div class="home-v5-rule" aria-hidden="true"><span></span></div>
 
     <div class="home-v5-course">
-      <p class="home-v5-eyebrow">HUMAN–COMPUTER INTERACTION</p>
+      <p class="home-v5-eyebrow">M2 VIRTUAL &amp; AUGMENTED REALITY</p>
       <h2>Course Portfolio <span>· 2026–2027</span></h2>
       <p class="home-v5-intro">
-        A compact collection of assignments, observations, experiments, and interaction-design reflections.
+        Assignments, lab work, experiments, and project notes across all ten M2 courses, collected in one evolving academic portfolio.
       </p>
     </div>
   </header>
 
   <section class="home-v5-meta" aria-label="Course information">
     <div class="home-v5-meta-item">
-      <span>COURSE</span>
-      <strong>Human-Computer<br>Interaction</strong>
+      <span>COURSES</span>
+      <strong>10 courses<br>One portfolio</strong>
     </div>
     <div class="home-v5-meta-item">
       <span>PROGRAM</span>
@@ -39,9 +39,30 @@
     </div>
   </section>
 
+  <section class="home-v5-catalog" aria-label="Course directory">
+    <div class="home-v5-section-head">
+      <span>COURSE DIRECTORY · 10 COURSES</span>
+      <a href="{{ "courses/" | relURL }}">Browse all courses →</a>
+    </div>
+    <div class="home-course-grid">
+      {{ with .Site.GetPage "/courses" }}
+        {{ range .Pages.ByWeight }}
+        <a class="home-course-card" href="{{ .RelPermalink }}">
+          <span class="home-course-number">{{ printf "%02d" .Weight }}</span>
+          <span class="home-course-copy">
+            <strong>{{ .Title }}</strong>
+            <small>{{ if gt (len .Pages) 0 }}Coursework available{{ else }}Ready for coursework{{ end }}</small>
+          </span>
+          <span class="home-course-arrow" aria-hidden="true">↗</span>
+        </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
   <section class="home-v5-work">
     <div class="home-v5-section-head">
-      <span>SELECTED WORK</span>
+      <span>HCI · SELECTED WORK</span>
       <a href="{{ "courses/hci/" | relURL }}">View all HCI work →</a>
     </div>
 

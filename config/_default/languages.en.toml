@@ -1,16 +1,16 @@
 locale = "en"
 label = "English"
 weight = 1
-title = "Yan Wan · Course Portfolio"
+title = "Yan Wan · M2 Course Portfolio"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "Course portfolio in Human-Computer Interaction and Virtual & Augmented Reality."
+  description = "Coursework and projects across the M2 Virtual & Augmented Reality programme."
 
 [params.author]
   name = "Yan Wan"
-  headline = "Virtual & Augmented Reality · Institut Polytechnique de Paris"
-  bio = "Compact HCI course portfolio with assignments, experiments, and design reflections."
+  headline = "M2 Virtual & Augmented Reality · Institut Polytechnique de Paris"
+  bio = "Academic portfolio of assignments, lab work, experiments, and course projects."

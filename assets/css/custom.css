@@ -494,3 +494,81 @@ html.dark .home-work-status {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Ten-course directory for the M2 portfolio. */
+.home-v5-catalog {
+  margin-top: 2.15rem;
+  animation: yan-rise 0.7s 0.12s cubic-bezier(.2,.75,.25,1) both;
+}
+.home-course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.72rem;
+  margin-top: 0.9rem;
+}
+.home-course-card {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 1rem;
+  align-items: start;
+  gap: 0.7rem;
+  min-height: 5.45rem;
+  padding: 1rem 0.9rem;
+  border: 1px solid rgba(var(--yan-blue), 0.16);
+  border-radius: 0.7rem;
+  background: rgba(var(--yan-blue-soft), 0.09);
+  color: inherit;
+  text-decoration: none !important;
+  transition: border-color 0.22s ease, background-color 0.22s ease,
+    transform 0.22s ease, box-shadow 0.22s ease;
+}
+.home-course-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--yan-blue), 0.5);
+  background: rgba(var(--yan-blue-soft), 0.23);
+  box-shadow: 0 10px 25px -22px rgba(var(--yan-ink), 0.3);
+}
+.home-course-card:focus-visible {
+  outline: 2px solid rgb(var(--yan-blue));
+  outline-offset: 3px;
+}
+.home-course-number {
+  font-size: 0.77rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  color: rgb(var(--yan-blue));
+  padding-top: 0.08rem;
+}
+.home-course-copy { min-width: 0; }
+.home-course-copy strong {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+  color: rgb(39 39 42);
+}
+.home-course-copy small {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgb(113 113 122);
+}
+.home-course-arrow { font-size: 0.85rem; color: rgb(161 161 170); }
+html.dark .home-course-card {
+  border-color: rgba(147, 197, 253, 0.22);
+  background: rgba(37, 99, 235, 0.045);
+}
+html.dark .home-course-card:hover {
+  border-color: rgba(147, 197, 253, 0.55);
+  background: rgba(37, 99, 235, 0.12);
+}
+html.dark .home-course-copy strong { color: rgb(244 244 245); }
+html.dark .home-course-copy small { color: rgb(161 161 170); }
+@media (max-width: 700px) {
+  .home-course-grid { grid-template-columns: 1fr; gap: 0.55rem; }
+  .home-course-card { min-height: 4.8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-course-card { transition: none !important; }
+}

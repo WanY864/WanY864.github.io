@@ -1,153 +1,78 @@
-# Yan Wan — HCI Course Portfolio
+# Yan Wan — M2 Course Portfolio
 
-A ready-to-use **Hugo + Blowfish** project for the HCI course. The site content is English-only and uses a clean white layout with restrained blue accent lines.
+An English-language **Hugo + Blowfish** academic portfolio covering the ten courses in the M2 Virtual & Augmented Reality programme at Institut Polytechnique de Paris.
 
-## Recommended folder on Windows
+**Public website:** https://wany864.github.io/
 
-Unzip the project to:
+## Courses
 
-```text
-D:\HCI-Blog
-```
+1. [Advanced Computer Vision & 3D Reconstruction](content/courses/advanced-computer-vision-3d-reconstruction/_index.md)
+2. [Artificial Intelligence](content/courses/artificial-intelligence/_index.md)
+3. [Augmented Reality](content/courses/augmented-reality/_index.md)
+4. [Basic Computer Vision](content/courses/basic-computer-vision/_index.md)
+5. [Collaborative Environments](content/courses/collaborative-environments/_index.md)
+6. [Computer Graphics](content/courses/computer-graphics/_index.md)
+7. [Human-Computer Interface](content/courses/hci/_index.md)
+8. [Social Robotics](content/courses/social-robotics/_index.md)
+9. [Transversal Project](content/courses/transversal-project/_index.md)
+10. [Virtual Reality](content/courses/virtual-reality/_index.md)
 
-The project itself, images, and future homework posts can stay on drive `D:`.
+The Human-Computer Interface course keeps the existing `content/courses/hci/` directory. Its homework and lab pages have not been moved or renamed.
 
-## First run
+## URL compatibility
 
-You need **Hugo Extended** and **Git** available in Windows `PATH`.
+The site remains in the same repository: `WanY864/WanY864.github.io`. The website address and existing links remain unchanged, including:
 
-Open PowerShell in `D:\HCI-Blog` and run:
+- `/courses/hci/`
+- `/courses/hci/homework-1/`
+- `/courses/hci/homework-2/`
+- `/courses/hci/lab-1a/`
+- `/courses/hci/lab-1b/`
+- `/courses/hci/lab-unity-ml-agent/`
+- `/courses/hci/lab-mobile/`
 
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\setup-theme.ps1
-hugo server -D
-```
+## Add coursework
 
-Then open:
+Each course has a folder under `content/courses/`. Add a Markdown page bundle for an assignment, lab, or project. For example:
 
-```text
-http://localhost:1313/
-```
+~~~text
+content/courses/artificial-intelligence/assignment-1/
+  index.md
+  experiment.png
+~~~
 
-The first command installs the Blowfish theme as a Git submodule. After that, normal local previews only need:
+Example page front matter:
 
-```powershell
-hugo server -D
-```
-
-You can also double-click `start-local.cmd`; it runs the setup check and starts the preview server.
-
-## Site structure
-
-```text
-HCI-Blog/
-├── assets/
-│   └── css/
-│       └── custom.css
-├── config/
-│   └── _default/
-│       ├── hugo.toml
-│       ├── languages.en.toml
-│       ├── markup.toml
-│       ├── menus.en.toml
-│       └── params.toml
-├── content/
-│   ├── _index.md
-│   ├── about/
-│   │   └── index.md
-│   └── courses/
-│       ├── _index.md
-│       └── hci/
-│           ├── _index.md
-│           ├── homework-1/
-│           │   ├── index.md
-│           │   ├── traditional-screwdrivers.png
-│           │   ├── electric-screwdriver.png
-│           │   ├── laptop-screen-film.png
-│           │   ├── canva-website-builder.png
-│           │   ├── cookie-banner-dark.svg
-│           │   ├── cookie-banner-redesign.svg
-│           │   ├── newsletter-nagging.svg
-│           │   └── newsletter-redesign.svg
-│           ├── lab-1a/
-│           │   └── index.md
-│           └── lab-1b/
-│               └── index.md
-├── .github/workflows/hugo.yaml
-├── setup-theme.ps1
-└── start-local.cmd
-```
-
-## What is already finished
-
-`HCI — Homework 1` is publishable (`draft: false`) and already contains:
-
-- Affordance: traditional screwdriver vs. electric screwdriver controls;
-- Gestalt Case 1: laptop screen film / figure-ground;
-- Gestalt Case 2: Canva website-builder page / similarity + figure-ground;
-- Dark Pattern 1: interface interference in an unequal cookie banner;
-- Dark Pattern 2: nagging through a repeated newsletter pop-up;
-- redesigns for both dark-pattern examples.
-
-## Lab pages
-
-`Lab 1A` and `Lab 1B` remain `draft: true` deliberately.
-
-The HCI homework is based on analysis and can be completed in advance. The lab pages, however, ask you to document the **actual process**, including real problems and how you solved them. After you finish the site deployment and Unity setup, add your real screenshots and notes, then change:
-
-```toml
-draft: true
-```
-
-to:
-
-```toml
+~~~yaml
+---
+title: "Assignment 1"
+date: 2026-11-01
 draft: false
-```
+summary: "Short description of the assignment."
+---
+~~~
 
-## Publish with GitHub Pages
+Edit the article body with actual work, screenshots, and reflections. The new page is published when pushed to `main`, unless `draft: true` is set. Placeholder course sections are published to make navigation ready, but do not claim any coursework is already completed.
 
-Create an empty GitHub repository, then from the project folder run:
+## Local preview (Windows)
 
-```powershell
-git add .
-git commit -m "Initial HCI course portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-git push -u origin main
-```
+Install Hugo Extended and Git. From the project directory, run:
 
-In GitHub repository settings:
-
-```text
-Settings → Pages → Source → GitHub Actions
-```
-
-The included `.github/workflows/hugo.yaml` builds and deploys the site automatically. After the workflow finishes, your public URL will normally be `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
-
-## Image note
-
-The four main Homework 1 images are the images supplied for the coursework. If any of them came from the web, add the original source URL to the relevant figure caption before final submission.
-
-
-## Visual refinements in this version
-
-- Tighter homepage spacing
-- More blue separator lines and cleaner visual rhythm
-- Smaller right-side table of contents typography
-- Smoother transitions on links, images, and content blocks
-
-
-## If theme setup previously failed
-
-Version 4 no longer uses Git submodules. It downloads Blowfish into `themes/blowfish`
-as normal project files, which avoids `.gitmodules` errors.
-
-If you are upgrading an existing folder, delete any incomplete `themes/blowfish`
-folder first, then run:
-
-```powershell
+~~~powershell
 .\setup-theme.ps1
 hugo server -D
-```
+~~~
+
+Open `http://localhost:1313/`. You can also use `start-local.cmd`.
+
+The Blowfish theme is already included under `themes/blowfish/` as regular project files, not as a Git submodule. `setup-theme.ps1` checks the theme and downloads it only if it is missing.
+
+## Deployment
+
+GitHub Actions builds the site when changes are pushed to `main`. The workflow is in `.github/workflows/hugo.yaml`, and repository Pages should use **Settings → Pages → Source → GitHub Actions**.
+
+The public URL remains `https://wany864.github.io/`. The Hugo `baseURL` is set to the same address; the deployment workflow also uses the Pages-provided base URL.
+
+## Content and image attribution
+
+Use real lab observations, screenshots, and test results rather than inventing evidence. For third-party images, cite the original source where appropriate.

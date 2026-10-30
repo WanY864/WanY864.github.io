@@ -1,6 +1,6 @@
 ---
 title: "Course Portfolio"
-description: "Human-Computer Interaction coursework by Yan Wan."
+description: "Yan Wan's M2 Virtual & Augmented Reality course portfolio."
 ---
 
-Human-Computer Interaction coursework documented as a compact portfolio: observations, design reasoning, lab work, and the process behind each exercise.
+A growing portfolio of coursework, assignments, lab experiments, and projects across ten courses in the M2 Virtual & Augmented Reality programme.
