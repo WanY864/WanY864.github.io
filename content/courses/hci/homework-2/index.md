@@ -95,9 +95,9 @@ So several parts of Sutherland's vision are already normal technologies today:
 
 To me, this is already very close to his idea that the display should behave more like an environment than a static screen. Modern XR headsets make immersive 3D and spatially tracked experiences practical, while hand tracking lets users interact with virtual interfaces directly instead of relying only on physical controllers.
 
-![Modern mixed-reality headset.](https://varjo.com/hs-fs/hubfs/Varjo%20XR-3/Varjo-XR-3-user-image.png?height=1800&name=Varjo-XR-3-user-image.png&width=2560)
+![Modern mixed-reality headset.](Varjo-XR-3-user-image.webp)
 
-![Hand tracking used to interact with a virtual interface.](https://docs.ultraleap.com/_images/9.png)
+![Hand tracking used to interact with a virtual interface.](9.png)
 
 
 ### What Is Still Missing?
@@ -112,7 +112,7 @@ This shows a clear gap between visual realism and physical realism.
 
 Current haptic devices can generate vibration, resistance, or limited force feedback, but they cannot freely create solid objects, weight, temperature, or texture anywhere in space. Haptic gloves are one current attempt to reduce this gap by adding physical feedback to virtual interaction.
 
-![Haptic glove for virtual interaction.](https://xrshop.store/cdn/shop/files/SenseGlove-Nova-2.jpg?v=1764167993)
+![Haptic glove for virtual interaction.](SenseGlove-Nova-2.webp)
 
 
 ### What Could Become Possible in the Future?
