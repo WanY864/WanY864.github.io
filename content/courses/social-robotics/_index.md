@@ -1,6 +1,6 @@
 ---
 title: "Social Robotics"
-description: "Assignments, labs, notes, and projects for Social Robotics."
+description: "Social Robotics coursework."
 weight: 8
 draft: false
 showDate: false
@@ -9,6 +9,4 @@ showWordCount: false
 showTableOfContents: false
 ---
 
-This is the course portfolio section for **Social Robotics**.
-
-Assignments, lab notes, experiments, and project results will be added here as they are completed. No course work has been published in this section yet.
+Course materials will be added here.

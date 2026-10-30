@@ -1,6 +1,6 @@
 ---
 title: "Collaborative Environments"
-description: "Assignments, labs, notes, and projects for Collaborative Environments."
+description: "Collaborative Environments coursework."
 weight: 5
 draft: false
 showDate: false
@@ -9,6 +9,4 @@ showWordCount: false
 showTableOfContents: false
 ---
 
-This is the course portfolio section for **Collaborative Environments**.
-
-Assignments, lab notes, experiments, and project results will be added here as they are completed. No course work has been published in this section yet.
+Course materials will be added here.
