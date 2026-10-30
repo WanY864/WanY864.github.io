@@ -5,6 +5,11 @@ summary: "Setting up the Python and Unity sides of ML-Agents and checking that t
 tags: ["HCI", "Lab", "Unity", "ML-Agents", "Python"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: lab
+workStatus: in-progress
+workSubtitle: "Unity · ML-Agents"
+weight: 30
+linkTitle: "HCI — Lab_Unity_ML_agent"
 showTableOfContents: true
 showReadingTime: true
 showWordCount: false

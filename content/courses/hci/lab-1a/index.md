@@ -5,6 +5,11 @@ summary: "Building and publishing my HCI course portfolio with Hugo, Blowfish, G
 tags: ["HCI", "Lab", "Hugo", "Blowfish", "GitHub Pages"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: lab
+workStatus: completed
+workSubtitle: "Building My Course Website"
+weight: 10
+linkTitle: "HCI — Lab 1A"
 showTableOfContents: true
 showReadingTime: true
 ---

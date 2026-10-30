@@ -1,0 +1,103 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+  {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+    {{ partial "breadcrumbs.html" . }}
+  {{ end }}
+
+  {{ if eq .RelPermalink ("courses/" | relURL) }}
+    <div class="course-directory">
+      <header class="course-directory-header">
+        <p class="course-landing-kicker">M2 VIRTUAL &amp; AUGMENTED REALITY</p>
+        <h1>{{ .Title | emojify }}</h1>
+        <div class="course-landing-description prose dark:prose-invert">{{ .Content }}</div>
+      </header>
+      <div class="home-course-grid">
+        {{ range .Pages.ByWeight }}
+          <a class="home-course-card" href="{{ .RelPermalink }}">
+            <span class="home-course-number">{{ printf "%02d" .Weight }}</span>
+            <span class="home-course-copy">
+              <strong>{{ .Title }}</strong>
+              <small>{{ if gt (len .Pages) 0 }}Coursework available{{ else }}Ready for coursework{{ end }}</small>
+            </span>
+            <span class="home-course-arrow" aria-hidden="true">↗</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  {{ else }}
+    {{ $homework := slice }}
+    {{ $labs := slice }}
+    {{ $projects := slice }}
+    {{ $notes := slice }}
+    {{ range .RegularPages }}
+      {{ $kind := .Params.workType | default "" | lower }}
+      {{ if eq $kind "" }}
+        {{ if or (in .RelPermalink "/homework-") (in .RelPermalink "/assignment-") }}
+          {{ $kind = "homework" }}
+        {{ else if in .RelPermalink "/lab-" }}
+          {{ $kind = "lab" }}
+        {{ else if in .RelPermalink "/project-" }}
+          {{ $kind = "project" }}
+        {{ else }}
+          {{ $kind = "note" }}
+        {{ end }}
+      {{ end }}
+      {{ if or (eq $kind "homework") (eq $kind "assignment") }}
+        {{ $homework = $homework | append . }}
+      {{ else if eq $kind "lab" }}
+        {{ $labs = $labs | append . }}
+      {{ else if or (eq $kind "project") (eq $kind "experiment") }}
+        {{ $projects = $projects | append . }}
+      {{ else }}
+        {{ $notes = $notes | append . }}
+      {{ end }}
+    {{ end }}
+
+    <div class="course-landing">
+      <header class="course-landing-header">
+        <p class="course-landing-kicker">M2 · COURSE {{ printf "%02d" .Weight }}</p>
+        <h1>{{ .Title | emojify }}</h1>
+        <p class="course-landing-byline">Homework · Labs · Projects · Notes</p>
+      </header>
+      <div class="course-landing-description prose dark:prose-invert">
+        {{ .Content }}
+      </div>
+
+      {{ $groups := slice
+        (dict "id" "homework" "title" "Homework" "items" $homework)
+        (dict "id" "labs" "title" "Labs" "items" $labs)
+        (dict "id" "projects" "title" "Projects & Experiments" "items" $projects)
+        (dict "id" "notes" "title" "Notes & Other Work" "items" $notes)
+      }}
+      {{ range $groups }}
+        {{ if gt (len .items) 0 }}
+          <section class="course-work-group" aria-labelledby="course-work-{{ .id }}">
+            <div class="course-work-header">
+              <h2 id="course-work-{{ .id }}">{{ .title }}</h2>
+              <span class="course-work-count">{{ len .items }} {{ if eq (len .items) 1 }}entry{{ else }}entries{{ end }}</span>
+            </div>
+            <div class="course-work-list">
+              {{ range $i, $page := (sort .items "Weight" "asc") }}
+                <a class="course-work-row" href="{{ $page.RelPermalink }}">
+                  <span class="course-work-number">{{ printf "%02d" (add $i 1) }}</span>
+                  <span class="course-work-copy">
+                    <strong>{{ $page.LinkTitle }}</strong>
+                    <small>{{ with (or $page.Params.workSubtitle $page.Params.summary) }}{{ . }} · {{ end }}{{ $page.ReadingTime }} min</small>
+                  </span>
+                  {{ with $page.Params.workStatus }}
+                    {{ if eq . "completed" }}
+                      <span class="course-work-status is-complete">Completed</span>
+                    {{ else if eq . "in-progress" }}
+                      <span class="course-work-status">In progress</span>
+                    {{ end }}
+                  {{ end }}
+                  <span class="course-work-arrow" aria-hidden="true">↗</span>
+                </a>
+              {{ end }}
+            </div>
+          </section>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

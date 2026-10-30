@@ -7,6 +7,4 @@ showWordCount: false
 showDate: false
 ---
 
-This section contains my existing HCI homework and lab exercises, including interface analysis, design reasoning, website development, Unity experiments, and ML-Agents notes.
-
-All previously published HCI homework and lab URLs are preserved.
+My HCI coursework is organised into **Homework** and **Labs** below. These entries include interaction analysis, design reflections, website development, Unity experiments, and ML-Agents notes.

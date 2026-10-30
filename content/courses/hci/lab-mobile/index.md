@@ -5,6 +5,11 @@ summary: "Mobile interaction lab notes and experiment documentation."
 tags: ["HCI", "Lab", "Mobile"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: lab
+workStatus: in-progress
+workSubtitle: "Mobile Interaction"
+weight: 40
+linkTitle: "HCI — Lab_mobile"
 showTableOfContents: true
 showReadingTime: true
 showWordCount: false

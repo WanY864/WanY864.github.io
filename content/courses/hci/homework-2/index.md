@@ -5,6 +5,10 @@ summary: "Lecture 4–6: an HCI researcher, The Ultimate Display, and the vertic
 tags: ["HCI", "Homework", "Human-AI Interaction", "XR", "Input Devices"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: homework
+workStatus: completed
+workSubtitle: "Lecture 4–6 · Researcher · Ultimate Display · Input Devices"
+weight: 20
 showTableOfContents: true
 showReadingTime: true
 showWordCount: true

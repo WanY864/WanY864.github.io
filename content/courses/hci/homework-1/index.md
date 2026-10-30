@@ -5,6 +5,10 @@ summary: "Affordances, Gestalt laws, and dark design patterns examined through e
 tags: ["HCI", "Homework", "Affordance", "Gestalt Laws", "Dark Patterns"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: homework
+workStatus: completed
+workSubtitle: "Affordances · Gestalt Laws · Dark Patterns"
+weight: 10
 showTableOfContents: true
 showReadingTime: true
 showWordCount: true

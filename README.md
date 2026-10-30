@@ -48,11 +48,17 @@ Example page front matter:
 title: "Assignment 1"
 date: 2026-11-01
 draft: false
+weight: 10
+workType: homework
+workStatus: in-progress
+workSubtitle: "A short description of the work."
 summary: "Short description of the assignment."
 ---
 ~~~
 
-Edit the article body with actual work, screenshots, and reflections. The new page is published when pushed to `main`, unless `draft: true` is set. Placeholder course sections are published to make navigation ready, but do not claim any coursework is already completed.
+Edit the article body with actual work, screenshots, and reflections. Set `workType` to `homework`, `lab`, `project`, or `note` so the work appears automatically inside the relevant course page block. `workStatus` is optional (`completed` or `in-progress`), and `weight` controls ordering within each block. The homepage lists the ten courses only, never individual homework or labs.
+
+The new page is published when pushed to `main`, unless `draft: true` is set. Placeholder course sections are published to make navigation ready, but do not claim any coursework is already completed.
 
 ## Local preview (Windows)
 

@@ -5,6 +5,11 @@ summary: "Preparing the Unity development environment and the workflow for my fi
 tags: ["HCI", "Lab", "Unity"]
 categories: ["Human-Computer Interaction"]
 draft: false
+workType: lab
+workStatus: completed
+workSubtitle: "Unity Setup"
+weight: 20
+linkTitle: "HCI — Lab 1B"
 showTableOfContents: true
 showReadingTime: true
 ---
