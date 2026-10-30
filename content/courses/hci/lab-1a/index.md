@@ -1,7 +1,7 @@
 ---
 title: "HCI — Lab 1A: Building My Course Website"
 date: 2026-10-01
-summary: "Building and publishing my HCI course portfolio with Hugo, Blowfish, GitHub Desktop, and GitHub Pages."
+summary: "Building and publishing my HCI course website with Hugo, Blowfish, GitHub Desktop, and GitHub Pages."
 tags: ["HCI", "Lab", "Hugo", "Blowfish", "GitHub Pages"]
 categories: ["Human-Computer Interaction"]
 draft: false
@@ -16,7 +16,7 @@ showReadingTime: true
 
 ## Goal
 
-The goal of this lab was to create an online course portfolio that I can update throughout the semester.
+The goal of this lab was to create an online course website that I can update throughout the semester.
 
 I used **Hugo** as the static-site generator and **Blowfish** as the theme. The final website is published with **GitHub Pages**, so the coursework can be accessed through a normal public URL instead of only from a local development server.
 
@@ -41,7 +41,7 @@ content/
         └── lab-1b/
 ```
 
-The site was configured as a compact academic portfolio rather than a general-purpose blog. I used a white background, restrained blue accents, thin separators, smaller article navigation, and lightweight hover transitions.
+The site was designed for course work rather than as a general-purpose blog. I used a white background, restrained blue accents, thin separators, smaller article navigation, and lightweight hover transitions.
 
 For local testing, I used:
 
@@ -97,7 +97,7 @@ The custom workflow successfully completed the build, artifact upload, and deplo
 
 ## Design Decisions
 
-I wanted the website to feel closer to an academic course portfolio than a generic personal blog.
+I wanted a clean course website rather than a generic personal blog.
 
 The main visual decisions were:
 
@@ -120,4 +120,4 @@ This lab helped me understand the separation between three layers of a static we
 
 I also learned that a website that works locally is not automatically ready for deployment. Theme installation, repository structure, and the GitHub Pages build source all have to be configured correctly.
 
-The final result is a reusable course portfolio that can be updated by adding new Markdown pages and pushing the changes to GitHub.
+The website can be updated by adding new Markdown pages and pushing the changes to GitHub.

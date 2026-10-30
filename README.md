@@ -1,6 +1,6 @@
-# Yan Wan — M2 Course Portfolio
+# Yan Wan — M2 Courses
 
-An English-language **Hugo + Blowfish** academic portfolio covering the ten courses in the M2 Virtual & Augmented Reality programme at Institut Polytechnique de Paris.
+Hugo + Blowfish site for ten M2 Virtual & Augmented Reality courses.
 
 **Public website:** https://wany864.github.io/
 

@@ -1,4 +1,4 @@
-/* Refined clean blue-accent layer for Yan Wan's HCI portfolio. */
+/* Clean blue-accent styles for M2 courses. */
 :root {
   --yan-blue: 37, 99, 235;
   --yan-blue-soft: 219, 234, 254;
@@ -161,7 +161,7 @@ article img:hover {
 
 
 /* ---------------------------------------------------------
-   Homepage v5 — compact academic portfolio
+   Homepage — M2 courses
    --------------------------------------------------------- */
 .home-v5 {
   position: relative;
@@ -495,7 +495,7 @@ html.dark .home-work-status {
   }
 }
 
-/* Ten-course directory for the M2 portfolio. */
+/* Ten-course directory. */
 .home-v5-catalog {
   margin-top: 2.15rem;
   animation: yan-rise 0.7s 0.12s cubic-bezier(.2,.75,.25,1) both;
