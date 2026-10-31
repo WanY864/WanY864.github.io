@@ -107,3 +107,22 @@ Create object
 ```
 
 This workflow provides a clear starting point before moving on to more advanced interaction, scripting, or XR development.
+
+## Unity interaction practice in the lab notes
+
+The wider **HCI_LAB-notes&stuff** material also demonstrates a Unity **Roll-a-ball** style exercise. This is useful follow-on practice, but the provided Week 1 grading brief explicitly scores the initial Unity **setup** task; it does not separately assign points to every Roll-a-ball step.
+
+The teaching exercise covers:
+
+- [ ] Create a ground plane and a ball/Player GameObject.
+- [ ] Add a Rigidbody and an input script so the player can move.
+- [ ] Position a camera and implement a camera-follow offset.
+- [ ] Add walls and collectible objects (for example, Prefabs).
+- [ ] Use colliders/triggers to detect pickups.
+- [ ] Update a score when positive/negative pickups are collected.
+- [ ] Display the score and an appropriate win condition.
+- [ ] Capture a Play Mode screenshot or short video and record any real debugging.
+
+These are a **practice checklist**, not a claim that the objects, scripts or tests already exist in the project described above. Document actual work if this exercise is included in the course submission.
+
+[Lab notes](https://drive.google.com/file/d/1dUCdRRr_d9kCn7ixZRVOWEU-OQRz2l7h/view)

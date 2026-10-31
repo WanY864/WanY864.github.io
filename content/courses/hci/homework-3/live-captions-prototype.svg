@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 540" role="img" aria-labelledby="title desc">
+<title id="title">Low fidelity conversation caption storyboard</title>
+<desc id="desc">Three-screen storyboard of a proposed AR caption system: ready state, live caption state and privacy pause state. No user test has been conducted.</desc>
+<rect width="1010" height="540" fill="#fff"/><rect x="16" y="16" width="978" height="508" rx="18" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="16" y="16" width="978" height="12" rx="5" fill="#0d9488"/>
+<text x="40" y="76" font-size="28" font-family="Arial" fill="#0f172a" font-weight="700">Low-fidelity prototype: live caption interaction</text>
+<text x="40" y="104" font-size="15" font-family="Arial" fill="#64748b">Paper / Wizard-of-Oz storyboard · for first user exposure, not an implemented AR application</text>
+<rect x="40" y="143" width="287" height="330" rx="16" fill="#f6f9fc" stroke="#cbd5e1" stroke-width="2"/>
+ <text x="60" y="180" font-family="Arial" font-size="20" font-weight="700" fill="#1e293b">1. READY</text>
+ <text x="60" y="204" font-family="Arial" font-size="13" fill="#64748b">Facing a conversation</text>
+ <rect x="75" y="224" width="216" height="162" rx="14" fill="#e2e8f0" stroke="#94a3b8"/>
+ <circle cx="140" cy="263" r="19" fill="#8fb6cd"/><circle cx="222" cy="263" r="19" fill="#8fb6cd"/>
+ <path d="M108 330 Q140 278 172 330 M191 330 Q222 278 254 330" fill="#bfd8e6" stroke="#7d9eb6"/>
+ <rect x="63" y="340" width="241" height="53" rx="8" fill="#fff" stroke="#0d9488" stroke-width="2"/>
+ <text x="183" y="360" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#164e63">TAP TO START</text>
+ <text x="183" y="378" text-anchor="middle" font-family="Arial" font-size="11" fill="#64748b">Captions are off by default</text>
+ <text x="183" y="441" text-anchor="middle" font-family="Arial" font-size="13" fill="#475569">Start / Cancel</text><rect x="355" y="143" width="287" height="330" rx="16" fill="#f6f9fc" stroke="#cbd5e1" stroke-width="2"/>
+ <text x="375" y="180" font-family="Arial" font-size="20" font-weight="700" fill="#1e293b">2. LIVE</text>
+ <text x="375" y="204" font-family="Arial" font-size="13" fill="#64748b">An utterance appears</text>
+ <rect x="390" y="224" width="216" height="162" rx="14" fill="#e2e8f0" stroke="#94a3b8"/>
+ <circle cx="455" cy="263" r="19" fill="#8fb6cd"/><circle cx="537" cy="263" r="19" fill="#8fb6cd"/>
+ <path d="M423 330 Q455 278 487 330 M506 330 Q537 278 569 330" fill="#bfd8e6" stroke="#7d9eb6"/>
+ <rect x="378" y="340" width="241" height="53" rx="8" fill="#fff" stroke="#0d9488" stroke-width="2"/>
+ <text x="498" y="360" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#164e63">SPEAKER A: Can we start?</text>
+ <text x="498" y="378" text-anchor="middle" font-family="Arial" font-size="11" fill="#64748b">Pause and replay controls</text>
+ <text x="498" y="441" text-anchor="middle" font-family="Arial" font-size="13" fill="#475569">Pause / Language</text><rect x="670" y="143" width="287" height="330" rx="16" fill="#f6f9fc" stroke="#cbd5e1" stroke-width="2"/>
+ <text x="690" y="180" font-family="Arial" font-size="20" font-weight="700" fill="#1e293b">3. PAUSED</text>
+ <text x="690" y="204" font-family="Arial" font-size="13" fill="#64748b">User requests privacy</text>
+ <rect x="705" y="224" width="216" height="162" rx="14" fill="#e2e8f0" stroke="#94a3b8"/>
+ <circle cx="770" cy="263" r="19" fill="#8fb6cd"/><circle cx="852" cy="263" r="19" fill="#8fb6cd"/>
+ <path d="M738 330 Q770 278 802 330 M821 330 Q852 278 884 330" fill="#bfd8e6" stroke="#7d9eb6"/>
+ <rect x="693" y="340" width="241" height="53" rx="8" fill="#fff" stroke="#0d9488" stroke-width="2"/>
+ <text x="813" y="360" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#164e63">CAPTIONS PAUSED</text>
+ <text x="813" y="378" text-anchor="middle" font-family="Arial" font-size="11" fill="#64748b">No transcript retained</text>
+ <text x="813" y="441" text-anchor="middle" font-family="Arial" font-size="13" fill="#475569">Resume / Exit</text>
+<text x="40" y="507" font-family="Arial" font-size="14" fill="#64748b">User test still required: observe one participant and record feedback before making evaluation claims.</text>
+</svg>

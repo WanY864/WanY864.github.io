@@ -7,4 +7,4 @@ showWordCount: false
 showDate: false
 ---
 
-Homework and labs.
+Four homework sets and five lab sections.

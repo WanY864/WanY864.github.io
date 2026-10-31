@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 550" role="img" aria-labelledby="title desc">
+<title id="title">MR App 1 — Context Translator</title><desc id="desc">undefined</desc>
+<rect width="960" height="550" fill="#f7f9fc"/><rect x="16" y="16" width="928" height="518" rx="18" fill="#fff" stroke="#d9e2ed" stroke-width="2"/>
+<rect x="16" y="16" width="928" height="12" rx="5" fill="#2563eb"/>
+<text x="52" y="71" fill="#0f172a" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">MR App 1 — Context Translator</text>
+<text x="52" y="99" fill="#64748b" font-family="Arial,Helvetica,sans-serif" font-size="16">Translate signs and menus in place</text>
+<rect x="52" y="136" width="398" height="325" rx="18" fill="#ecf1f7" stroke="#becfe1" stroke-width="2"/>
+<text x="82" y="171" fill="#62758d" font-size="14" font-family="Arial,Helvetica,sans-serif" letter-spacing="2">PHYSICAL WORLD</text>
+<path d="M83 410 L418 410 M111 185 L111 410 M390 185 L390 410" stroke="#b9c9d9" stroke-width="2" stroke-dasharray="6,7"/>
+<rect x="126" y="240" width="237" height="135" rx="15" fill="#d2deeb" stroke="#91a9c0" stroke-width="2"/>
+<rect x="145" y="256" width="199" height="75" rx="8" fill="#fff" stroke="#91a9c0"/>
+<text x="244" y="289" fill="#334155" font-size="18" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700">CAFE MENU</text>
+<text x="244" y="312" fill="#64748b" font-size="13" text-anchor="middle" font-family="Arial,Helvetica,sans-serif">Foreign-language text on a surface</text>
+<circle cx="245" cy="354" r="9" fill="#2563eb"/>
+<path d="M465 300 L509 300 M498 291 L509 300 L498 309" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round"/>
+<text x="533" y="168" fill="#62758d" font-size="14" font-family="Arial,Helvetica,sans-serif" letter-spacing="2">PROPOSED AR OVERLAY</text>
+<rect x="516" y="188" width="365" height="273" rx="18" fill="#f8fbff" stroke="#becfe1" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif"><rect x="532" y="220" width="330" height="57" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.6"/><circle cx="552" cy="249" r="6" fill="#2563eb"/><text x="570" y="245" font-size="17" font-weight="600" fill="#243047">SALADE → SALAD</text><text x="570" y="264" font-size="13" fill="#66768d">Translation follows the label</text><rect x="532" y="292" width="330" height="57" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3"/><circle cx="552" cy="321" r="6" fill="#2563eb"/><text x="570" y="317" font-size="17" font-weight="600" fill="#243047">ENGLISH / FRENCH</text><text x="570" y="336" font-size="13" fill="#66768d">Visible language control</text><rect x="532" y="364" width="330" height="57" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3"/><circle cx="552" cy="393" r="6" fill="#2563eb"/><text x="570" y="389" font-size="17" font-weight="600" fill="#243047">SHOW ORIGINAL</text><text x="570" y="408" font-size="13" fill="#66768d">Check for translation mistakes</text></g>
+<line x1="52" y1="479" x2="899" y2="479" stroke="#e2e8f0"/>
+<text x="52" y="507" fill="#475569" font-size="15" font-family="Arial,Helvetica,sans-serif">Everyday value: travel and accessibility · Risk: inaccurate translation</text>
+<text x="899" y="507" text-anchor="end" font-size="12" fill="#94a3b8" font-family="Arial,Helvetica,sans-serif">CONCEPT SKETCH · NOT USER TESTED</text>
+</svg>
