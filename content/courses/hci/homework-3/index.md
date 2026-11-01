@@ -14,77 +14,99 @@ showReadingTime: true
 showWordCount: true
 ---
 
-For this homework, I tried to think of AR as something that helps with small problems in daily life, not just something that looks impressive in a demo.
 
-## Lecture 7 — Three ideas to enhance human abilities
+I wanted to explore one main question in this homework: **how can AR make something easier for a person, rather than just put more digital information in front of them?**
 
-### Idea 1: Spatial Memory Aid
+I started with three everyday difficulties: forgetting where something is, missing what another person says, and following unfamiliar instructions. I made a concept sketch for each one, compared what the user would actually do, and then developed one idea into an interactive prototype.
 
-I often put something down and then forget where it is. My first idea is an AR reminder system for small objects, such as keys, glasses or tools.
+## Lecture 7 — Three AR ideas for everyday abilities
 
-I imagine pointing to an object and saving its location. Later, when I want to find it, a small arrow could appear in my view. I would not want the glasses to record everything automatically: the user should choose what to remember.
+For the ideation part, I tried to keep each idea connected to a specific human ability. My three directions were **memory**, **communication**, and **learning by doing**. I also wanted each interface to be easy to turn off, because AR can become distracting if too much information stays in view.
 
-The difficult part is tracking. If the system remembers the wrong place, the arrow might be more annoying than helpful. I would also want a clear way to remove a saved location.
+### Idea 1 — Spatial Memory Aid
 
-![Early sketch of a spatial memory reminder.](spatial-memory.svg)
+**Human ability: remembering and finding things.**
 
-### Idea 2: Live Conversation Captions
+The first situation I chose was very ordinary: I put down my keys or a small tool and later cannot remember where I left it. I imagined AR glasses that could help me save a location and then give me a small reminder when I needed it.
 
-My second idea is live subtitles for a face-to-face conversation. This could help in a noisy room, when someone speaks too quickly, or when a person has difficulty hearing.
+I drew a simple desk-and-shelf scene with a saved object label and a direction hint. In my design, I would point at the object and confirm its location first. Later, the glasses could show something like “Keys: on the shelf” instead of asking me to search every corner of the room.
 
-Instead of looking down at a phone, the user sees a short line of text near the speaker. I think the subtitles should be easy to pause, because we do not need them in every part of a conversation.
+![My concept sketch showing a saved object location and an AR hint.](spatial-memory.svg)
 
-The challenge is that captions can be wrong or arrive late. Privacy also matters: other people should know when captions are being used, and a private conversation should not be recorded by default.
+One decision I made was **not to save everything automatically**. I think that would create too much information and raise privacy questions. I would rather let the user choose what is important. The biggest technical difficulty would be keeping the location accurate if the object moved, so the interface should never act as if the remembered position is guaranteed to be correct.
 
-![Early sketch of an AR conversation caption.](live-captions.svg)
+### Idea 2 — Live Conversation Captions
 
-### Idea 3: Assembly Guide
+**Human ability: understanding spoken conversation.**
 
-My third idea is AR instructions for assembling something unfamiliar, like a small piece of furniture.
+My second idea came from situations where conversation becomes difficult to follow, such as a noisy café, a fast-speaking classmate, or a language that is not easy to understand. Looking at captions on a phone is possible, but it also means looking away from the person.
 
-A normal manual gives you pictures on a separate page. With AR, I imagine a simple outline showing which part to pick up and where to place it. The user could move through the steps with **Next** and **Back**.
+I sketched an AR caption that sits near the conversation instead of covering the middle of the view. I kept the text short and included a speaker label. I also added the idea of a clear pause control, because the user may want captions for one part of a conversation but not for everything.
 
-I think it could reduce confusion for beginners, but alignment is very important. If the arrow points to the wrong part, the instructions could cause mistakes instead of preventing them.
+![My sketch of caption text appearing alongside a conversation.](live-captions.svg)
 
-![Early sketch of step-by-step AR assembly help.](assembly-guide.svg)
+As I thought through the design, I realised that **starting and stopping captions is just as important as displaying them**. If the user cannot tell whether the system is active, they may feel uncomfortable. Incorrect captions and other people's privacy are also concerns, so I wanted a visible listening state and a way to stop immediately.
 
-### Which idea should I prototype?
+### Idea 3 — AR Assembly Guide
 
-I chose **Live Conversation Captions**. It has a small number of important actions—start, read, pause and exit—which makes it easier to test as a first prototype.
+**Human ability: learning and completing a physical task.**
 
-The other two ideas are also useful, but they depend much more on accurate object or location tracking. For captions, I can first study the interface without pretending that I have already built the speech-recognition system.
+For the third idea, I imagined someone assembling a small object for the first time. With a normal instruction sheet, it is easy to look from the paper to the object and then lose track of which part comes next.
 
-## Lecture 8 — Live Captions prototype
+I made a sketch that shows a physical part on one side and a short AR instruction on the other. The interface highlights one step at a time, suggests where the next piece belongs, and has **Next** and **Back** actions so the user can control the pace.
 
-I made the interface around one question: **can someone tell immediately whether the glasses are listening or paused?**
+![My AR assembly guide sketch showing a part and its next instruction.](assembly-guide.svg)
 
-The design uses a dark, slightly transparent caption card, a visible state indicator, and short lines. I tried to keep the text away from the centre of the conversation so it would not cover people's faces.
+I liked the connection between the instruction and the actual object. However, I also noticed a problem with this idea: if the virtual outline does not line up with the real part, the guide could make the task harder or even lead to a mistake. A simple 2D instruction view would be a useful backup.
 
-The mockup below lets you move between states using sample dialogue. It simulates the interaction; it does not listen to a microphone.
+### How I chose the idea to develop
+
+After drawing the three concepts, I compared what each one would need for a first prototype:
+
+| Idea | What it helps with | Main design challenge |
+| --- | --- | --- |
+| Spatial Memory Aid | Remembering locations | Reliable position tracking |
+| Live Conversation Captions | Following speech | Readability, status and privacy |
+| Assembly Guide | Learning physical steps | Accurate alignment with objects |
+
+I chose **Live Conversation Captions** because the main user actions are easy to explain and try out: turn captions on, read them, pause, and exit. I could explore those actions before trying to build a complete speech-recognition system or an actual headset application.
+
+## Lecture 8 — From sketches to a caption prototype
+
+Once I chose the caption idea, I stopped thinking only about what the glasses would display and started thinking about **what the user would do first, second, and third**.
+
+I designed the interface around four controls: **Start captions**, **Next line**, **Pause / Resume**, and **Exit / Clear**. I used a dark, semi-transparent text panel so the words could stand out while the conversation remained visible behind them. A separate status label shows whether captions are off, live, or paused.
+
+I also prepared a short simulated dialogue between two speakers. Instead of pretending the prototype can recognise speech, I made the **Next line** button reveal a prepared caption. This let me focus on the interaction: whether it is obvious when the system is running, and whether the user can stop it quickly.
+
+### Interactive interface mockup
+
+I built a small browser-based mockup of the proposed AR view. The buttons work, but the captions are example text rather than real microphone input.
 
 {{< hci-prototype name="live-captions" title="Live Captions interactive AR interface concept" >}}
 
-### Low-fidelity version for a first user walkthrough
+### Low-fidelity storyboard
 
-I also kept a simple three-state storyboard: **Ready → Live → Paused**. This version can be printed or shown on a screen while another person follows the task.
+I also made a simpler three-frame version to show the basic flow: **Ready → Live → Paused**. This is useful because a person can try it with printed cards or on a screen without any special hardware.
 
-![Three-state low-fidelity captions storyboard, showing Ready, Live and Paused.](live-captions-prototype.svg)
+![My three-frame storyboard of the Ready, Live and Paused caption states.](live-captions-prototype.svg)
 
-For a Wizard-of-Oz test, one person can show prepared subtitle lines while the participant chooses when to start, pause or exit. That way, I can focus on whether the controls make sense without needing working AR glasses.
+The two prototypes serve different purposes. The interactive version makes it easier to try the controls, while the storyboard makes the idea easy to explain and adapt during a first user session. Neither version is a working AR headset or a tested speech-recognition system.
 
-The key details I want to check are the caption position, the difference between Live and Paused, and how easy it is to stop the interaction quickly.
+**One thing I learned while making the screens** is that the caption text itself is only half of the interface. The other half is giving the user enough feedback and control to feel comfortable using it.
 
-## Lecture 9 — Evaluation
+## Lecture 9 — Preparing the first user evaluation
 
-The next step is to let **at least one other person** try the prototype. I would give them a simple scenario:
+For the evaluation, the teacher asks us to have **at least one person other than ourselves** interact with the prototype. I have prepared a simple task that can be carried out with the interactive mockup or the three storyboard cards.
 
-> You are talking to a classmate in a noisy café. Start captions, follow two lines of conversation, then pause them when the topic becomes private.
+The scenario is a conversation with a classmate in a noisy café. I would ask the participant to start captions, follow two short lines, pause when the conversation becomes private, and then exit. I would let them find the controls on their own rather than explain every button first.
 
-I would let the person try first without explaining which control to press. Then I would watch where they hesitate and ask a few questions:
+While they use it, I want to pay attention to three things: **whether the state of the system is clear, whether the text distracts from the conversation, and whether the person feels in control**. I would also ask what confused them and which part they would change.
 
-- Was it obvious when captions were on or off?
-- Were the words easy to read without blocking the conversation?
-- Did the Pause control feel clear enough?
-- What would you change before using this in real life?
+The actual interaction with another person still needs to happen. I have not added invented feedback or a fake conclusion. After that session, I can use the person's real comments to explain which design choices worked and which ones I would revise.
 
-I would use their actual comments to decide what to improve. At this stage, the prototype shows the design idea, **not the results of a completed user study**. One participant would be a useful first check, but not enough to prove the design works well for everyone.
+## Reflection on the design so far
+
+These three concepts made me think of AR less as a futuristic display and more as a way to support specific human abilities. A memory reminder, a caption, and an assembly instruction are very different, but they all have to respect what the person is already doing in the real world.
+
+For my chosen caption prototype, I focused most on **visibility, readability and user control**. I think a useful AR interface should be easy to notice when needed, but equally easy to pause or remove when it gets in the way.

@@ -14,74 +14,115 @@ showReadingTime: true
 showWordCount: true
 ---
 
-This homework made me think about a simple question: if phones and computers keep changing, how can they become easier to use instead of just adding more features?
 
-## Lecture 10 — How smartphone shapes changed
+For this homework, I used one theme to connect the three lectures: **technology should adapt to what people need, instead of making people adapt to the device**.
 
-When I look at older mobile phones, the biggest difference is how much space was used by buttons. A phone with a physical keypad was great for calling and texting, but it could not easily turn into a map, video player or drawing tool.
+I first looked at how the physical shape of phones changed, then compared Mark Weiser's idea of ubiquitous computing with the devices around us today. Finally, I used those thoughts to come up with three MR apps. I made an early sketch for each app and then turned the ideas into small clickable interface concepts.
 
-Touchscreens changed that. The whole front of the phone could adapt to the app: one moment it is a keyboard, the next moment it is a camera or a game controller. Over time, screens became larger, borders became smaller, and gestures replaced some physical buttons. I think this happened because people started using phones for almost everything, not just communication.
+## Lecture 10 — How and why smartphone shapes changed
 
-But larger screens created another problem: they are useful for watching videos and reading, yet harder to hold with one hand or put in a pocket. Foldable phones are one attempt to solve this. They give you a bigger display when you need it, but the hinge, weight, price and durability also become part of the user experience.
+I started by comparing three stages of phone design: **phones with keypads, touchscreen smartphones, and foldable phones**. What interested me was not just how they looked, but what each shape made easier or harder for the user.
 
-### What could be next?
+Older phones had small displays and physical keys. This worked well for calls and simple text messages because the controls stayed in the same place. But when people began using their phones for maps, web pages, photos and videos, those fixed keys took up space that could have been used by the screen.
 
-My guess is that **phones will become more adaptable**, rather than everyone using exactly the same shape. Some people will keep a normal phone because it is simple and reliable. Others might prefer a foldable screen that opens for work. A watch or lightweight glasses could take over small tasks such as navigation or quick notifications.
+I think the touchscreen was a big change because the controls could change with the task. A keyboard appears when we type, the entire screen becomes a camera viewfinder when we take a photo, and gestures can replace some physical buttons. This made the phone much more flexible.
 
-I do not think the normal rectangular phone will disappear soon. It already works well for most people. For me, the next successful design is probably not the most futuristic-looking one, but the one that feels natural in daily use.
+I then looked at foldable phones. To me, they show a new design problem: we want a large screen, but we do not want a very large object in our pockets. A foldable display is a possible solution, although the hinge, weight, price and software layout also make the interaction more complicated.
 
-## Lecture 11 — Mark Weiser and ubiquitous computing
+| Phone design | What I think it improves | What becomes difficult |
+| --- | --- | --- |
+| Physical keypad | Familiar buttons and simple actions | Not much room for changing interfaces |
+| Touchscreen | One surface can support many tasks | Less tactile feedback; some actions are harder one-handed |
+| Foldable display | More screen space without always carrying a tablet-sized device | Thickness, durability, cost and changing layouts |
 
-I found Mark Weiser's idea in *The Computer for the 21st Century* surprisingly close to daily life today. He imagined computers becoming part of our surroundings instead of always being separate machines that demand attention.
+### What do I think comes next?
 
-His examples included small **tabs**, portable **pads**, and larger shared **boards**. Today we have smartwatches and tags, tablets, and interactive screens. So, in one sense, his prediction has already happened: computers are no longer limited to a desk.
+My prediction is **more flexible ways of using a phone**, not one strange new shape that everyone must buy.
 
-However, I do not think we have completely reached his vision.
+For example, I can imagine using a normal phone for messages, opening a larger screen when I need to read or work, and using lightweight glasses for short information such as directions. Each device would be useful in a different situation. I also think traditional phones will remain popular because they are simple and reliable.
 
-My phone and watch are useful, but they interrupt me all the time. Different devices still have connection problems, and I often need to log in again, change settings, or move information manually. Instead of disappearing into the background, the technology sometimes becomes another task to manage.
+I reached this idea by thinking about how I use a screen: checking a message takes a few seconds, while reading a long document can take much longer. These tasks do not really need the same screen size. For me, a good design should make the transition between tasks easy without creating more work.
 
-Privacy is also important. Imagine a room that automatically knows who is inside and what they are doing. That might be convenient, but it would also feel uncomfortable if people did not know what information was being collected.
+## Lecture 11 — Mark Weiser's vision of ubiquitous computing
 
-**My answer is: we have achieved some of the technology, but not always the experience Weiser wanted.** To me, truly ubiquitous computing should be calm, easy to understand and easy to turn off. It should help us focus on what we are doing.
+In *The Computer for the 21st Century*, Mark Weiser imagined a world where computing becomes part of normal surroundings. I understood his point as **making the computer less noticeable while keeping its help available**.
+
+To connect the paper with what we see now, I looked at his three device scales:
+
+| In Weiser's paper | How I connect it to today |
+| --- | --- |
+| **Tabs** — small, portable devices | Smart tags, watches and small sensors |
+| **Pads** — portable display surfaces | Tablets and shared portable screens |
+| **Boards** — large shared displays | Classroom smartboards and meeting-room screens |
+
+When I made these comparisons, I felt that we already have many parts of his idea. We carry several connected devices, and computers are inside objects that do not look like traditional PCs.
+
+However, I do not think that means the full vision is complete. I still notice how often technology demands attention. Notifications interrupt what we are doing, devices do not always share information smoothly, and something as simple as moving between apps can take several extra steps.
+
+Another issue I thought about is privacy. If a room can recognise who is there and automatically show personal information, that could be useful. But I would also want to know **what it knows about me, who can see it, and how to turn it off**.
+
+So my answer is **partly yes**. We are surrounded by computing, but it is not always calm or invisible. I think the next improvement is not simply adding more devices. It is making their behaviour easier to understand, more connected, and more respectful of people's attention.
 
 *Reading:* [Mark Weiser — *The Computer for the 21st Century* (1991)](https://www.lri.fr/~mbl/Stanford/CS477/papers/Weiser-SciAm.pdf)
 
-## Lecture 12 — Three MR apps I would actually download
+## Lecture 12 — Three MR apps for everyday life
 
-If MR glasses became as common as smartphones, I think useful everyday apps could become more popular than complicated 3D experiences. These are three apps I can imagine people opening regularly.
+For the future MR app store, I wanted to imagine apps I might actually use, not just things that look good in a demonstration.
 
-### 1. Context Translator
+I followed three small rules when designing them: **solve a common problem**, **show only the information that matters**, and **give the user a simple way to hide or change the overlay**.
 
-When travelling, I sometimes wish I could understand a menu or a sign without taking out my phone and opening a translation app. With MR glasses, the translation could appear right next to the original words.
+I came up with **Context Translator**, **Everyday Wayfinding** and **Shared Spatial Notes**. I first drew what the user would see in the real world, then created three different interactive mockups to explain the key actions. These are interface concepts, not real MR applications running on a headset.
 
-I would keep the interface very simple: look at the text, turn on translation, and hide it when you are done. The original text should still be visible because translations are not always correct.
+### App 1 — Context Translator
 
-**Why people might download it:** travelling, studying and living in another country all involve small language problems. This app would save time in very ordinary situations.
+**The problem I started with:** reading a menu, sign or label in a language I do not understand. Using a translation app on a phone works, but it means switching attention between the phone and the thing I am trying to read.
+
+My idea is to show a small translation next to the original words. I sketched a menu with a simple text overlay. I then made a mockup where the user can switch between **Show translations** and **View original**. I deliberately kept the original text visible because a translation might be wrong.
+
+![My first sketch of translated information appearing in the real world.](mr-translate.svg)
 
 {{< hci-prototype name="context-translator" title="Context Translator interactive MR concept" >}}
 
-### 2. Everyday Wayfinding
+**Why it could be popular:** people travel, study and move between different languages all the time. I think the value would be immediate: instead of opening another app, the answer could appear beside the object.
 
-I can easily get lost in a large campus, hospital or train station. A map on a phone helps, but I still need to match the map with the corridor in front of me.
+The main risk is trust. If the translation is incorrect, especially for something important, the user needs an easy way to check the original.
 
-My idea is to show only one or two direction hints in the real world, such as a small arrow pointing to the next turn. There could also be a step-free route option and a normal 2D map if the tracking is wrong.
+### App 2 — Everyday Wayfinding
 
-**Why people might download it:** navigation is something almost everyone needs. I think it could be especially useful in unfamiliar buildings, as long as it does not cover important things in the user's view.
+**The problem I started with:** finding a room or destination in a large campus, hospital or station. A normal map can be useful, but it still takes effort to match the map to the corridor in front of me.
+
+I drew a campus route with a few directional hints. For the interactive version, I made a small map and a **Next instruction** control that changes the route guidance. I also added a **step-free route** switch because a path is not equally convenient for everyone.
+
+![My first sketch of MR navigation directions.](mr-wayfinding.svg)
 
 {{< hci-prototype name="everyday-wayfinding" title="Everyday Wayfinding interactive MR concept" >}}
 
-### 3. Shared Spatial Notes
+**Why it could be popular:** navigation is an everyday need. I can imagine this helping students, visitors or anyone looking for the right entrance in an unfamiliar place.
 
-When people work on a physical project together, a message such as “fix this part” is not always clear. Which part?
+I would keep the arrows small and avoid covering obstacles. I also think the app should always have a regular map as a backup if the position tracking is inaccurate.
 
-I would like to leave a note directly next to an object, almost like a virtual sticky note. Someone else working on the same model could see it in the same position. The app would need a clear difference between private notes and notes shared with a group.
+### App 3 — Shared Spatial Notes
 
-**Why people might download it:** students, designers and teams could use it to explain ideas without taking lots of extra photos or sending long messages. It might make group work less confusing.
+**The problem I started with:** when a group works on a physical object, a message such as “change this part” does not always explain which part someone means.
+
+I imagined placing virtual sticky notes directly next to an object. I sketched a shared worktable with labels attached to different parts. Then I built a clickable concept that lets the user switch between **Team** and **My notes**, and type a short example note.
+
+![My first sketch of notes attached to a shared physical workspace.](mr-shared-notes.svg)
 
 {{< hci-prototype name="shared-spatial-notes" title="Shared Spatial Notes interactive MR concept" >}}
 
-### My choice
+**Why it could be popular:** I think it could help students and teams explain changes much more directly than a long text conversation. The note would stay where the idea is relevant.
 
-Of these three, **Context Translator** is probably the one I would use most often. It has one clear job and does not require people to learn much. Wayfinding could also become very popular, while Shared Spatial Notes feels more useful for teamwork and study.
+The part I paid most attention to was **who can see a note**. A shared workspace can become uncomfortable if private notes appear to everyone by accident, so visibility needs to be obvious.
 
-The common idea is that MR should add information **only when it helps**, not cover the real world with more things to look at.
+### Which app would I download first?
+
+I would probably use **Context Translator** most often because it solves a small problem with almost no learning time. I can also see Wayfinding being useful for many people, especially in unfamiliar places. Shared Spatial Notes feels a little more specialised, but very helpful for teamwork.
+
+After making these sketches and mockups, I think the strongest MR apps will not necessarily be the ones with the most 3D effects. They will be the ones that make a real task easier **while keeping the real world in focus**.
+
+## What connects the three lectures for me
+
+The way I see it, smartphone shapes, ubiquitous computing and future MR apps are all parts of the same design question: **how much technology does a person really need to notice?**
+
+Phones changed shape to support more kinds of tasks. Weiser imagined computing fitting quietly into everyday spaces. My three MR concepts try to follow that idea by showing a small piece of information at the right moment, with controls that let the user decide when it should disappear.
