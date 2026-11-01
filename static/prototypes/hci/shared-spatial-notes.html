@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shared Spatial Notes — MR Concept</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#292645}
+*{box-sizing:border-box}body{margin:0;background:#f8f6fc;font-size:13px}button,input{font:inherit}
+button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #8f75ca;outline-offset:3px}
+.wrap{max-width:1000px;margin:auto;padding:19px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.01em}
+.logo span{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#ddd0ff;color:#603bb0;font-size:18px}
+.tag{padding:6px 10px;border:1px solid #d5c4ef;border-radius:99px;color:#7c67a3;font-size:10px;letter-spacing:.06em}
+h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:16px 0 4px}
+.subtitle{color:#767088;font-size:12px;margin:0 0 15px}
+.board{min-height:309px;display:grid;grid-template-columns:minmax(0,1fr) 225px;gap:12px}
+.space{border:1px solid #ddd4ec;border-radius:17px;background:linear-gradient(155deg,#ece7f7,#eeeef7 65%,#dbd6e9);position:relative;overflow:hidden;min-height:309px}
+.space:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#aca3c7 1px,transparent 1px);background-size:22px 22px;opacity:.28}
+.bench{position:absolute;left:12%;right:11%;bottom:8%;top:28%;border-radius:18px;transform:perspective(480px) rotateX(13deg);background:linear-gradient(130deg,#ded4c4,#c7bfae);box-shadow:0 12px 0 #b1a899,0 20px 30px #847d8e40}
+.bench:before,.bench:after{content:"";position:absolute;background:#b8afb1;border-radius:10px;box-shadow:0 7px 15px #6962782e}
+.bench:before{width:43%;height:29%;left:9%;top:34%;transform:rotate(-19deg)}
+.bench:after{width:22%;height:40%;right:14%;top:26%;transform:rotate(12deg)}
+.part{position:absolute;top:38%;left:32%;width:22%;height:34%;transform:rotate(-12deg);border:4px solid #9a8fa5;border-radius:15px;background:linear-gradient(125deg,#d4cadb,#a49aa9);box-shadow:0 12px 23px #7167825c}
+.part:after{content:"";position:absolute;inset:13px;border:2px dashed #62597c;border-radius:8px}
+.world-label{position:absolute;top:13px;left:15px;background:#faf8ffdc;border:1px solid #d2c4e4;border-radius:9px;padding:7px 10px;color:#6a5984;font-size:11px;font-weight:700}
+.marker{position:absolute;border:1px solid #fff9;padding:11px 12px;border-radius:10px;box-shadow:0 10px 26px #55417f39;max-width:160px;line-height:1.35;cursor:pointer;transition:transform .2s}
+.marker:hover,.marker:focus-visible{transform:translateY(-3px);outline:2px solid #5f44a1}
+.marker b{display:block;font-size:11px;font-weight:800;margin-bottom:4px}
+.marker.one{top:24%;left:52%;background:#fff0a4;color:#534325;transform:rotate(4deg)}
+.marker.two{top:58%;left:7%;background:#fbcfd9;color:#663c4d;transform:rotate(-4deg)}
+.marker.three{top:12%;right:5%;background:#d3e4ff;color:#334a76;transform:rotate(2deg)}
+.marker.extra{top:72%;right:8%;background:#ead6ff;color:#553d77}
+.marker:after{content:"";display:block;width:11px;height:11px;border:2px solid currentColor;border-radius:50%;opacity:.4;margin-top:6px}
+.panel{border:1px solid #e0d8ef;background:white;border-radius:17px;padding:16px;display:flex;flex-direction:column;gap:11px}
+.panel small{text-transform:uppercase;letter-spacing:.1em;color:#8f83a6;font-size:10px}
+.panel h2{margin:0;font-size:18px;line-height:1.25;letter-spacing:-.02em}
+.avatar-row{display:flex;align-items:center;gap:5px}.av{width:29px;height:29px;border-radius:50%;background:#e8e0ff;display:grid;place-items:center;color:#5b3b94;font-size:11px;font-weight:800;border:2px solid white}
+.av.second{background:#cbeee5;color:#245d55}.av.third{background:#fee0bc;color:#81532d}
+.share{font-size:11px;color:#7a708c;background:#f2ecfb;border-radius:8px;padding:8px 9px;line-height:1.4}
+.panel label{font-size:11px;color:#6b6482;font-weight:750}
+.panel input{width:100%;border-radius:9px;border:1px solid #d2c8e1;padding:9px 10px;color:#30264c;background:#fdfaff;font-size:12px}
+.btn{border:1px solid #cfc6de;border-radius:9px;padding:9px 11px;background:white;color:#5a4b7b;font-size:12px}
+.btn.primary{background:#7754c2;color:white;font-weight:800;border-color:#7754c2}
+.btn:hover{filter:brightness(.96)}
+.btn-bar{display:flex;gap:7px}.btn-bar button{flex:1}
+.footer{color:#938aa3;font-size:11px;margin-top:11px}
+@media(max-width:640px){.wrap{padding:14px}.board{grid-template-columns:1fr}.space{min-height:284px}.panel{padding:12px}.panel h2{font-size:16px}.panel .entry{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.panel .entry label{grid-column:1/-1}.panel .entry input{grid-column:1}.panel .entry button{grid-column:2}.marker{font-size:11px;max-width:122px;padding:8px}.marker.three{top:12%;right:2%}.marker.one{left:50%}}
+</style></head><body>
+<main class="wrap">
+<header class="head"><div class="logo"><span>✎</span> Pinboard / Shared Spatial Notes</div><div class="tag">COLLABORATIVE MR CONCEPT</div></header>
+<h1>Leave ideas where they matter.</h1><p class="subtitle">Notes follow objects, not a long chat thread. Explore private and shared views in this simulated workspace.</p>
+<section class="board" aria-label="Interactive shared workspace mockup">
+<div class="space" id="space">
+<div class="world-label">⌖ MODEL WORKSPACE · simulated</div>
+<div class="bench"></div><div class="part" aria-hidden="true"></div>
+<button class="marker one" type="button" data-team="true"><b>EMMA · TEAM</b>Check screw length</button>
+<button class="marker two" type="button" data-team="false"><b>MY NOTE</b>Try a smaller handle</button>
+<button class="marker three" type="button" data-team="true"><b>NOAH · TEAM</b>Add assembly photos</button>
+</div>
+<aside class="panel">
+<small>WORKSPACE</small><h2>Prototype review</h2>
+<div class="avatar-row"><span class="av">Y</span><span class="av second">E</span><span class="av third">N</span><span style="font-size:11px;color:#8b81a2;margin-left:5px">You + 2 collaborators</span></div>
+<div class="share" id="sharing">Showing team notes and your private notes.</div>
+<div class="btn-bar"><button class="btn primary" type="button" id="team">Team</button><button class="btn" type="button" id="mine">My notes</button></div>
+<div class="entry"><label for="message">Add a note to this object</label><input id="message" maxlength="42" placeholder="Write a short idea..." autocomplete="off"/><button class="btn primary" type="button" id="add">Pin note +</button></div>
+</aside>
+</section>
+<div class="footer">Prototype only · note sharing and placement are simulated in this page; no server or persistence.</div>
+</main>
+<script>
+(function(){
+ const $=x=>document.getElementById(x);
+ let team=true, added=0;
+ function paint(){
+  document.querySelectorAll("[data-team]").forEach(b=>{b.style.display=team||b.getAttribute("data-team")==="false"?"":"none"});
+  $("team").classList.toggle("primary",team);$("mine").classList.toggle("primary",!team);
+  $("sharing").textContent=team?"Showing team notes and your private notes.":"Private view: only your notes are visible.";
+ }
+ $("team").addEventListener("click",()=>{team=true;paint()});$("mine").addEventListener("click",()=>{team=false;paint()});
+ $("add").addEventListener("click",()=>{
+  const value=$("message").value.trim();if(!value)return;
+  document.querySelectorAll(".marker.extra").forEach(x=>x.remove());
+  const e=document.createElement("button");e.type="button";e.className="marker extra";e.setAttribute("data-team","false");
+  const b=document.createElement("b");b.textContent="MY NOTE · "+(++added);
+  e.appendChild(b);e.appendChild(document.createTextNode(value));$("space").appendChild(e);
+  $("message").value="";paint();e.focus();
+ });
+ $("message").addEventListener("keydown",e=>{if(e.key==="Enter")$("add").click()});paint();
+})();
+</script></body></html>

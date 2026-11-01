@@ -1,0 +1,16 @@
+{{- $name := .Get "name" -}}
+{{- $allowed := slice "live-captions" "context-translator" "everyday-wayfinding" "shared-spatial-notes" -}}
+{{- if not (in $allowed $name) -}}
+  {{- errorf "Unknown HCI prototype %q at %s" $name .Position -}}
+{{- end -}}
+{{- $title := .Get "title" | default "Interactive HCI concept" -}}
+<figure class="hci-prototype not-prose">
+  <iframe
+    src="{{ (printf "prototypes/hci/%s.html" $name) | relURL }}"
+    title="{{ $title }}"
+    loading="lazy"
+    sandbox="allow-scripts"
+    referrerpolicy="no-referrer">
+  </iframe>
+  <figcaption>Interactive concept mockup · simulated content, not a deployed AR application.</figcaption>
+</figure>

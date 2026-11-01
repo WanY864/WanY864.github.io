@@ -1,6 +1,6 @@
 ---
 title: "HCI — Homework 3"
-summary: "Lectures 7–9: three AR concepts, a low-fidelity prototype, and a user-evaluation plan."
+summary: "Lectures 7–9: three AR ideas, a caption prototype, and a simple evaluation approach."
 tags: ["HCI", "Homework", "Augmented Reality", "Ideation", "Prototyping", "Evaluation"]
 categories: ["Human-Computer Interaction"]
 draft: false
@@ -14,98 +14,77 @@ showReadingTime: true
 showWordCount: true
 ---
 
-This homework explores how augmented reality could support memory, conversation and hands-on learning.
+For this homework, I tried to think of AR as something that helps with small problems in daily life, not just something that looks impressive in a demo.
 
-## Lecture 7 — Three ideas for augmenting human abilities
-
-These three concepts address different limitations: remembering places, understanding speech, and carrying out an unfamiliar physical procedure. Each keeps the real world visible and gives the user control over when information appears.
+## Lecture 7 — Three ideas to enhance human abilities
 
 ### Idea 1: Spatial Memory Aid
 
-**Ability enhanced:** remembering where an everyday item or useful location was last seen.
+I often put something down and then forget where it is. My first idea is an AR reminder system for small objects, such as keys, glasses or tools.
 
-**Scenario.** A person puts their keys on a shelf and later forgets where. An AR interface allows them to save a spatial reminder. When they search for the keys, a small directional cue leads them toward the saved location.
+I imagine pointing to an object and saving its location. Later, when I want to find it, a small arrow could appear in my view. I would not want the glasses to record everything automatically: the user should choose what to remember.
 
-**Interaction.** The user selects an object, confirms its location, and chooses whether to save a reminder. Later, a search phrase such as “Find my keys” displays a limited, world-anchored hint rather than covering the whole field of view with labels.
+The difficult part is tracking. If the system remembers the wrong place, the arrow might be more annoying than helpful. I would also want a clear way to remove a saved location.
 
-**HCI rationale.** The system shifts some prospective and spatial memory work into the environment. Confirmation is important because an approximate location must not be presented as certain. Information should be available when requested and disappear once it is no longer useful.
-
-**Potential problems.** Incorrect tracking could guide the user to the wrong place. Continuous recording of a room could expose private information. The default should therefore be user-controlled saving, visible uncertainty, and an easy way to delete reminders.
-
-![Sketch of Spatial Memory Aid showing a saved location and directional hint.](spatial-memory.svg)
+![Early sketch of a spatial memory reminder.](spatial-memory.svg)
 
 ### Idea 2: Live Conversation Captions
 
-**Ability enhanced:** understanding spoken conversation when speech is difficult to hear, in noisy rooms, or when using an unfamiliar language.
+My second idea is live subtitles for a face-to-face conversation. This could help in a noisy room, when someone speaks too quickly, or when a person has difficulty hearing.
 
-**Scenario.** Two people talk face to face. Instead of looking down at a phone, the user sees a short caption near the current speaker. They can pause captions or hide them whenever the conversation becomes easier to follow.
+Instead of looking down at a phone, the user sees a short line of text near the speaker. I think the subtitles should be easy to pause, because we do not need them in every part of a conversation.
 
-**Interaction.** Captions begin only when the user activates them. The interface displays brief speaker-labelled text, a clear pause control, language settings, and a private mode that avoids saving a transcript.
+The challenge is that captions can be wrong or arrive late. Privacy also matters: other people should know when captions are being used, and a private conversation should not be recorded by default.
 
-**HCI rationale.** A good augmentation should support attention to the speaker, not replace the conversation with a second screen. Position, contrast, timing, and line length matter: long captions or frequent updates may distract from gestures and facial expressions.
-
-**Potential problems.** Speech-recognition errors, incorrect speaker identification, delayed captions, and the consent of other participants are significant risks. The interface must show that captions can be wrong.
-
-![Sketch of Live Conversation Captions with speaker text and privacy controls.](live-captions.svg)
+![Early sketch of an AR conversation caption.](live-captions.svg)
 
 ### Idea 3: Assembly Guide
 
-**Ability enhanced:** performing an unfamiliar manual task by combining instructions with the physical object.
+My third idea is AR instructions for assembling something unfamiliar, like a small piece of furniture.
 
-**Scenario.** A beginner assembles a small piece of furniture or a mechanical kit. The AR interface identifies the current part, displays one step at a time, and lets the user move forward only after checking the result.
+A normal manual gives you pictures on a separate page. With AR, I imagine a simple outline showing which part to pick up and where to place it. The user could move through the steps with **Next** and **Back**.
 
-**Interaction.** A highlighted outline indicates where a part should go. The system uses short text, a single arrow, and explicit Next / Back controls. A 2D instruction view remains available if tracking becomes unreliable.
+I think it could reduce confusion for beginners, but alignment is very important. If the arrow points to the wrong part, the instructions could cause mistakes instead of preventing them.
 
-**HCI rationale.** Instructions placed near the relevant object can reduce repeated attention shifts between a separate manual and the work area. Step-by-step presentation also limits cognitive load.
+![Early sketch of step-by-step AR assembly help.](assembly-guide.svg)
 
-**Potential problems.** Poor alignment could cause mistakes; an overlay could hide safety-critical features. The system should avoid pretending it can verify a connection it has not actually checked.
+### Which idea should I prototype?
 
-![Sketch of Assembly Guide with one step and an AR alignment overlay.](assembly-guide.svg)
+I chose **Live Conversation Captions**. It has a small number of important actions—start, read, pause and exit—which makes it easier to test as a first prototype.
 
-### Comparison and proposed selection
+The other two ideas are also useful, but they depend much more on accurate object or location tracking. For captions, I can first study the interface without pretending that I have already built the speech-recognition system.
 
-| Criterion | Spatial Memory Aid | Live Captions | Assembly Guide |
-| --- | --- | --- | --- |
-| Main ability | Recall / navigation | Communication | Procedural learning |
-| Interaction frequency | Occasional | During conversation | During a task |
-| Primary failure risk | Wrong location | Wrong transcript | Misaligned guidance |
-| First paper-prototype feasibility | Moderate | **High** | Moderate |
-| Privacy consideration | Personal location history | Other speakers' consent | Camera view of workspace |
+## Lecture 8 — Live Captions prototype
 
-I propose **Live Conversation Captions** for the first prototype. Its main interaction can be simulated with cards and a printed screen without needing to claim that speech recognition or headset tracking already works.
+I made the interface around one question: **can someone tell immediately whether the glasses are listening or paused?**
 
-## Lecture 8 — Low-fidelity prototype
+The design uses a dark, slightly transparent caption card, a visible state indicator, and short lines. I tried to keep the text away from the centre of the conversation so it would not cover people's faces.
 
-**Prototype format:** three printable frames and a Wizard-of-Oz procedure. This is a proposed interface prototype, **not a functioning speech-recognition application**.
+The mockup below lets you move between states using sample dialogue. It simulates the interaction; it does not listen to a microphone.
 
-![Three-panel low-fidelity caption interface storyboard: ready, live and paused states.](live-captions-prototype.svg)
+{{< hci-prototype name="live-captions" title="Live Captions interactive AR interface concept" >}}
 
-The storyboard has three states:
+### Low-fidelity version for a first user walkthrough
 
-1. **Ready.** The participant sees two people and a Start Captions action. Nothing is transcribed automatically.
-2. **Live.** A facilitator reveals prewritten lines, one at a time, as the imagined speaker talks. A label identifies the speaker and the user may choose Pause.
-3. **Paused / Private.** The caption area visibly changes to Paused. The user can Resume or Exit and should understand that nothing further is displayed.
+I also kept a simple three-state storyboard: **Ready → Live → Paused**. This version can be printed or shown on a screen while another person follows the task.
 
-**Materials:** print the storyboard, prepare a few short example phrases on paper, and place a transparent sheet over a photograph or sketch of a conversation. The facilitator moves the prepared phrases when the participant requests captions. No headset is required for this first exposure.
+![Three-state low-fidelity captions storyboard, showing Ready, Live and Paused.](live-captions-prototype.svg)
 
-**Proposed task:** “Imagine you have difficulty hearing a friend in a busy room. Start captions, follow two spoken lines, pause them because a private topic begins, and exit the interface.”
+For a Wizard-of-Oz test, one person can show prepared subtitle lines while the participant chooses when to start, pause or exit. That way, I can focus on whether the controls make sense without needing working AR glasses.
 
-**What this prototype can test:** whether people notice the Start action, recognise the current state, find Pause quickly, understand privacy mode, and consider the captions legible. It **cannot** validate real-world caption accuracy, latency, eye tracking, or headset comfort.
+The key details I want to check are the caption position, the difference between Live and Paused, and how easy it is to stop the interaction quickly.
 
-## Lecture 9 — Evaluation Approach
+## Lecture 9 — Evaluation
 
-The evaluation focuses on how another person uses the caption prototype, which parts of the interaction are understandable, and what might need improvement.
+The next step is to let **at least one other person** try the prototype. I would give them a simple scenario:
 
-### Procedure
+> You are talking to a classmate in a noisy café. Start captions, follow two lines of conversation, then pause them when the topic becomes private.
 
-1. Ask an adult volunteer for consent to do a short usability walkthrough. Do not record a real conversation without permission.
-2. Explain the scenario but do not demonstrate where the controls are.
-3. Present the Ready card. Give the participant the task described in Lecture 8.
-4. Show the Live card and reveal two prepared example captions. Observe which information they look at first.
-5. Ask the participant to pause, resume, and exit. Note hesitations, mistaken assumptions, and any need for hints.
-6. Ask open questions: “What felt clear?”, “What was confusing?”, “Where should the captions appear?”, and “Would you trust these captions?”
-7. Compare their comments with the original design expectations; propose changes supported by what was actually observed.
+I would let the person try first without explaining which control to press. Then I would watch where they hesitate and ask a few questions:
 
-### Evaluation Considerations
+- Was it obvious when captions were on or off?
+- Were the words easy to read without blocking the conversation?
+- Did the Pause control feel clear enough?
+- What would you change before using this in real life?
 
-The main questions are whether captions near a face help or distract from the conversation, whether speech-recognition uncertainty is clear, and whether the pause control supports privacy. A single paper-prototype walkthrough would not establish performance in real AR.
+I would use their actual comments to decide what to improve. At this stage, the prototype shows the design idea, **not the results of a completed user study**. One participant would be a useful first check, but not enough to prove the design works well for everyone.

@@ -737,3 +737,40 @@ html.dark .course-work-row:hover { background: rgba(37, 99, 235, 0.12); }
   .course-work-row { transition: none !important; }
 }
 
+
+/* Embedded concept demos in HCI homework pages. */
+.hci-prototype {
+  margin: 1.45rem 0 1.75rem;
+  width: 100%;
+  max-width: 58rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--yan-blue), .16);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 16px 42px -35px rgba(25, 45, 65, .45);
+}
+.hci-prototype iframe {
+  display: block;
+  width: 100%;
+  height: 575px;
+  border: 0;
+  background: #fafbfc;
+}
+.hci-prototype figcaption {
+  margin: 0;
+  padding: .58rem 1rem .68rem;
+  font-size: .72rem;
+  line-height: 1.45;
+  color: rgb(113 113 122);
+  border-top: 1px solid rgba(var(--yan-blue), .10);
+  background: rgb(250 251 253);
+}
+html.dark .hci-prototype { border-color: rgba(147, 197, 253, .2); }
+html.dark .hci-prototype figcaption {
+  background: rgb(30 35 43);
+  color: rgb(180 184 193);
+}
+@media (max-width: 700px) {
+  .hci-prototype iframe { height: 755px; }
+  .hci-prototype figcaption { font-size: .68rem; }
+}

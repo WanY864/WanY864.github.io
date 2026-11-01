@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Everyday Wayfinding — MR Concept</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf9fd;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:#081929}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #acffa8;outline-offset:3px}
+.wrap{max-width:1000px;margin:auto;padding:19px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:13px}
+.brand span{width:34px;height:34px;border-radius:10px;color:#022d34;background:#b6f870;display:grid;place-items:center;font-size:22px}
+.pill{color:#b3c9dd;border:1px solid #35566e;padding:7px 10px;border-radius:99px;font-size:10px;letter-spacing:.1em}
+h1{font-size:clamp(23px,4vw,36px);letter-spacing:-.04em;margin:16px 0 3px}
+.subtitle{color:#97b8cc;margin:0 0 15px;font-size:12px}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:14px;min-height:310px}
+.map{position:relative;min-height:310px;border:1px solid #29566c;background:radial-gradient(circle at 56% 37%,#194057,#0b2539 75%);border-radius:16px;overflow:hidden}
+.map:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#4f8da110 1px,transparent 1px),linear-gradient(90deg,#4f8da110 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+.map svg{display:block;width:100%;height:100%}.hud{position:absolute;top:13px;left:15px;z-index:2;border:1px solid #4c778a;background:#081b27cf;backdrop-filter:blur(8px);border-radius:9px;padding:8px 10px;color:#cce6f3;font-size:11px}
+.map-marker{font-family:Inter,sans-serif;font-weight:700;fill:#efffee;font-size:13px}
+.normal{opacity:1;transition:opacity .2s}.accessible{opacity:0;transition:opacity .2s}.stepfree .normal{opacity:0}.stepfree .accessible{opacity:1}
+.side{display:flex;flex-direction:column;gap:10px}
+.card{background:#123046;border:1px solid #2f586d;border-radius:15px;padding:15px}
+.card small{display:block;color:#90b9c7;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.card .big{font-size:30px;font-weight:800;color:#b6fa7b;letter-spacing:-.05em;margin:5px 0}
+.card h2{margin:5px 0 6px;font-size:19px;line-height:1.2}
+.card p{font-size:12px;line-height:1.5;color:#b5cfd9;margin:0}
+.card.light{flex:1;background:linear-gradient(146deg,#193b4e,#123046)}
+.route{display:inline-block;border-radius:99px;color:#c6f6de;background:#175749;padding:5px 8px;font-size:10px;margin-top:13px}
+.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:13px}
+.btn{padding:10px 15px;border-radius:10px;background:#193b50;border:1px solid #3b6173;color:#dff2fb}
+.btn:hover{background:#244f61}.btn.primary{color:#092c27;background:#b6f870;border-color:#b6f870;font-weight:750}
+.btn.on{border-color:#b6f870;background:#274c35;color:#d8ffbc}
+.foot{color:#7f9fb0;margin-left:auto;font-size:11px}
+@media(max-width:640px){.wrap{padding:14px}.panel{grid-template-columns:1fr}.map{min-height:270px}.side{display:grid;grid-template-columns:1fr 1fr}.card{padding:12px}.card .big{font-size:22px}.card h2{font-size:15px}.route{margin-top:7px}.foot{width:100%}}
+</style></head><body>
+<main class="wrap">
+<div class="top"><div class="brand"><span>↗</span> Wayline / Everyday Wayfinding</div><div class="pill">MR ROUTE CONCEPT</div></div>
+<h1>Less map. More direction.</h1><p class="subtitle">A quiet campus navigation overlay with a fallback map and an accessible route option.</p>
+<div class="panel"><div class="map" id="map" aria-label="Simulated campus route drawing">
+ <div class="hud">◌ CAMPUS MAP &nbsp;·&nbsp; illustrative route only</div>
+ <svg viewBox="0 0 600 350" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Campus route between a start point and library">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter><linearGradient id="building" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#315568"/><stop offset="1" stop-color="#244256"/></linearGradient></defs>
+  <g fill="url(#building)" stroke="#47687a" stroke-width="1.4" opacity=".9">
+   <rect x="52" y="73" width="134" height="80" rx="11"/><rect x="205" y="48" width="120" height="60" rx="11"/>
+   <rect x="370" y="42" width="150" height="97" rx="11"/><rect x="45" y="192" width="149" height="86" rx="11"/>
+   <rect x="236" y="218" width="119" height="81" rx="11"/><rect x="418" y="205" width="130" height="91" rx="11"/>
+  </g>
+  <g fill="#719aab" font-family="Arial" font-size="10" font-weight="700" letter-spacing="1.5">
+   <text x="78" y="112">STUDIOS</text><text x="224" y="82">WORKSHOP</text><text x="398" y="93">LIBRARY</text>
+   <text x="87" y="240">CAFETERIA</text><text x="264" y="260">COURTYARD</text><text x="452" y="255">LABS</text>
+  </g>
+  <g stroke="#3c5b6c" stroke-width="12" fill="none" stroke-linecap="round"><path d="M198 17V315M12 173H589M384 11V335"/><path d="M13 317H580" stroke-width="7"/></g>
+  <g class="normal" fill="none" stroke="#b7ff70" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M116 314V175H385V147H450" opacity=".4" filter="url(#glow)"/><path d="M116 314V175H385V147H450"/>
+  </g>
+  <g class="accessible" fill="none" stroke="#7ee8fd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M116 314H199V175H385V147H450" opacity=".4" filter="url(#glow)"/><path d="M116 314H199V175H385V147H450"/>
+  </g>
+  <circle cx="116" cy="314" r="11" fill="#b7ff70" stroke="#0d2737" stroke-width="4"/>
+  <circle cx="450" cy="147" r="11" fill="#eaf9ff" stroke="#0d2737" stroke-width="4"/>
+  <path d="M450 124l-6 15h12z" fill="#eaf9ff"/>
+  <rect x="406" y="108" width="91" height="25" rx="9" fill="#071b2d" stroke="#4b8d8c"/><text x="451" y="125" text-anchor="middle" class="map-marker">LIBRARY</text>
+  <rect x="73" y="294" width="87" height="19" rx="9" fill="#071b2d"/><text x="116" y="307" font-size="11" text-anchor="middle" fill="#c8f8dd">YOU ARE HERE</text>
+ </svg>
+ </div>
+ <aside class="side"><div class="card"><small>NEXT INSTRUCTION</small><div class="big" id="distance">120 m</div><h2 id="instruction">Go straight</h2><p id="explain">Follow the highlighted path towards the main corridor.</p></div>
+ <div class="card light"><small>DESTINATION</small><h2>Campus Library</h2><p>Short prompts stay close to the real-world direction. A map remains available if tracking fails.</p><span id="route" class="route">STANDARD ROUTE</span></div></aside>
+</div>
+<div class="controls"><button type="button" id="next" class="btn primary">Next instruction →</button><button type="button" id="step" class="btn" aria-pressed="false">Step-free route: Off</button><span class="foot">Visual mockup · no GPS or navigation tracking</span></div>
+</main>
+<script>
+(function(){
+ const $=x=>document.getElementById(x);
+ let idx=0,stepFree=false;
+ const instructions=[["120 m","Go straight","Follow the main corridor towards the library."],["35 m","Turn right","The library entrance is on your right."],["0 m","You have arrived","Enter the library through the main doors."]];
+ function paint(){const a=instructions[idx];$("distance").textContent=a[0];$("instruction").textContent=a[1];$("explain").textContent=a[2];$("route").textContent=stepFree?"STEP-FREE ROUTE":"STANDARD ROUTE";$("map").classList.toggle("stepfree",stepFree);$("step").classList.toggle("on",stepFree);$("step").setAttribute("aria-pressed",stepFree?"true":"false");$("step").textContent="Step-free route: "+(stepFree?"On":"Off");}
+ $("next").addEventListener("click",()=>{idx=(idx+1)%instructions.length;paint()});
+ $("step").addEventListener("click",()=>{stepFree=!stepFree;paint()});paint();
+})();
+</script></body></html>
