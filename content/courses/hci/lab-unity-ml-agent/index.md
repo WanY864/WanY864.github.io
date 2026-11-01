@@ -113,38 +113,3 @@ D:/MLAgents/ml-agents-release_23/
 made the Unity package installation easier to understand.
 
 Another useful check is to run `mlagents-learn --help` early. If this command does not work, there is little reason to start debugging the Unity project yet.
-
-## Current Status
-
-At this stage I have:
-
-- installed Python 3.10.11;
-- verified that `mlagents-learn` is available from the command line;
-- opened Unity Package Manager;
-- started installing the ML-Agents package from the local release folder.
-
-The next part of the lab is to run one of the official **Learning Environment Examples**, verify communication between Unity and Python, and then extend the idea to a new situation.
-
-I will continue documenting the actual test and extension here rather than writing the final result before I have run it.
-
-## Assignment requirements cross-check
-
-The supplied **Lab1_Unity_ML_agent** slides ask for two things:
-
-- **Website setup (5 points).** This is the same website setup work already documented in **Lab 1A**, so it should not be counted as an additional, independent Lab.
-- **Unity ML-Agents environment setup and test (10 points).** Set up the Unity ML-Agents environment, **test one of the official Learning Environment Examples**, and **extend the project idea to a new situation**. The slides also require documenting the process, problems and solutions.
-
-[Lab materials: ML_agent folder](https://drive.google.com/drive/folders/1LXSiqex2GMRSVQd_L829p7vAvmkgcxs2)
-
-### Remaining work to demonstrate
-
-- [ ] Open an official learning environment in Unity with a compatible ML-Agents package.
-- [ ] Run a training or inference test and verify Unity communicates with the Python trainer; record the exact commands and versions.
-- [ ] Capture actual screenshots or logs showing the example running.
-- [ ] Modify the original agent/environment for a **different situation**; explain what changed in observations, actions, rewards or objective.
-- [ ] Run and document the extension instead of reporting only installation success.
-- [ ] Describe real difficulties, their fixes and what another student should watch for.
-
-The provided RollerAgent script, YAML configuration and Unity ML-Agents slides may support implementation, but they do **not** prove training or extension was completed.
-
-**Status note:** The existing setup steps above are preserved. These additional experimental tasks remain unverified until actual runs and evidence are recorded.

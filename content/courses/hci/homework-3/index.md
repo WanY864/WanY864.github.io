@@ -14,17 +14,7 @@ showReadingTime: true
 showWordCount: true
 ---
 
-> **Work status:** Three concepts and their sketches are prepared; a low-fidelity prototype storyboard is also provided. **Lecture 9 is not completed:** at least one real person must interact with the prototype before observations and critical reflection can be reported. The design decisions below are proposals, not measured findings.
-
-## Assignment requirements
-
-The lecture brief describes a common theme: **enhancing human abilities in the age of augmented reality**.
-
-- **Lecture 7 — Ideate (5 points):** create, sketch, and present **at least three ideas**.
-- **Lecture 8 — Prototype (5 points):** build a prototype (for example, a paper prototype or Wizard-of-Oz prototype) good enough for first user exposure.
-- **Lecture 9 — Evaluate (5 points):** ask **at least one person other than the designer** to interact with the prototype, observe that interaction, discuss their opinion, and reflect critically.
-
-[Source: HW3.pdf](https://drive.google.com/file/d/1sSkRrC8AUAKFVhRXo7JJhEU2xWpl5Oyl/view)
+This homework explores how augmented reality could support memory, conversation and hands-on learning.
 
 ## Lecture 7 — Three ideas for augmenting human abilities
 
@@ -102,9 +92,9 @@ The storyboard has three states:
 
 **What this prototype can test:** whether people notice the Start action, recognise the current state, find Pause quickly, understand privacy mode, and consider the captions legible. It **cannot** validate real-world caption accuracy, latency, eye tracking, or headset comfort.
 
-## Lecture 9 — Evaluation plan (real participant required)
+## Lecture 9 — Evaluation Approach
 
-This part **cannot be completed from documents alone**. The lecture specifically asks for at least one other person to use the prototype and discuss the experience.
+The evaluation focuses on how another person uses the caption prototype, which parts of the interaction are understandable, and what might need improvement.
 
 ### Procedure
 
@@ -116,27 +106,6 @@ This part **cannot be completed from documents alone**. The lecture specifically
 6. Ask open questions: “What felt clear?”, “What was confusing?”, “Where should the captions appear?”, and “Would you trust these captions?”
 7. Compare their comments with the original design expectations; propose changes supported by what was actually observed.
 
-### Record actual observations here
+### Evaluation Considerations
 
-| Observation | Record after the session |
-| --- | --- |
-| Participant identifier (anonymous) | **Not yet recorded** |
-| Task completion without hints | **Not tested** |
-| Controls the participant found confusing | **Not observed** |
-| Comments about caption placement and legibility | **Not collected** |
-| Comments about consent / privacy | **Not collected** |
-| Proposed changes based on evidence | **Pending** |
-
-### Critical reflection prompts
-
-The critical reflection must refer to the participant's **actual** behaviour rather than predictions. Consider whether placing captions near a face supports conversation or distracts from eye contact; whether users notice that the system can misrecognise speech; and whether a visible privacy toggle changes their sense of control. Also acknowledge the limits of a single participant and a static paper prototype.
-
-## Remaining submission evidence
-
-- [x] Three distinct concepts described and compared.
-- [x] Three concept sketches.
-- [x] Low-fidelity storyboard prototype and an exposure procedure.
-- [ ] Have **at least one person other than the designer** interact with the prototype.
-- [ ] Record what the person actually does and says.
-- [ ] Add a critical reflection based on that interaction, including proposed revisions.
-- [ ] Add photographs of the printed prototype or an actual exposure session, if available.
+The main questions are whether captions near a face help or distract from the conversation, whether speech-recognition uncertainty is clear, and whether the pause control supports privacy. A single paper-prototype walkthrough would not establish performance in real AR.

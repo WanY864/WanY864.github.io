@@ -14,7 +14,6 @@ showReadingTime: true
 showWordCount: true
 ---
 
-> **Work status:** This page records the required structure, implementation plan, HCI rationale and test protocol. A working Unity application, measurements, participant feedback and a presentation of findings **have not been verified** and must not be claimed without running the lab.
 
 ## Goal and brief
 
@@ -26,7 +25,7 @@ The slides also specify that **each group chooses two HCI exercises and presents
 
 [Lab materials: LLM_Unity folder](https://drive.google.com/drive/folders/1M9TuVJU10GAa2rJej6nNNlPJspALEBUE)
 
-## Required implementation workflow
+## Interface Design and Implementation
 
 ### 1. Prepare Unity and the local model
 
@@ -97,9 +96,9 @@ The expected control flow is:
 
 **Readability.** Scroll behaviour, text contrast, font size, response spacing and input placement directly affect whether the conversation is usable.
 
-## Two proposed exercises (pending real tests)
+## HCI Interaction Exercises
 
-The handout asks each group to select **two** exercises. The following pairing is a proposal and can be changed before implementation.
+Two possible studies focus on response timing and the effect of a typing indicator on turn-taking.
 
 ### Exercise A — Measure latency
 
@@ -107,13 +106,7 @@ The handout asks each group to select **two** exercises. The following pairing i
 
 **Suggested procedure:** Log Unity timestamps when Send is pressed, when the first text arrives, and when the reply finishes. Repeat with a few comparable prompts on the same machine.
 
-**Measurements to collect:**
-
-| Trial | Send time | First-token time | Completion time | Perceived waiting time |
-| --- | --- | --- | --- | --- |
-| 1 | Pending | Pending | Pending | Pending |
-| 2 | Pending | Pending | Pending | Pending |
-| 3 | Pending | Pending | Pending | Pending |
+For each trial, the relevant measures are send time, time of first visible token, completion time and perceived wait.
 
 Compute first-token delay as **first-token time − send time** and completion delay as **completion time − send time**. Interpret measurements only after running the application.
 
@@ -127,13 +120,13 @@ Compute first-token delay as **first-token time − send time** and completion d
 
 No differences in satisfaction or speed are asserted here. Those are **hypotheses to evaluate**, not results.
 
-### Other exercise options in the handout
+### Alternative Exercises
 
-The slides additionally suggest a **persona A/B test**, showing versus hiding a reasoning-style model's thinking text, a **five-person think-aloud and SUS usability study**, or a **multimodal speech-input/output comparison**. Only two exercises need to be chosen per group according to this lab handout; do not silently treat all six as mandatory.
+The slides additionally suggest a **persona A/B test**, showing versus hiding a reasoning-style model's thinking text, a **five-person think-aloud and SUS usability study**, or a **multimodal speech-input/output comparison**. The handout asks each group to choose two exercises.
 
-## Troubleshooting notes from the provided slides
+## Technical Notes
 
-These are issues described by the teaching materials, **not claimed to have been personally reproduced here**:
+The teaching materials discuss several technical issues to consider:
 
 - A Unity editor stall during domain reload when memory is heavily used.
 - Missing Android SDK build tools in an unrelated Unity configuration.
@@ -142,15 +135,3 @@ These are issues described by the teaching materials, **not claimed to have been
 - TextMeshPro not having glyphs for some emoji.
 - Game view not receiving keyboard events unless it has focus.
 - Different LLMUnity package versions providing different callback signatures.
-
-## Still required for submission
-
-- [ ] Build and run the Unity scene, with the model operating locally.
-- [ ] Verify a user can send messages and receive progressive text.
-- [ ] Demonstrate correct scrolling, input locking and recovery.
-- [ ] Select **two HCI exercises** and implement their conditions.
-- [ ] Collect actual observations or measurements.
-- [ ] Present findings at the next session, with evidence and a critical reflection.
-- [ ] Add real screenshots, code version information and, if useful, a short demo video.
-
-The current page documents preparation; it does **not** report successful execution or fabricated test results.

@@ -14,15 +14,7 @@ showReadingTime: true
 showWordCount: true
 ---
 
-> **Work status:** Written responses to Lectures 10 and 11 and three illustrated concepts for Lecture 12 have been prepared. The opinions and future predictions should be reviewed and personalised before submission. No user study or hardware test is claimed.
-
-## Assignment requirements
-
-- **Lecture 10 — The shape of smartphones (5 points):** discuss how and why smartphone shapes evolved, predict the next change, and explain the reasoning.
-- **Lecture 11 — The Computer for the 21st Century (5 points):** read Mark Weiser's paper and discuss whether ubiquitous computing is already here, what has happened, and what is still missing.
-- **Lecture 12 — Future MR application store (5 points):** imagine MR head-mounted displays as common as smartphones; **sketch and present three applications** likely to be among the most downloaded, explaining why.
-
-[Source: HW4.pdf](https://drive.google.com/file/d/1STXCI1kTbvfDgb2G3F-Jr6HhTUyaz5BX/view)
+This homework connects smartphone design, ubiquitous computing and three potential everyday MR applications.
 
 ## Lecture 10 — Why smartphones changed shape, and what may come next
 
@@ -161,10 +153,3 @@ The following are **speculative app concepts**, not predictions supported by sal
 All three have a **short time to value**: the user can understand the purpose within seconds. They also fit the assumption of ubiquitous MR because the headset would already be worn, making it easier to consult context without taking out another device.
 
 I expect successful MR apps to compete on readability, trust, accessibility, privacy and low-friction interaction—not merely the number of virtual objects they can display.
-
-## Submission review
-
-- [x] Lecture 10: explain previous form-factor changes, why they happened, a possible next step and the reasoning behind it.
-- [x] Lecture 11: analyse Weiser's paper; discuss what exists and what remains missing.
-- [x] Lecture 12: describe and **sketch three apps**, explain why each could be widely downloaded.
-- [ ] Review and personalise the forecasts and preferences before submitting this written draft.

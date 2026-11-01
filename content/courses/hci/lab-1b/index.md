@@ -70,29 +70,6 @@ The Game view shows what the active camera outputs when the project runs.
 
 Understanding the difference between the Scene view and the Game view is important: the Scene view is used to build the environment, while the Game view represents the runtime result.
 
-## First Project Checklist
-
-The first project should contain at least:
-
-- one simple 3D object,
-- a working camera,
-- a light source,
-- basic transform changes,
-- and a successful Play Mode test.
-
-## Documentation
-
-The final lab evidence should include screenshots of:
-
-- Unity Hub,
-- the installed Unity Editor,
-- the New Project window,
-- the Unity Editor interface,
-- the first 3D scene,
-- and the project running in Play Mode.
-
-These screenshots provide direct evidence that the environment is installed and the first project is working.
-
 ## What I Learned
 
 The main lesson from the setup process is that Unity becomes easier to understand when the interface is treated as a small workflow rather than as one large application:
@@ -107,22 +84,3 @@ Create object
 ```
 
 This workflow provides a clear starting point before moving on to more advanced interaction, scripting, or XR development.
-
-## Unity interaction practice in the lab notes
-
-The wider **HCI_LAB-notes&stuff** material also demonstrates a Unity **Roll-a-ball** style exercise. This is useful follow-on practice, but the provided Week 1 grading brief explicitly scores the initial Unity **setup** task; it does not separately assign points to every Roll-a-ball step.
-
-The teaching exercise covers:
-
-- [ ] Create a ground plane and a ball/Player GameObject.
-- [ ] Add a Rigidbody and an input script so the player can move.
-- [ ] Position a camera and implement a camera-follow offset.
-- [ ] Add walls and collectible objects (for example, Prefabs).
-- [ ] Use colliders/triggers to detect pickups.
-- [ ] Update a score when positive/negative pickups are collected.
-- [ ] Display the score and an appropriate win condition.
-- [ ] Capture a Play Mode screenshot or short video and record any real debugging.
-
-These are a **practice checklist**, not a claim that the objects, scripts or tests already exist in the project described above. Document actual work if this exercise is included in the course submission.
-
-[Lab notes](https://drive.google.com/file/d/1dUCdRRr_d9kCn7ixZRVOWEU-OQRz2l7h/view)
