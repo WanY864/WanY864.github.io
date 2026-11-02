@@ -28,8 +28,6 @@ Affordance describes how the properties of an object suggest possible actions to
 
 ![A set of traditional screwdrivers with shaped rubber grips and clearly visible metal shafts.](traditional-screwdrivers.png)
 
-*Figure 1. Traditional screwdrivers provide strong visual and physical cues for grasping, aligning, and turning.*
-
 The traditional screwdriver is a strong example of clear affordance because most of its intended use can be inferred directly from its physical form.
 
 The enlarged handle invites the hand to **grasp** it. Its rounded and slightly contoured shape supports a stable grip and suggests that rotational force should be applied through twisting. The long metal shaft establishes an obvious axis between the hand and the screw, while the visible tip indicates where the tool should contact the screw head.
@@ -49,8 +47,6 @@ Different tip shapes provide another immediate visual cue about compatibility. A
 ### 1.2 Ambiguous Control Affordance — Electric Screwdriver
 
 ![An electric screwdriver with several controls placed along the same upper surface.](electric-screwdriver.png)
-
-*Figure 2. The electric screwdriver preserves the basic screwdriver form, but its added controls make the detailed interaction less self-explanatory.*
 
 The electric screwdriver is not a bad product overall. Its general purpose is still recognisable from the bit and handheld form. The weaker affordance appears in its **control interface**.
 
@@ -98,8 +94,6 @@ The following two examples show situations where this automatic organisation can
 
 ![A laptop display with a transparent film being peeled from the screen.](laptop-screen-film.png)
 
-*Figure 3. The transparent layer covers almost exactly the same area as the display, making the temporary film visually merge with the screen.*
-
 This example illustrates a problem with the Gestalt principle of **figure–ground**.
 
 A temporary transparent film can be placed over a laptop display during packaging or shipping. The film covers the same rectangular region as the screen, has very little colour contrast, and visually resembles a normal protective surface. Because of these similarities, the film may not initially be perceived as a separate foreground object.
@@ -122,8 +116,6 @@ These changes would make the film stand out as a separate figure instead of visu
 ### 2.2 Similarity and Figure–Ground — Canva Website Builder Landing Page
 
 ![Canva website builder landing page with a large editor mockup beneath the main call-to-action.](canva-website-builder.png)
-
-*Figure 4. The product demonstration contains controls that strongly resemble the real interactive controls of the surrounding page.*
 
 The large product demonstration on this landing page is useful because it shows what the website editor looks like. However, it also creates a visual ambiguity.
 
@@ -154,8 +146,6 @@ The two examples below use simplified reconstructions of common web patterns so 
 
 ![Illustrative cookie banner where Accept All is visually dominant and rejection is de-emphasised.](cookie-banner-dark.svg)
 
-*Figure 5. A simplified reconstruction of interface interference: accepting all cookies is made visually dominant while rejecting is reduced to a low-emphasis text action.*
-
 A common dark pattern appears in cookie consent banners. The **Accept All** action may be large, filled, and high-contrast, while **Reject All** is presented as a small text link or hidden behind additional settings.
 
 This is a form of **interface interference** because the visual hierarchy privileges one decision over another. The website is still technically offering a choice, but the two options are not presented with equal salience or effort.
@@ -166,8 +156,6 @@ The problem is not the request for consent itself. The problem is that the inter
 
 ![Redesigned cookie banner where Accept All and Reject All have equal visual weight.](cookie-banner-redesign.svg)
 
-*Figure 6. Redesign: accepting and rejecting are presented at the same level, while detailed preferences remain available as a third option.*
-
 The redesign gives **Accept All** and **Reject All** equal visual weight and keeps both actions on the first layer. **Manage Preferences** remains available without being used to hide the rejection path.
 
 This changes the interaction from persuasion toward a particular answer to a clearer expression of user choice.
@@ -175,8 +163,6 @@ This changes the interaction from persuasion toward a particular answer to a cle
 ### 3.2 Nagging — Repeated Newsletter Pop-up
 
 ![Illustrative sequence where the same newsletter pop-up interrupts the user repeatedly after dismissal.](newsletter-nagging.svg)
-
-*Figure 7. A simplified reconstruction of nagging: the same sign-up request returns after the user has already dismissed it.*
 
 Another common dark pattern is a newsletter or account sign-up prompt that repeatedly returns after the user has already dismissed it.
 
@@ -187,8 +173,6 @@ This is **nagging** because the redirection persists across interactions. If the
 ### Redesign — Remember the User's Decision
 
 ![Redesigned newsletter invitation with a clear No thanks option and a note that the decision will be remembered.](newsletter-redesign.svg)
-
-*Figure 8. Redesign: the invitation is still available, but declining is clear and the choice is respected instead of repeatedly resurfacing.*
 
 A user-respecting version should provide a visible **No thanks** option, remember the decision for a reasonable period, and avoid showing the same request again during the same session.
 
