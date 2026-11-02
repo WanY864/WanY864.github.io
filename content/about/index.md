@@ -11,12 +11,6 @@ I am Yan Wan, studying M2 Virtual & Augmented Reality at Institut Polytechnique 
 
 This site brings together my course assignments, practical labs and interaction-design reflections for the 2026–2027 academic year.
 
-## Selected coursework
-
-- [HCI Homework 3 — Live Conversation Captions]({{< relref "/courses/hci/homework-3" >}}): AR concept sketches, an interactive caption simulation and first user feedback.
-- [HCI Homework 4 — Everyday Mixed Reality]({{< relref "/courses/hci/homework-4" >}}): concept sketches and interactive simulations for contextual translation, wayfinding and shared spatial notes.
-- [All M2 courses]({{< relref "/courses" >}}): the complete course directory, including work still in progress.
-
 ## About the prototypes
 
 The embedded AR and MR demonstrations are **interactive concept mockups**. They simulate interface behaviour; they are not live speech-recognition, GPS, or shared-AR services. Each assignment explains the thinking and limitations behind the concept.

@@ -923,3 +923,48 @@ html.dark .course-empty-state { border-color: rgba(147,197,253,.23); background:
 @media (max-width: 700px) {
   .home-v5-section-head a { display: inline !important; }
 }
+
+/* Give articles more of the viewport without making the text spill beneath the TOC.
+   Blowfish defaults: max-w-7xl body with large padding, max-w-prose article (65ch). */
+body {
+  width: 100%;
+  max-width: 96rem;
+}
+
+/* On tablets the theme's 3.5rem/6rem side padding leaves too little room. */
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  body { padding-inline: clamp(1.5rem, 4vw, 3rem) !important; }
+}
+
+/* Keep some breathing room, but reclaim space from oversized desktop gutters. */
+@media (min-width: 1280px) {
+  body { padding-inline: clamp(3rem, 4vw, 4.5rem) !important; }
+}
+
+/* Widen the article, heading, and footer together, not just individual paragraphs. */
+main#main-content > article > section.prose {
+  width: 100%;
+  max-width: 100%;
+}
+main#main-content > article > #single_header,
+main#main-content > article > footer,
+main#main-content > article > section.prose .article-content {
+  max-width: 64rem;
+}
+
+/* Flex-basis zero allows the text to occupy space left by the TOC.
+   At smaller widths the existing stacked TOC styles remain in charge. */
+main#main-content > article > section.prose > div.min-w-0 {
+  flex: 1 1 0%;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Without a TOC (e.g. About), center the header, text and footer as a unit. */
+main#main-content > article:not(:has(#TOCView)) > #single_header,
+main#main-content > article:not(:has(#TOCView)) > section.prose > div.min-w-0,
+main#main-content > article:not(:has(#TOCView)) > footer {
+  max-width: 64rem;
+  margin-inline: auto;
+}
