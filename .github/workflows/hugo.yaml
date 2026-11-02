@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: ${{ github.event_name == 'pull_request' && format('hugo-pr-{0}', github.event.pull_request.number) || 'pages' }}
   cancel-in-progress: false
 
 defaults:
@@ -62,6 +62,14 @@ jobs:
           test -s public/courses/hci/homework-3/index.html
           test -s public/prototypes/hci/embed-parent.js
           test -s public/prototypes/hci/embed-child.js
+
+      - name: Upload PR preview
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-preview
+          path: ./public
+          retention-days: 3
 
       - name: Upload artifact
         if: github.event_name != 'pull_request'
