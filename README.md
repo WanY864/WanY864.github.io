@@ -83,6 +83,10 @@ The public URL remains `https://wany864.github.io/`. The Hugo `baseURL` is set t
 
 Use real lab observations, screenshots, and test results rather than inventing evidence. For third-party images, cite the original source where appropriate.
 
+## Sitewide improvements
+
+Coursework is featured on the homepage; responsive article navigation and image processing are built into the site templates.
+
 ## Quality checks
 
 Pull requests build the Hugo site and run `python3 scripts/check_site.py public` to check generated links, anchors, and image alt attributes. PRs also produce a downloadable preview artifact; only pushes to `main` deploy the website.
