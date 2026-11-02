@@ -57,6 +57,8 @@ http://localhost:1313/
 
 After the local version worked, I created the repository **WanY864.github.io** and used GitHub Desktop to upload the project. GitHub Actions then built the Hugo site and deployed it to GitHub Pages.
 
+![GitHub repository for the course website, showing its files and deployment information.](Github.png)
+
 ## Problems and Solutions
 
 ### 1. Blowfish theme was not found

@@ -35,6 +35,8 @@ Unity Hub can remain installed normally, while the large Editor installations an
 
 ## Setup Procedure
 
+![The official Unity website where the Unity installation tools can be downloaded.](Unity_install.png)
+
 The Unity setup workflow is:
 
 1. Install Unity Hub.
@@ -47,6 +49,8 @@ The Unity setup workflow is:
 8. Add a simple 3D object to the scene.
 9. Change its position, rotation, and scale.
 10. Enter Play Mode and verify that the scene runs correctly.
+
+![Unity Hub showing the existing Unity projects.](Unity.png)
 
 ## Main Unity Panels
 
@@ -69,6 +73,8 @@ The Inspector shows the properties and components of the selected object.
 The Game view shows what the active camera outputs when the project runs.
 
 Understanding the difference between the Scene view and the Game view is important: the Scene view is used to build the environment, while the Game view represents the runtime result.
+
+![Unity Editor Scene view with a cube and the surrounding project panels.](Unity_Cube.png)
 
 ## What I Learned
 
