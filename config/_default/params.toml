@@ -4,6 +4,7 @@ autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 mainSections = ["courses"]
+defaultSocialImage = "img/social-card.png"
 
 [homepage]
   layout = "profile"

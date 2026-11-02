@@ -56,7 +56,7 @@ summary: "Short description of the assignment."
 ---
 ~~~
 
-Edit the article body with actual work, screenshots, and reflections. Set `workType` to `homework`, `lab`, `project`, or `note` so the work appears automatically inside the relevant course page block. `workStatus` is optional (`completed` or `in-progress`), and `weight` controls ordering within each block. The homepage lists the ten courses only, never individual homework or labs.
+Edit the article body with actual work, screenshots, and reflections. Set `workType` to `homework`, `lab`, `project`, or `note` so the work appears automatically inside the relevant course page block. `workStatus` is optional (`completed` or `in-progress`), and `weight` controls ordering within each block. The homepage highlights selected published HCI homework and lists all ten courses, with courses containing published work first.
 
 The new page is published when pushed to `main`, unless `draft: true` is set. Placeholder course sections are published to make navigation ready, but do not claim any coursework is already completed.
 
@@ -82,3 +82,11 @@ The public URL remains `https://wany864.github.io/`. The Hugo `baseURL` is set t
 ## Content and image attribution
 
 Use real lab observations, screenshots, and test results rather than inventing evidence. For third-party images, cite the original source where appropriate.
+
+## Quality checks
+
+Pull requests build the Hugo site and run `python3 scripts/check_site.py public` to check generated links, anchors, and image alt attributes. PRs also produce a downloadable preview artifact; only pushes to `main` deploy the website.
+
+## Images and SEO
+
+Article images are resized and converted to WebP in the site-level Markdown image render hook. Original page-bundle images remain available when visitors zoom in. Page descriptions and a default social sharing image are configured in `config/_default/`.

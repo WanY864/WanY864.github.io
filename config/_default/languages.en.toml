@@ -8,9 +8,12 @@ title = "Yan Wan · M2 Courses"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "M2 courses, labs and projects."
+  description = "Yan Wan\u0027s M2 Virtual & Augmented Reality coursework, HCI prototypes and design reflections at Institut Polytechnique de Paris."
 
 [params.author]
   name = "Yan Wan"
   headline = "M2 Virtual & Augmented Reality · Institut Polytechnique de Paris"
   bio = "Coursework, labs and projects."
+
+[[params.author.links]]
+  github = "https://github.com/WanY864"
