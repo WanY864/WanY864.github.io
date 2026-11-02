@@ -89,4 +89,4 @@ Pull requests build the Hugo site and run `python3 scripts/check_site.py public`
 
 ## Images and SEO
 
-Article images are resized and converted to WebP in the site-level Markdown image render hook. Original page-bundle images remain available when visitors zoom in. Page descriptions and a default social sharing image are configured in `config/_default/`.
+Article images are resized and converted to WebP in the site-level Markdown image render hook. Original page-bundle images remain available when visitors zoom in. Page descriptions are configured in `config/_default/`.
