@@ -31,7 +31,7 @@ The first situation I chose was very ordinary: I put down my keys or a small too
 
 I drew a simple desk-and-shelf scene with a saved object label and a direction hint. In my design, I would point at the object and confirm its location first. Later, the glasses could show something like “Keys: on the shelf” instead of asking me to search every corner of the room.
 
-![My concept sketch showing a saved object location and an AR hint.](spatial-memory.svg)
+![My concept sketch showing a saved object location and an AR hint.](spatial-memory-polished.png)
 
 One decision I made was **not to save everything automatically**. I think that would create too much information and raise privacy questions. I would rather let the user choose what is important. The biggest technical difficulty would be keeping the location accurate if the object moved, so the interface should never act as if the remembered position is guaranteed to be correct.
 
@@ -43,7 +43,7 @@ My second idea came from situations where conversation becomes difficult to foll
 
 I sketched an AR caption that sits near the conversation instead of covering the middle of the view. I kept the text short and included a speaker label. I also added the idea of a clear pause control, because the user may want captions for one part of a conversation but not for everything.
 
-![My sketch of caption text appearing alongside a conversation.](live-captions.svg)
+![My sketch of caption text appearing alongside a conversation.](live-captions-polished.png)
 
 As I thought through the design, I realised that **starting and stopping captions is just as important as displaying them**. If the user cannot tell whether the system is active, they may feel uncomfortable. Incorrect captions and other people's privacy are also concerns, so I wanted a visible listening state and a way to stop immediately.
 
@@ -55,7 +55,7 @@ For the third idea, I imagined someone assembling a small object for the first t
 
 I made a sketch that shows a physical part on one side and a short AR instruction on the other. The interface highlights one step at a time, suggests where the next piece belongs, and has **Next** and **Back** actions so the user can control the pace.
 
-![My AR assembly guide sketch showing a part and its next instruction.](assembly-guide.svg)
+![My AR assembly guide sketch showing a part and its next instruction.](assembly-guide-polished.png)
 
 I liked the connection between the instruction and the actual object. However, I also noticed a problem with this idea: if the virtual outline does not line up with the real part, the guide could make the task harder or even lead to a mistake. A simple 2D instruction view would be a useful backup.
 
@@ -84,16 +84,6 @@ I also prepared a short simulated dialogue between two speakers. Instead of pret
 I built a small browser-based mockup of the proposed AR view. The buttons work, but the captions are example text rather than real microphone input.
 
 {{< hci-prototype name="live-captions" title="Live Captions interactive AR interface concept" >}}
-
-### Low-fidelity storyboard
-
-I also made a simpler three-frame version to show the basic flow: **Ready → Live → Paused**. This is useful because a person can try it with printed cards or on a screen without any special hardware.
-
-![My three-frame storyboard of the Ready, Live and Paused caption states.](live-captions-prototype.svg)
-
-The two prototypes serve different purposes. The interactive version makes it easier to try the controls, while the storyboard makes the idea easy to explain and adapt during a first user session. Neither version is a working AR headset or a tested speech-recognition system.
-
-**One thing I learned while making the screens** is that the caption text itself is only half of the interface. The other half is giving the user enough feedback and control to feel comfortable using it.
 
 ## Lecture 9 — First Feedback and Reflection
 
