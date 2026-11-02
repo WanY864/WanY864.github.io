@@ -1,0 +1,9 @@
+{{- $total := len .RegularPages -}}
+<a class="home-course-card{{ if gt $total 0 }} is-active{{ end }}" href="{{ .RelPermalink }}">
+  <span class="home-course-number">{{ printf "%02d" .Weight }}</span>
+  <span class="home-course-copy">
+    <strong>{{ .Title }}</strong>
+    <small>{{ if gt $total 0 }}{{ $total }} {{ if eq $total 1 }}entry{{ else }}entries{{ end }} published{{ else }}Coursework to be added{{ end }}</small>
+  </span>
+  <span class="home-course-arrow" aria-hidden="true">↗</span>
+</a>
