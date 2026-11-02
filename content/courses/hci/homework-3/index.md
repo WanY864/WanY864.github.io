@@ -113,7 +113,7 @@ Before this, I was mainly thinking about whether the idea was useful and whether
 
 I have not changed the current mockup based on these comments yet. The next design iteration would focus on caption placement, background opacity, and a clearer introduction. I would then want to get feedback on that revised version to see whether the changes actually help.
 
-## Reflection on the design so far
+## Reflection on the design
 
 These three concepts made me think of AR less as a futuristic display and more as a way to support specific human abilities. A memory reminder, a caption, and an assembly instruction are very different, but they all have to respect what the person is already doing in the real world.
 
