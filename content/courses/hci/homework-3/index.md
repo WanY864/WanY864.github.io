@@ -31,7 +31,7 @@ The first situation I chose was very ordinary: I put down my keys or a small too
 
 I drew a simple desk-and-shelf scene with a saved object label and a direction hint. In my design, I would point at the object and confirm its location first. Later, the glasses could show something like “Keys: on the shelf” instead of asking me to search every corner of the room.
 
-![My concept sketch showing a saved object location and an AR hint.](spatial-memory-polished.png)
+![My concept sketch showing a saved object location and an AR hint.](spatial_memory.png)
 
 One decision I made was **not to save everything automatically**. I think that would create too much information and raise privacy questions. I would rather let the user choose what is important. The biggest technical difficulty would be keeping the location accurate if the object moved, so the interface should never act as if the remembered position is guaranteed to be correct.
 
@@ -43,7 +43,7 @@ My second idea came from situations where conversation becomes difficult to foll
 
 I sketched an AR caption that sits near the conversation instead of covering the middle of the view. I kept the text short and included a speaker label. I also added the idea of a clear pause control, because the user may want captions for one part of a conversation but not for everything.
 
-![My sketch of caption text appearing alongside a conversation.](live-captions-polished.png)
+![My sketch of caption text appearing alongside a conversation.](live_captions.png)
 
 As I thought through the design, I realised that **starting and stopping captions is just as important as displaying them**. If the user cannot tell whether the system is active, they may feel uncomfortable. Incorrect captions and other people's privacy are also concerns, so I wanted a visible listening state and a way to stop immediately.
 
@@ -55,7 +55,7 @@ For the third idea, I imagined someone assembling a small object for the first t
 
 I made a sketch that shows a physical part on one side and a short AR instruction on the other. The interface highlights one step at a time, suggests where the next piece belongs, and has **Next** and **Back** actions so the user can control the pace.
 
-![My AR assembly guide sketch showing a part and its next instruction.](assembly-guide-polished.png)
+![My AR assembly guide sketch showing a part and its next instruction.](guide_interface.png)
 
 I liked the connection between the instruction and the actual object. However, I also noticed a problem with this idea: if the virtual outline does not line up with the real part, the guide could make the task harder or even lead to a mistake. A simple 2D instruction view would be a useful backup.
 
