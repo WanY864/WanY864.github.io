@@ -95,18 +95,34 @@ The two prototypes serve different purposes. The interactive version makes it ea
 
 **One thing I learned while making the screens** is that the caption text itself is only half of the interface. The other half is giving the user enough feedback and control to feel comfortable using it.
 
-## Lecture 9 — Preparing the first user evaluation
+## Lecture 9 — First Feedback and Reflection
 
-For the evaluation, the teacher asks us to have **at least one person other than ourselves** interact with the prototype. I have prepared a simple task that can be carried out with the interactive mockup or the three storyboard cards.
+I wanted to know whether my Live Captions idea would make sense to someone other than me, so I collected feedback on the prototype. The person I asked thought the function itself could be very useful. However, they also raised two problems that I had not considered carefully enough.
 
-The scenario is a conversation with a classmate in a noisy café. I would ask the participant to start captions, follow two short lines, pause when the conversation becomes private, and then exit. I would let them find the controls on their own rather than explain every button first.
+### Finding the right transparency
 
-While they use it, I want to pay attention to three things: **whether the state of the system is clear, whether the text distracts from the conversation, and whether the person feels in control**. I would also ask what confused them and which part they would change.
+The first problem was the subtitle panel. I used a fairly dark, low-transparency background because I wanted the captions to be easy to read. The feedback pointed out that this panel still blocks part of the real-world view.
 
-The actual interaction with another person still needs to happen. I have not added invented feedback or a fake conclusion. After that session, I can use the person's real comments to explain which design choices worked and which ones I would revise.
+This made me think about a trade-off I had underestimated. If the background is too solid, it can hide a person's face or objects nearby. But if I make it almost invisible, the words may become difficult to read, especially against a busy background.
+
+For the next version, I would try a **smaller caption box**, allow people to **move it to a different part of the view**, and provide a simple **opacity setting**. I would also limit the amount of text shown at once. My goal would be to keep the subtitles readable without making people feel that they are looking through a large digital window instead of at the real world.
+
+### Making the idea easier for beginners
+
+The second comment was about learning how to use the glasses. AR subtitles might seem natural to someone familiar with digital interfaces, but people who do not often use smart devices could find the experience confusing at first.
+
+I originally thought that Start, Pause, and Exit were simple enough. After hearing this feedback, I realised that the buttons alone do not explain everything. A new user also needs to understand **when captions are active**, what will appear in their view, and how to stop them whenever they want.
+
+I would add a short first-use guide with three clear steps: **Start captions → Read the subtitles → Pause or Exit**. A small example conversation could help people try the controls before using them during a real conversation.
+
+### What I learned from the feedback
+
+Before this, I was mainly thinking about whether the idea was useful and whether the words were readable. The feedback reminded me that **comfort and accessibility are also part of the interaction design**. A feature can be helpful in theory but still feel distracting or hard to learn.
+
+I have not changed the current mockup based on these comments yet. The next design iteration would focus on caption placement, background opacity, and a clearer introduction. I would then want to get feedback on that revised version to see whether the changes actually help.
 
 ## Reflection on the design so far
 
 These three concepts made me think of AR less as a futuristic display and more as a way to support specific human abilities. A memory reminder, a caption, and an assembly instruction are very different, but they all have to respect what the person is already doing in the real world.
 
-For my chosen caption prototype, I focused most on **visibility, readability and user control**. I think a useful AR interface should be easy to notice when needed, but equally easy to pause or remove when it gets in the way.
+For my chosen caption prototype, I first focused on **visibility, readability and user control**. The feedback made me realise that I also need to think about how much of the real world the panel hides and how a first-time user learns the controls. Those are the improvements I would prioritise next.
