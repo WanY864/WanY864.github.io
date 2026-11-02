@@ -949,7 +949,7 @@ main#main-content > article > section.prose {
 main#main-content > article > #single_header,
 main#main-content > article > footer,
 main#main-content > article > section.prose .article-content {
-  max-width: 64rem;
+  max-width: 56rem;
 }
 
 /* Flex-basis zero allows the text to occupy space left by the TOC.
@@ -965,6 +965,6 @@ main#main-content > article > section.prose > div.min-w-0 {
 main#main-content > article:not(:has(#TOCView)) > #single_header,
 main#main-content > article:not(:has(#TOCView)) > section.prose > div.min-w-0,
 main#main-content > article:not(:has(#TOCView)) > footer {
-  max-width: 64rem;
+  max-width: 56rem;
   margin-inline: auto;
 }
