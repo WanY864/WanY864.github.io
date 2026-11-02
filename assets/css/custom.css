@@ -99,21 +99,25 @@ article p > em:only-child {
   color: rgb(82 82 91);
 }
 
-/* Right-side table of contents: smaller, calmer, and easier to scan. */
+/* Article TOC: wider column and comfortable reading rhythm. */
 #TableOfContents {
   border-left: 1px solid rgba(var(--yan-blue), 0.22);
-  padding-left: 0.78rem;
-  font-size: 0.84rem;
-  line-height: 1.48;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
 }
 
 #TableOfContents ul {
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
+  margin-top: 0.55rem;
+  margin-bottom: 0.55rem;
 }
 
 #TableOfContents li {
-  margin: 0.22rem 0;
+  margin: 0.45rem 0;
+}
+
+#TableOfContents > ul > li {
+  margin: 0.75rem 0;
 }
 
 #TableOfContents a {
@@ -123,6 +127,15 @@ article p > em:only-child {
 #TableOfContents a:hover,
 #TableOfContents a.active {
   color: rgb(var(--yan-blue));
+}
+
+/* Blowfish caps this parent at 18rem; expanding only the nav is not enough. */
+@media (min-width: 1024px) {
+  section.prose > div.order-first {
+    flex: 0 0 clamp(19rem, 28vw, 24rem);
+    width: clamp(19rem, 28vw, 24rem);
+    max-width: none;
+  }
 }
 
 /* Links stay calm but recognisably interactive. */
