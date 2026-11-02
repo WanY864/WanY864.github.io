@@ -47,14 +47,21 @@ h1{margin:0 0 5px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24
 </div>
 <div class="edge-label"><strong>◉ IN VIEW</strong>Labels appear beside the text, not on top of the menu.<br/><br/><b id="mode">Original view</b></div>
 </section>
-<div class="controls"><button class="btn active" id="translate" type="button">Show translations</button><button class="btn" id="original" type="button">View original</button><span class="info">FR → EN · simulated text</span></div>
+<div class="controls"><button class="btn" id="translate" type="button" aria-pressed="false">Show translations</button><button class="btn active" id="original" type="button" aria-pressed="true">View original</button><span class="info" id="view-state" role="status">Original text shown · FR → EN · simulated</span></div>
 <div class="bottom"><span>✓ Original always available</span><span>✓ Small, anchored labels</span><span>ⓘ Concept only — not actual text recognition</span></div>
 </main>
 <script>
 (function(){
  const stage=document.getElementById("stage");
  const b1=document.getElementById("translate"),b2=document.getElementById("original"),mode=document.getElementById("mode");
- function show(on){stage.classList.toggle("is-translated",on);b1.classList.toggle("active",on);b2.classList.toggle("active",!on);mode.textContent=on?"Translation overlay":"Original view"}
+ function show(on){
+  stage.classList.toggle("is-translated",on);
+  b1.classList.toggle("active",on);b2.classList.toggle("active",!on);
+  b1.setAttribute("aria-pressed",String(on));b2.setAttribute("aria-pressed",String(!on));
+  mode.textContent=on?"Translation overlay":"Original view";
+  document.getElementById("view-state").textContent=(on?"Translations shown":"Original text shown")+" · FR → EN · simulated";
+ }
  b1.addEventListener("click",()=>show(true));b2.addEventListener("click",()=>show(false));show(false);
 })();
-</script></body></html>
+</script>
+<script src="embed-child.js" defer></script></body></html>

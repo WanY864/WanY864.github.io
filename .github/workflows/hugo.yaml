@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -32,6 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v5
 
@@ -44,18 +48,29 @@ jobs:
 
       - name: Build with Hugo
         run: |
+          base_url="${{ steps.pages.outputs.base_url }}"
+          if [ -z "${base_url}" ]; then base_url="https://wany864.github.io"; fi
           hugo build \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --baseURL "${base_url}/" \
             --cacheDir "${{ runner.temp }}/.cache/hugo"
 
+      - name: Check generated HCI assets
+        run: |
+          test -s public/index.html
+          test -s public/courses/hci/homework-3/index.html
+          test -s public/prototypes/hci/embed-parent.js
+          test -s public/prototypes/hci/embed-child.js
+
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
   deploy:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     needs: build
     environment:

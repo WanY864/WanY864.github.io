@@ -752,7 +752,7 @@ html.dark .course-work-row:hover { background: rgba(37, 99, 235, 0.12); }
 .hci-prototype iframe {
   display: block;
   width: 100%;
-  height: 575px;
+  height: 575px; /* Fallback until the sandboxed prototype reports its content height. */
   border: 0;
   background: #fafbfc;
 }
@@ -765,6 +765,10 @@ html.dark .course-work-row:hover { background: rgba(37, 99, 235, 0.12); }
   border-top: 1px solid rgba(var(--yan-blue), .10);
   background: rgb(250 251 253);
 }
+.hci-prototype figcaption a {
+  color: rgb(var(--yan-blue));
+  text-underline-offset: 0.18em;
+}
 html.dark .hci-prototype { border-color: rgba(147, 197, 253, .2); }
 html.dark .hci-prototype figcaption {
   background: rgb(30 35 43);
@@ -773,4 +777,25 @@ html.dark .hci-prototype figcaption {
 @media (max-width: 700px) {
   .hci-prototype iframe { height: 755px; }
   .hci-prototype figcaption { font-size: .68rem; }
+}
+
+/* Contrast improvements for small labels and keyboard users. */
+.course-work-number { color: rgb(82 82 91); }
+html.dark .course-work-number { color: rgb(161 161 170); }
+html.dark .home-v5-kicker,
+html.dark .home-v5-eyebrow,
+html.dark .home-v5-section-head > span,
+html.dark .home-v5-meta-item > span,
+html.dark .home-course-number,
+html.dark .course-landing-kicker,
+html.dark .course-work-status.is-complete,
+html.dark .hci-prototype figcaption a {
+  color: rgb(147 197 253);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, button, img, summary, [role="button"] {
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -27,7 +27,9 @@ h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:
 .marker.one{top:24%;left:52%;background:#fff0a4;color:#534325;transform:rotate(4deg)}
 .marker.two{top:58%;left:7%;background:#fbcfd9;color:#663c4d;transform:rotate(-4deg)}
 .marker.three{top:12%;right:5%;background:#d3e4ff;color:#334a76;transform:rotate(2deg)}
-.marker.extra{top:72%;right:8%;background:#ead6ff;color:#553d77}
+.marker.extra{background:#ead6ff;color:#553d77}
+.my-note-stack{position:absolute;right:3%;bottom:5%;width:min(40%,190px);max-height:42%;display:flex;flex-direction:column;gap:7px;overflow-y:auto;padding:4px;z-index:2}
+.my-note-stack .marker.extra{position:relative;top:auto;right:auto;max-width:none;width:100%;flex:0 0 auto;transform:none}
 .marker:after{content:"";display:block;width:11px;height:11px;border:2px solid currentColor;border-radius:50%;opacity:.4;margin-top:6px}
 .panel{border:1px solid #e0d8ef;background:white;border-radius:17px;padding:16px;display:flex;flex-direction:column;gap:11px}
 .panel small{text-transform:uppercase;letter-spacing:.1em;color:#8f83a6;font-size:10px}
@@ -35,6 +37,7 @@ h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:
 .avatar-row{display:flex;align-items:center;gap:5px}.av{width:29px;height:29px;border-radius:50%;background:#e8e0ff;display:grid;place-items:center;color:#5b3b94;font-size:11px;font-weight:800;border:2px solid white}
 .av.second{background:#cbeee5;color:#245d55}.av.third{background:#fee0bc;color:#81532d}
 .share{font-size:11px;color:#7a708c;background:#f2ecfb;border-radius:8px;padding:8px 9px;line-height:1.4}
+.selected-note{margin:0;padding:8px 9px;border:1px solid #e0d8ef;border-radius:8px;color:#54496e;font-size:11px;line-height:1.4}
 .panel label{font-size:11px;color:#6b6482;font-weight:750}
 .panel input{width:100%;border-radius:9px;border:1px solid #d2c8e1;padding:9px 10px;color:#30264c;background:#fdfaff;font-size:12px}
 .btn{border:1px solid #cfc6de;border-radius:9px;padding:9px 11px;background:white;color:#5a4b7b;font-size:12px}
@@ -50,7 +53,7 @@ h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:
 <section class="board" aria-label="Interactive shared workspace mockup">
 <div class="space" id="space">
 <div class="world-label">⌖ MODEL WORKSPACE · simulated</div>
-<div class="bench"></div><div class="part" aria-hidden="true"></div>
+<div class="bench"></div><div class="part" aria-hidden="true"></div><div class="my-note-stack" id="new-notes" aria-label="Newly pinned notes"></div>
 <button class="marker one" type="button" data-team="true"><b>EMMA · TEAM</b>Check screw length</button>
 <button class="marker two" type="button" data-team="false"><b>MY NOTE</b>Try a smaller handle</button>
 <button class="marker three" type="button" data-team="true"><b>NOAH · TEAM</b>Add assembly photos</button>
@@ -59,7 +62,8 @@ h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:
 <small>WORKSPACE</small><h2>Prototype review</h2>
 <div class="avatar-row"><span class="av">Y</span><span class="av second">E</span><span class="av third">N</span><span style="font-size:11px;color:#8b81a2;margin-left:5px">You + 2 collaborators</span></div>
 <div class="share" id="sharing">Showing team notes and your private notes.</div>
-<div class="btn-bar"><button class="btn primary" type="button" id="team">Team</button><button class="btn" type="button" id="mine">My notes</button></div>
+<p class="selected-note" id="selected-note" role="status">Select a note to inspect it.</p>
+<div class="btn-bar"><button class="btn primary" type="button" id="team" aria-pressed="true">Team</button><button class="btn" type="button" id="mine" aria-pressed="false">My notes</button></div>
 <div class="entry"><label for="message">Add a note to this object</label><input id="message" maxlength="42" placeholder="Write a short idea..." autocomplete="off"/><button class="btn primary" type="button" id="add">Pin note +</button></div>
 </aside>
 </section>
@@ -72,17 +76,24 @@ h1{font-size:clamp(23px,4vw,35px);font-weight:800;letter-spacing:-.045em;margin:
  function paint(){
   document.querySelectorAll("[data-team]").forEach(b=>{b.style.display=team||b.getAttribute("data-team")==="false"?"":"none"});
   $("team").classList.toggle("primary",team);$("mine").classList.toggle("primary",!team);
+  $("team").setAttribute("aria-pressed",String(team));$("mine").setAttribute("aria-pressed",String(!team));
   $("sharing").textContent=team?"Showing team notes and your private notes.":"Private view: only your notes are visible.";
  }
  $("team").addEventListener("click",()=>{team=true;paint()});$("mine").addEventListener("click",()=>{team=false;paint()});
  $("add").addEventListener("click",()=>{
   const value=$("message").value.trim();if(!value)return;
-  document.querySelectorAll(".marker.extra").forEach(x=>x.remove());
   const e=document.createElement("button");e.type="button";e.className="marker extra";e.setAttribute("data-team","false");
   const b=document.createElement("b");b.textContent="MY NOTE · "+(++added);
-  e.appendChild(b);e.appendChild(document.createTextNode(value));$("space").appendChild(e);
-  $("message").value="";paint();e.focus();
+  e.appendChild(b);e.appendChild(document.createTextNode(value));$("new-notes").appendChild(e);
+  $("message").value="";paint();$("selected-note").textContent="New private note pinned. Select it to inspect it.";e.focus();
+ });
+ $("space").addEventListener("click",event=>{
+  const marker=event.target.closest(".marker");if(!marker)return;
+  const label=marker.querySelector("b");const title=label?label.textContent:"Note";
+  const value=marker.textContent.slice(title.length).trim();
+  $("selected-note").textContent=title+" — "+value;
  });
  $("message").addEventListener("keydown",e=>{if(e.key==="Enter")$("add").click()});paint();
 })();
-</script></body></html>
+</script>
+<script src="embed-child.js" defer></script></body></html>
