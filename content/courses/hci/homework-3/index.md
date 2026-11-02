@@ -5,7 +5,7 @@ tags: ["HCI", "Homework", "Augmented Reality", "Ideation", "Prototyping", "Evalu
 categories: ["Human-Computer Interaction"]
 draft: false
 workType: homework
-workStatus: in-progress
+workStatus: completed
 workSubtitle: "Lectures 7–9 · AR ideas · prototype · evaluation"
 weight: 30
 showDate: false
@@ -97,7 +97,9 @@ The two prototypes serve different purposes. The interactive version makes it ea
 
 ## Lecture 9 — First Feedback and Reflection
 
-I wanted to know whether my Live Captions idea would make sense to someone other than me, so I collected feedback on the prototype. The person I asked thought the function itself could be very useful. However, they also raised two problems that I had not considered carefully enough.
+I asked another person to try my Live Captions prototype instead of only looking at the design. They interacted with all four controls: **Start captions**, **Next line**, **Pause / Resume**, and **Exit / Clear**. This gave them a chance to see how the interface changes between its different states.
+
+After trying the buttons, they said the idea itself was useful, but raised two concerns: the caption panel can block part of the real-world view, and people who are not used to smart devices may need clearer instructions. Their feedback helped me look beyond whether the buttons work and think more about comfort and ease of learning.
 
 ### Finding the right transparency
 
