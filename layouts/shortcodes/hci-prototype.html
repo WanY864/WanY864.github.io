@@ -4,13 +4,19 @@
   {{- errorf "Unknown HCI prototype %q at %s" $name .Position -}}
 {{- end -}}
 {{- $title := .Get "title" | default "Interactive HCI concept" -}}
+{{- $prototypeURL := (printf "prototypes/hci/%s.html" $name) | relURL -}}
 <figure class="hci-prototype not-prose">
   <iframe
-    src="{{ (printf "prototypes/hci/%s.html" $name) | relURL }}"
+    data-hci-prototype
+    src="{{ $prototypeURL }}"
     title="{{ $title }}"
     loading="lazy"
     sandbox="allow-scripts"
     referrerpolicy="no-referrer">
   </iframe>
-  <figcaption>Interactive concept mockup · simulated content, not a deployed AR application.</figcaption>
+  <figcaption>Interactive concept mockup · simulated content, not a deployed AR application. <a href="{{ $prototypeURL }}" target="_blank" rel="noopener noreferrer">Open standalone prototype</a>.</figcaption>
 </figure>
+{{- if not (.Page.Store.Get "hciPrototypeResizerLoaded") -}}
+  <script defer src="{{ "prototypes/hci/embed-parent.js" | relURL }}"></script>
+  {{- .Page.Store.Set "hciPrototypeResizerLoaded" true -}}
+{{- end -}}

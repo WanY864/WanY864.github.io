@@ -63,7 +63,7 @@ h1{font-size:clamp(23px,4vw,36px);letter-spacing:-.04em;margin:16px 0 3px}
  </svg>
  </div>
  <aside class="side"><div class="card"><small>NEXT INSTRUCTION</small><div class="big" id="distance">120 m</div><h2 id="instruction">Go straight</h2><p id="explain">Follow the highlighted path towards the main corridor.</p></div>
- <div class="card light"><small>DESTINATION</small><h2>Campus Library</h2><p>Short prompts stay close to the real-world direction. A map remains available if tracking fails.</p><span id="route" class="route">STANDARD ROUTE</span></div></aside>
+ <div class="card light"><small>DESTINATION</small><h2>Campus Library</h2><p>Short prompts stay close to the real-world direction. A map remains available if tracking fails.</p><span id="route" class="route" aria-live="polite">STANDARD ROUTE</span></div></aside>
 </div>
 <div class="controls"><button type="button" id="next" class="btn primary">Next instruction →</button><button type="button" id="step" class="btn" aria-pressed="false">Step-free route: Off</button><span class="foot">Visual mockup · no GPS or navigation tracking</span></div>
 </main>
@@ -71,9 +71,13 @@ h1{font-size:clamp(23px,4vw,36px);letter-spacing:-.04em;margin:16px 0 3px}
 (function(){
  const $=x=>document.getElementById(x);
  let idx=0,stepFree=false;
- const instructions=[["120 m","Go straight","Follow the main corridor towards the library."],["35 m","Turn right","The library entrance is on your right."],["0 m","You have arrived","Enter the library through the main doors."]];
- function paint(){const a=instructions[idx];$("distance").textContent=a[0];$("instruction").textContent=a[1];$("explain").textContent=a[2];$("route").textContent=stepFree?"STEP-FREE ROUTE":"STANDARD ROUTE";$("map").classList.toggle("stepfree",stepFree);$("step").classList.toggle("on",stepFree);$("step").setAttribute("aria-pressed",stepFree?"true":"false");$("step").textContent="Step-free route: "+(stepFree?"On":"Off");}
- $("next").addEventListener("click",()=>{idx=(idx+1)%instructions.length;paint()});
- $("step").addEventListener("click",()=>{stepFree=!stepFree;paint()});paint();
+ const instructions={
+  standard:[["120 m","Go straight","Follow the main corridor towards the library."],["35 m","Turn right","The library entrance is on your right."],["0 m","You have arrived","Enter the library through the main doors."]],
+  stepFree:[["160 m","Follow the level route","Go around the courtyard along the highlighted step-free path."],["40 m","Keep right","Continue to the library level entrance."],["0 m","You have arrived","Enter through the step-free entrance."]]
+ };
+ function paint(){const a=instructions[stepFree?"stepFree":"standard"][idx];$("distance").textContent=a[0];$("instruction").textContent=a[1];$("explain").textContent=a[2];$("route").textContent=stepFree?"STEP-FREE ROUTE":"STANDARD ROUTE";$("map").classList.toggle("stepfree",stepFree);$("step").classList.toggle("on",stepFree);$("step").setAttribute("aria-pressed",stepFree?"true":"false");$("step").textContent="Step-free route: "+(stepFree?"On":"Off");}
+ $("next").addEventListener("click",()=>{idx=(idx+1)%instructions[stepFree?"stepFree":"standard"].length;paint()});
+ $("step").addEventListener("click",()=>{stepFree=!stepFree;idx=0;paint()});paint();
 })();
-</script></body></html>
+</script>
+<script src="embed-child.js" defer></script></body></html>
