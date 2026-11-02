@@ -846,7 +846,7 @@ html.dark .hci-prototype figcaption a {
   }
 }
 
-/* Coursework-first homepage. */
+/* Homepage actions, course directory, and course empty states. */
 .home-v5-hero { max-width: 52rem; }
 .home-v5-hero .home-v5-intro { max-width: 43rem; margin-top: 1rem; }
 .home-v5-actions {
@@ -879,15 +879,11 @@ html.dark .hci-prototype figcaption a {
   border: 1px solid rgba(var(--yan-blue), 0.22);
 }
 .home-v5-secondary:hover { border-color: rgb(var(--yan-blue)); }
-.home-v5-actions a:focus-visible,
-.home-feature-card:focus-visible {
+.home-v5-actions a:focus-visible {
   outline: 3px solid rgb(var(--yan-blue));
   outline-offset: 3px;
 }
-.home-v5-featured { margin-top: 1.85rem; }
-.home-v5-featured .home-v5-section-head,
 .home-v5-catalog .home-v5-section-head { margin-bottom: 0.6rem; }
-.home-v5-featured .home-v5-section-head h2,
 .home-v5-catalog .home-v5-section-head h2 {
   margin: 0;
   font-size: clamp(1.28rem, 2.4vw, 1.65rem);
@@ -895,13 +891,6 @@ html.dark .hci-prototype figcaption a {
   font-weight: 750;
   color: rgb(39 39 42);
 }
-.home-v5-section-meta {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  color: rgb(82 82 91) !important;
-}
-.home-v5-featured-intro,
 .home-v5-catalog-description,
 .course-directory-note {
   margin: 0.2rem 0 0.9rem;
@@ -909,56 +898,6 @@ html.dark .hci-prototype figcaption a {
   font-size: 0.88rem;
   line-height: 1.65;
   color: rgb(82 82 91);
-}
-.home-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
-}
-.home-feature-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 13.7rem;
-  padding: 1.3rem 1.35rem;
-  border: 1px solid rgba(var(--yan-blue), 0.26);
-  border-radius: 0.85rem;
-  text-decoration: none !important;
-  background: linear-gradient(155deg, rgba(var(--yan-blue-soft), .45), rgba(var(--yan-blue-soft), .09) 72%);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.home-feature-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(var(--yan-blue), 0.65);
-  box-shadow: 0 15px 35px -28px rgba(var(--yan-ink), .3);
-}
-.home-feature-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.8rem;
-  font-size: 0.68rem;
-  font-weight: 750;
-  letter-spacing: 0.09em;
-  color: rgb(var(--yan-blue));
-}
-.home-feature-card h3 {
-  margin: 1.1rem 0 0.42rem;
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 760;
-  line-height: 1.23;
-  letter-spacing: -0.02em;
-  color: rgb(24 24 27);
-}
-.home-feature-card p {
-  margin: 0 0 1rem;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgb(82 82 91);
-}
-.home-feature-link {
-  margin-top: auto;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: rgb(var(--yan-blue));
 }
 .home-course-card.is-active {
   border-color: rgba(var(--yan-blue), 0.36);
@@ -974,32 +913,13 @@ html.dark .hci-prototype figcaption a {
 .course-empty-state h2 { margin: 0 0 0.4rem; font-size: 1.15rem; font-weight: 700; }
 .course-empty-state p { margin: 0 0 0.7rem; color: rgb(82 82 91); }
 .course-empty-state a { color: rgb(var(--yan-blue)); text-underline-offset: 3px; }
-html.dark .home-v5-featured .home-v5-section-head h2,
-html.dark .home-v5-catalog .home-v5-section-head h2,
-html.dark .home-feature-card h3 { color: rgb(244 244 245); }
+html.dark .home-v5-catalog .home-v5-section-head h2 { color: rgb(244 244 245); }
 html.dark .home-v5-secondary { color: rgb(212 212 216); }
-html.dark .home-v5-section-meta,
-html.dark .home-v5-featured-intro,
 html.dark .home-v5-catalog-description,
 html.dark .course-directory-note,
-html.dark .home-feature-card p,
 html.dark .course-empty-state p { color: rgb(194 194 204) !important; }
-html.dark .home-feature-card {
-  background: linear-gradient(155deg, rgba(37, 99, 235, .13), rgba(37, 99, 235, .025));
-  border-color: rgba(147, 197, 253, .27);
-}
-html.dark .home-feature-top,
-html.dark .home-feature-link,
 html.dark .course-empty-state a { color: rgb(147 197 253); }
 html.dark .course-empty-state { border-color: rgba(147,197,253,.23); background: rgba(37,99,235,.05); }
 @media (max-width: 700px) {
-  .home-feature-grid { grid-template-columns: 1fr; }
-  .home-feature-card { min-height: 11rem; padding: 1.1rem 1.05rem; }
   .home-v5-section-head a { display: inline !important; }
-  .home-v5-featured .home-v5-section-head { align-items: flex-start; }
-  .home-v5-section-meta { font-size: .6rem; text-align: end; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .home-feature-card { transition: none !important; }
-  .home-feature-card:hover { transform: none; }
 }

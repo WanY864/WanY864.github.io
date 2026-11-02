@@ -14,31 +14,6 @@
     <div class="home-v5-rule" aria-hidden="true"><span></span></div>
   </header>
 
-  <section class="home-v5-featured" aria-labelledby="featured-work-title">
-    <div class="home-v5-section-head">
-      <h2 id="featured-work-title">Featured coursework</h2>
-      <span class="home-v5-section-meta">HCI · INTERACTION DESIGN</span>
-    </div>
-    <p class="home-v5-featured-intro">Selected assignments with concept sketches, interactive mockups and reflections.</p>
-    <div class="home-feature-grid">
-      {{ $featured := slice
-        (dict "path" "/courses/hci/homework-3" "number" "01" "category" "AR · INTERACTION PROTOTYPE" "title" "Live Conversation Captions" "description" "An AR caption concept exploring readability, privacy controls and early user feedback.")
-        (dict "path" "/courses/hci/homework-4" "number" "02" "category" "MR · THREE INTERACTIVE CONCEPTS" "title" "Everyday Mixed Reality" "description" "Context Translator, Everyday Wayfinding and Shared Spatial Notes, with interactive simulations.")
-      }}
-      {{ range $featured }}
-        {{ $card := . }}
-        {{ with site.GetPage $card.path }}
-          <a class="home-feature-card" href="{{ .RelPermalink }}">
-            <span class="home-feature-top"><span>{{ $card.category }}</span><span aria-hidden="true">{{ $card.number }}</span></span>
-            <h3>{{ $card.title }}</h3>
-            <p>{{ $card.description }}</p>
-            <span class="home-feature-link">View assignment <span aria-hidden="true">↗</span></span>
-          </a>
-        {{ end }}
-      {{ end }}
-    </div>
-  </section>
-
   <section class="home-v5-catalog" id="course-directory" aria-labelledby="course-directory-title">
     <div class="home-v5-section-head">
       <h2 id="course-directory-title">Course directory</h2>
