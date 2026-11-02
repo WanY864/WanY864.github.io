@@ -84,15 +84,6 @@ article h3::before {
   background: linear-gradient(180deg, rgba(var(--yan-blue), 1), rgba(var(--yan-blue), 0.52));
 }
 
-/* Figure captions: restrained blue rule to keep images visually organised. */
-.prose p > em:only-child,
-article p > em:only-child {
-  display: inline-block;
-  border-left: 3px solid rgba(var(--yan-blue), 0.78);
-  padding-left: 0.72rem;
-  color: rgb(82 82 91);
-}
-
 /* Shared TOC styles: same comfortable spacing in sidebar and mobile menu. */
 #TableOfContents,
 #TableOfContentsMobile {
