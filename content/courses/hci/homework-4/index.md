@@ -79,8 +79,6 @@ I came up with **Context Translator**, **Everyday Wayfinding** and **Shared Spat
 
 My idea is to show a small translation next to the original words. I sketched a menu with a simple text overlay. I then made a mockup where the user can switch between **Show translations** and **View original**. I deliberately kept the original text visible because a translation might be wrong.
 
-![My first sketch of translated information appearing in the real world.](mr-translate.svg)
-
 {{< hci-prototype name="context-translator" title="Context Translator interactive MR concept" >}}
 
 **Why it could be popular:** people travel, study and move between different languages all the time. I think the value would be immediate: instead of opening another app, the answer could appear beside the object.
@@ -91,9 +89,7 @@ The main risk is trust. If the translation is incorrect, especially for somethin
 
 **The problem I started with:** finding a room or destination in a large campus, hospital or station. A normal map can be useful, but it still takes effort to match the map to the corridor in front of me.
 
-I drew a campus route with a few directional hints. For the interactive version, I made a small map and a **Next instruction** control that changes the route guidance. I also added a **step-free route** switch because a path is not equally convenient for everyone.
-
-![My first sketch of MR navigation directions.](mr-wayfinding.svg)
+I drew a campus route with a few directional hints. For the interactive version, I made a small map and a **Next instruction** control that advances the simulated position. The approximate distances come from the illustrated paths, not GPS measurements. I also added a **step-free route** switch because a path is not equally convenient for everyone.
 
 {{< hci-prototype name="everyday-wayfinding" title="Everyday Wayfinding interactive MR concept" >}}
 
@@ -106,8 +102,6 @@ I would keep the arrows small and avoid covering obstacles. I also think the app
 **The problem I started with:** when a group works on a physical object, a message such as “change this part” does not always explain which part someone means.
 
 I imagined placing virtual sticky notes directly next to an object. I sketched a shared worktable with labels attached to different parts. Then I built a clickable concept that lets the user switch between **Team** and **My notes**, and type a short example note.
-
-![My first sketch of notes attached to a shared physical workspace.](mr-shared-notes.svg)
 
 {{< hci-prototype name="shared-spatial-notes" title="Shared Spatial Notes interactive MR concept" >}}
 

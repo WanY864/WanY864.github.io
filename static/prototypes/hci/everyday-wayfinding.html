@@ -36,8 +36,8 @@ h1{font-size:clamp(23px,4vw,36px);letter-spacing:-.04em;margin:16px 0 3px}
 <div class="top"><div class="brand"><span>↗</span> Wayline / Everyday Wayfinding</div><div class="pill">MR ROUTE CONCEPT</div></div>
 <h1>Less map. More direction.</h1><p class="subtitle">A quiet campus navigation overlay with a fallback map and an accessible route option.</p>
 <div class="panel"><div class="map" id="map" aria-label="Simulated campus route drawing">
- <div class="hud">◌ CAMPUS MAP &nbsp;·&nbsp; illustrative route only</div>
- <svg viewBox="0 0 600 350" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Campus route between a start point and library">
+ <div class="hud">◌ CAMPUS MAP &nbsp;·&nbsp; illustrative route and distances</div>
+ <svg id="route-map" viewBox="0 0 600 350" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative route from start to the library, showing a simulated moving position">
   <defs><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter><linearGradient id="building" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#315568"/><stop offset="1" stop-color="#244256"/></linearGradient></defs>
   <g fill="url(#building)" stroke="#47687a" stroke-width="1.4" opacity=".9">
    <rect x="52" y="73" width="134" height="80" rx="11"/><rect x="205" y="48" width="120" height="60" rx="11"/>
@@ -53,30 +53,80 @@ h1{font-size:clamp(23px,4vw,36px);letter-spacing:-.04em;margin:16px 0 3px}
    <path d="M116 314V175H385V147H450" opacity=".4" filter="url(#glow)"/><path d="M116 314V175H385V147H450"/>
   </g>
   <g class="accessible" fill="none" stroke="#7ee8fd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-   <path d="M116 314H199V175H385V147H450" opacity=".4" filter="url(#glow)"/><path d="M116 314H199V175H385V147H450"/>
+   <path d="M116 314H198V175H580V147H450" opacity=".4" filter="url(#glow)"/><path d="M116 314H198V175H580V147H450"/>
   </g>
-  <circle cx="116" cy="314" r="11" fill="#b7ff70" stroke="#0d2737" stroke-width="4"/>
   <circle cx="450" cy="147" r="11" fill="#eaf9ff" stroke="#0d2737" stroke-width="4"/>
   <path d="M450 124l-6 15h12z" fill="#eaf9ff"/>
   <rect x="406" y="108" width="91" height="25" rx="9" fill="#071b2d" stroke="#4b8d8c"/><text x="451" y="125" text-anchor="middle" class="map-marker">LIBRARY</text>
-  <rect x="73" y="294" width="87" height="19" rx="9" fill="#071b2d"/><text x="116" y="307" font-size="11" text-anchor="middle" fill="#c8f8dd">YOU ARE HERE</text>
+  <g id="current-position" transform="translate(116 314)">
+   <circle r="11" fill="#b7ff70" stroke="#0d2737" stroke-width="4"/>
+   <rect id="position-background" x="-44" y="-30" width="88" height="19" rx="9" fill="#071b2d"/>
+   <text id="position-label" x="0" y="-17" font-size="11" text-anchor="middle" fill="#c8f8dd">YOU ARE HERE</text>
+  </g>
  </svg>
  </div>
- <aside class="side"><div class="card"><small>NEXT INSTRUCTION</small><div class="big" id="distance">120 m</div><h2 id="instruction">Go straight</h2><p id="explain">Follow the highlighted path towards the main corridor.</p></div>
+ <aside class="side"><div class="card" aria-live="polite" aria-atomic="true"><small>APPROX. DISTANCE LEFT</small><div class="big" id="distance">≈125 m</div><h2 id="instruction">Head north</h2><p id="explain">Follow the highlighted path to the main corridor.</p></div>
  <div class="card light"><small>DESTINATION</small><h2>Campus Library</h2><p>Short prompts stay close to the real-world direction. A map remains available if tracking fails.</p><span id="route" class="route" aria-live="polite">STANDARD ROUTE</span></div></aside>
 </div>
-<div class="controls"><button type="button" id="next" class="btn primary">Next instruction →</button><button type="button" id="step" class="btn" aria-pressed="false">Step-free route: Off</button><span class="foot">Visual mockup · no GPS or navigation tracking</span></div>
+<div class="controls"><button type="button" id="next" class="btn primary">Next instruction →</button><button type="button" id="step" class="btn" aria-pressed="false">Step-free route: Off</button><span class="foot">Illustrative distances · no GPS or live tracking</span></div>
 </main>
 <script>
 (function(){
  const $=x=>document.getElementById(x);
  let idx=0,stepFree=false;
- const instructions={
-  standard:[["120 m","Go straight","Follow the main corridor towards the library."],["35 m","Turn right","The library entrance is on your right."],["0 m","You have arrived","Enter the library through the main doors."]],
-  stepFree:[["160 m","Follow the level route","Go around the courtyard along the highlighted step-free path."],["40 m","Keep right","Continue to the library level entrance."],["0 m","You have arrived","Enter through the step-free entrance."]]
+ const routes={
+  standard:{
+   points:[[116,314],[116,175],[385,175],[450,147]],
+   steps:[
+    ["Head north","Follow the highlighted path to the main corridor."],
+    ["Turn right","Continue along the main corridor toward the library."],
+    ["Turn left, then right","Take the short approach to the library entrance."],
+    ["You have arrived","Enter the library through the main doors."]
+   ]
+  },
+  stepFree:{
+   points:[[116,314],[198,314],[198,175],[580,175],[450,147]],
+   steps:[
+    ["Follow the level path","Continue east along the accessible walkway."],
+    ["Turn left","Follow the level path to the main corridor."],
+    ["Turn right","Continue past the courtyard on the step-free route."],
+    ["Turn left, then left","Approach the step-free entrance from the east."],
+    ["You have arrived","Enter the library through the step-free entrance."]
+   ]
+  }
  };
- function paint(){const a=instructions[stepFree?"stepFree":"standard"][idx];$("distance").textContent=a[0];$("instruction").textContent=a[1];$("explain").textContent=a[2];$("route").textContent=stepFree?"STEP-FREE ROUTE":"STANDARD ROUTE";$("map").classList.toggle("stepfree",stepFree);$("step").classList.toggle("on",stepFree);$("step").setAttribute("aria-pressed",stepFree?"true":"false");$("step").textContent="Step-free route: "+(stepFree?"On":"Off");}
- $("next").addEventListener("click",()=>{idx=(idx+1)%instructions[stepFree?"stepFree":"standard"].length;paint()});
+ // Illustrative conversion from the drawing's grid, not surveyed metres or GPS.
+ const metresPerDrawingUnit=0.25;
+ function remainingDistance(points,at){
+  let units=0;
+  for(let i=at+1;i<points.length;i++){
+   units+=Math.abs(points[i][0]-points[i-1][0])+Math.abs(points[i][1]-points[i-1][1]);
+  }
+  return Math.round(units*metresPerDrawingUnit/5)*5;
+ }
+ function paint(){
+  const route=routes[stepFree?"stepFree":"standard"];
+  const point=route.points[idx],instruction=route.steps[idx];
+  const arrived=idx===route.points.length-1;
+  const distance=remainingDistance(route.points,idx);
+  $("distance").textContent=arrived?"0 m":"≈"+distance+" m";
+  $("instruction").textContent=instruction[0];
+  $("explain").textContent=instruction[1];
+  $("position-label").textContent=arrived?"ARRIVED":"YOU ARE HERE";
+  $("current-position").setAttribute("transform","translate("+point[0]+" "+point[1]+")");
+  const markerLabelX=point[0]>515?-92:-44;
+  $("position-background").setAttribute("x",markerLabelX);
+  $("position-label").setAttribute("x",markerLabelX+44);
+  $("position-background").style.display=arrived?"none":"";
+  $("position-label").style.display=arrived?"none":"";
+  $("route").textContent=stepFree?"STEP-FREE ROUTE":"STANDARD ROUTE";
+  $("map").classList.toggle("stepfree",stepFree);
+  $("step").classList.toggle("on",stepFree);
+  $("step").setAttribute("aria-pressed",stepFree?"true":"false");
+  $("step").textContent="Step-free route: "+(stepFree?"On":"Off");
+  $("next").textContent=arrived?"Restart route ↻":"Next instruction →";
+ }
+ $("next").addEventListener("click",()=>{idx=(idx+1)%routes[stepFree?"stepFree":"standard"].points.length;paint()});
  $("step").addEventListener("click",()=>{stepFree=!stepFree;idx=0;paint()});paint();
 })();
 </script>
