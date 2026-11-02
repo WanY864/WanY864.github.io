@@ -1,60 +1,59 @@
+{{ $courses := .Site.GetPage "/courses" }}
 <div class="home-v5">
   <div class="home-v5-ambient" aria-hidden="true"></div>
-
   <header class="home-v5-hero">
-    <p class="home-v5-kicker">YAN WAN · M2 COURSES</p>
+    <p class="home-v5-kicker">YAN WAN · M2 COURSEWORK · 2026–2027</p>
     <h1 class="home-v5-name">Yan Wan</h1>
     <p class="home-v5-program">M2 Virtual &amp; Augmented Reality</p>
     <p class="home-v5-school">Institut Polytechnique de Paris</p>
-
-    <div class="home-v5-rule" aria-hidden="true"><span></span></div>
-
-    <div class="home-v5-course">
-      <p class="home-v5-eyebrow">M2 VIRTUAL &amp; AUGMENTED REALITY</p>
-      <h2>Courses <span>· 2026–2027</span></h2>
-      <p class="home-v5-intro">
-        Coursework, labs and projects.
-      </p>
+    <p class="home-v5-intro">Coursework, interactive HCI prototypes and design reflections from my M2 studies.</p>
+    <div class="home-v5-actions">
+      <a class="home-v5-primary" href="{{ "courses/hci/" | relURL }}">Explore HCI work <span aria-hidden="true">↗</span></a>
+      <a class="home-v5-secondary" href="{{ "about/" | relURL }}">About this site</a>
     </div>
+    <div class="home-v5-rule" aria-hidden="true"><span></span></div>
   </header>
 
-  <section class="home-v5-meta" aria-label="Course information">
-    <div class="home-v5-meta-item">
-      <span>COURSES</span>
-      <strong>10 courses</strong>
-    </div>
-    <div class="home-v5-meta-item">
-      <span>PROGRAM</span>
-      <strong>Virtual &amp; Augmented<br>Reality</strong>
-    </div>
-    <div class="home-v5-meta-item">
-      <span>ACADEMIC YEAR</span>
-      <strong>2026–2027</strong>
-    </div>
-  </section>
-
-  <section class="home-v5-catalog" aria-label="Course directory">
+  <section class="home-v5-featured" aria-labelledby="featured-work-title">
     <div class="home-v5-section-head">
-      <span>COURSE DIRECTORY · 10 COURSES</span>
-      <a href="{{ "courses/" | relURL }}">Browse all courses →</a>
+      <h2 id="featured-work-title">Featured coursework</h2>
+      <span class="home-v5-section-meta">HCI · INTERACTION DESIGN</span>
     </div>
-    <div class="home-course-grid">
-      {{ with .Site.GetPage "/courses" }}
-        {{ range .Pages.ByWeight }}
-        <a class="home-course-card" href="{{ .RelPermalink }}">
-          <span class="home-course-number">{{ printf "%02d" .Weight }}</span>
-          <span class="home-course-copy">
-            <strong>{{ .Title }}</strong>
-            <small>{{ if gt (len .Pages) 0 }}Coursework available{{ else }}Ready for coursework{{ end }}</small>
-          </span>
-          <span class="home-course-arrow" aria-hidden="true">↗</span>
-        </a>
+    <p class="home-v5-featured-intro">Selected assignments with concept sketches, interactive mockups and reflections.</p>
+    <div class="home-feature-grid">
+      {{ $featured := slice
+        (dict "path" "/courses/hci/homework-3" "number" "01" "category" "AR · INTERACTION PROTOTYPE" "title" "Live Conversation Captions" "description" "An AR caption concept exploring readability, privacy controls and early user feedback.")
+        (dict "path" "/courses/hci/homework-4" "number" "02" "category" "MR · THREE INTERACTIVE CONCEPTS" "title" "Everyday Mixed Reality" "description" "Context Translator, Everyday Wayfinding and Shared Spatial Notes, with interactive simulations.")
+      }}
+      {{ range $featured }}
+        {{ $card := . }}
+        {{ with site.GetPage $card.path }}
+          <a class="home-feature-card" href="{{ .RelPermalink }}">
+            <span class="home-feature-top"><span>{{ $card.category }}</span><span aria-hidden="true">{{ $card.number }}</span></span>
+            <h3>{{ $card.title }}</h3>
+            <p>{{ $card.description }}</p>
+            <span class="home-feature-link">View assignment <span aria-hidden="true">↗</span></span>
+          </a>
         {{ end }}
       {{ end }}
     </div>
   </section>
 
-
+  <section class="home-v5-catalog" id="course-directory" aria-labelledby="course-directory-title">
+    <div class="home-v5-section-head">
+      <h2 id="course-directory-title">Course directory</h2>
+      <a href="{{ "courses/" | relURL }}">View all courses →</a>
+    </div>
+    <p class="home-v5-catalog-description">All ten course sections are listed below. Courses with published work appear first.</p>
+    <div class="home-course-grid">
+      {{ with $courses }}
+        {{ range .Pages.ByWeight }}
+          {{ if gt (len .RegularPages) 0 }}{{ partial "site/course-card.html" . }}{{ end }}
+        {{ end }}
+        {{ range .Pages.ByWeight }}
+          {{ if eq (len .RegularPages) 0 }}{{ partial "site/course-card.html" . }}{{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
 </div>
-
-<!-- homepage-status-refresh -->

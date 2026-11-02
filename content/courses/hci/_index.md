@@ -1,6 +1,6 @@
 ---
 title: "Human-Computer Interface"
-description: "HCI homework, labs, and interaction-design reflections."
+description: "HCI assignments, interactive AR and MR interface prototypes, usability reflections, and Unity labs."
 weight: 7
 showReadingTime: false
 showWordCount: false

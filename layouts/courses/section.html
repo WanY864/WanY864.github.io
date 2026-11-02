@@ -11,16 +11,13 @@
         <h1>{{ .Title | emojify }}</h1>
         <div class="course-landing-description prose dark:prose-invert">{{ .Content }}</div>
       </header>
+      <p class="course-directory-note">Courses with published work are shown first. All ten course pages remain available.</p>
       <div class="home-course-grid">
         {{ range .Pages.ByWeight }}
-          <a class="home-course-card" href="{{ .RelPermalink }}">
-            <span class="home-course-number">{{ printf "%02d" .Weight }}</span>
-            <span class="home-course-copy">
-              <strong>{{ .Title }}</strong>
-              <small>{{ if gt (len .Pages) 0 }}Coursework available{{ else }}Ready for coursework{{ end }}</small>
-            </span>
-            <span class="home-course-arrow" aria-hidden="true">↗</span>
-          </a>
+          {{ if gt (len .RegularPages) 0 }}{{ partial "site/course-card.html" . }}{{ end }}
+        {{ end }}
+        {{ range .Pages.ByWeight }}
+          {{ if eq (len .RegularPages) 0 }}{{ partial "site/course-card.html" . }}{{ end }}
         {{ end }}
       </div>
     </div>
@@ -69,6 +66,13 @@
         (dict "id" "projects" "title" "Projects & Experiments" "items" $projects)
         (dict "id" "notes" "title" "Notes & Other Work" "items" $notes)
       }}
+      {{ if eq (len .RegularPages) 0 }}
+        <div class="course-empty-state">
+          <h2>Coursework coming later</h2>
+          <p>This course page is ready. Assignments, labs and projects will appear here when published.</p>
+          <a href="{{ "courses/" | relURL }}">Browse other courses →</a>
+        </div>
+      {{ end }}
       {{ range $groups }}
         {{ if gt (len .items) 0 }}
           <section class="course-work-group" aria-labelledby="course-work-{{ .id }}">
