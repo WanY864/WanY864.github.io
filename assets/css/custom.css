@@ -1004,20 +1004,15 @@ main#main-content > article:not(:has(#TOCView)) > footer {
   margin-inline: auto;
 }
 
-/* Use the table's natural width so narrow tables can actually be centered. */
+/* Blowfish sets all tables to display:block. Width:auto makes them fill
+   the whole article, so auto margins alone cannot center shorter tables.
+   Shrink-wrap narrower tables and scroll wide tables within the text column. */
 .article-content table {
-  width: auto;
+  display: block;
+  width: fit-content;
   max-width: 100%;
   margin-inline: auto;
-}
-
-/* Let wider tables scroll on phones instead of pushing the whole post sideways. */
-@media (max-width: 640px) {
-  .article-content table {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
 }
