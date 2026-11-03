@@ -22,12 +22,6 @@ This lab was about getting **Unity ML-Agents** working end to end: setting up Py
 
 After verifying the standard example, I made a second training run with randomly changing ball **mass** and **size**. I wanted to see whether the policy could learn in a less predictable physical environment. Both trained models were then tested in Unity using ONNX inference.
 
-## Image gallery
-
-This visual index brings together **all eight screenshots** from the lab folder and the **reward comparison chart** derived from the training logs. Select any image to open it at full size. The two MP4 demonstrations can be played in [Running the trained policies in Unity](#running-the-trained-policies-in-unity) below.
-
-{{< mlagents-gallery >}}
-
 ## Environment and setup
 
 I used **Unity 6000.6.5f1**, **Python 3.10.11**, the local **ML-Agents Release 23** source, and **PyTorch 2.2.2 (CPU)**. My Python installations reported matching editable-source versions of **mlagents 1.2.0.dev0** and **mlagents-envs 1.2.0.dev0**. The Unity package in Release 23 identifies itself as version **4.0.0**.
