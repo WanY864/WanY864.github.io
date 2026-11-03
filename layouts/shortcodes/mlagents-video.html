@@ -1,0 +1,13 @@
+{{- $src := .Get "src" -}}
+{{- $label := .Get "label" | default "Unity ML-Agents inference recording" -}}
+{{- $video := .Page.Resources.GetMatch $src -}}
+{{- if not $video -}}
+  {{- errorf "ML-Agents lab video %q not found at %s" $src .Position -}}
+{{- end -}}
+<div class="mlagents-video not-prose">
+  <video controls playsinline preload="metadata" aria-label="{{ $label }}">
+    <source src="{{ $video.RelPermalink }}" type="video/mp4">
+    Your browser does not support video playback.
+    <a href="{{ $video.RelPermalink }}">Open video</a>.
+  </video>
+</div>

@@ -959,3 +959,22 @@ main#main-content > article:not(:has(#TOCView)) > footer {
   max-width: 56rem;
   margin-inline: auto;
 }
+
+/* Native video clips embedded in HCI lab reports. */
+.mlagents-video {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 1.25rem 0 2.15rem;
+  border: 1px solid rgba(var(--yan-blue), 0.18);
+  border-radius: 0.8rem;
+  background: #071827;
+  box-shadow: 0 10px 32px -24px rgba(var(--yan-ink), 0.45);
+}
+.mlagents-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 35rem;
+  object-fit: contain;
+}
