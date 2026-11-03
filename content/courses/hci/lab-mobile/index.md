@@ -23,7 +23,6 @@ The goal of this lab was to adapt an application concept for a mobile phone, cho
 For this project, I explored how **live captions and personal notes could support students during a class**. Captions help a student follow what is being said, while notes provide a place to keep important terms, reminders, and explanations. I used Unity 6 for the mobile interface and kept Android speech recognition behind a native Java bridge.
 
 - [Source code: LiveCaption on GitHub](https://github.com/WanY864/LiveCaption)
-- [Lab brief: Lab2_mobile](https://docs.google.com/presentation/d/1TruBrUP1dIFdn0hm-YuQX9dbdi2epJ2Q/edit)
 
 ## Why combine captions and notes?
 
@@ -44,17 +43,17 @@ I separated the app into two modes so that each task has a clear space:
 
 The note board uses direct touch interaction. A user can create a note, tap its body to type, drag its header to move it, and change its colour. The toolbar also provides decorative stickers.
 
-![Sticky Board interface with a toolbar, pastel note cards, and draggable stickers.](sticky-board.jpg "Sticky Board interface.")
+![Sticky Board interface with a toolbar, pastel note cards, and draggable stickers.](sticky-board.jpg)
 
 The note cards are intended to behave like small pieces of paper on a shared canvas. The header is a dedicated drag handle, leaving the main body available for text input. This separates two actions that could otherwise conflict: editing the note and moving it.
 
-![Sticky Board running in the Unity Game view, showing note cards and stickers.](unity-editor.png "Sticky Board running in Unity.")
+![Sticky Board running in the Unity Game view, showing note cards and stickers.](unity-editor.png)
 
 ### Live Captions
 
 The second mode keeps the original caption interface. It has a two-line caption area, text-size controls, background-opacity controls, and start/pause and clear actions.
 
-![Live Captions interface with a two-line caption panel and text-size and opacity controls.](live-captions.jpg "Live Captions interface.")
+![Live Captions interface with a two-line caption panel and text-size and opacity controls.](live-captions.jpg)
 
 The caption screen is still useful as an interface and integration point, but its actual recognition capability depends on the Android device. A visible caption panel alone does not mean that speech recognition is available.
 
@@ -84,7 +83,7 @@ The bridge is optional. Microphone permission is requested only when the user st
 
 I used **Unity 6.6.5f1** with Android Build Support. The Android build was configured for a phone, using the Unity-provided JDK, SDK, and NDK.
 
-![Unity Android Build Profiles during the Android build process.](android-build.png "Android Build Profiles and Unity build.")
+![Unity Android Build Profiles during the Android build process.](android-build.png)
 
 I also prepared a test APK named **CaptionNote.apk** in the Lab_mobile materials. The build process exposed several problems that are worth documenting because they are easy to overlook when following a Unity Android tutorial.
 
