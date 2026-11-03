@@ -1,6 +1,7 @@
 ---
 title: "HCI — Unity ML-Agents Lab"
 date: 2026-10-12
+lastmod: 2026-11-03
 summary: "Installing ML-Agents, resolving Unity compatibility issues, training 3DBall, extending it with randomized ball physics, and testing both ONNX models."
 tags: ["HCI", "Lab", "Unity", "ML-Agents", "Reinforcement Learning", "3DBall"]
 categories: ["Human-Computer Interaction"]
@@ -20,6 +21,12 @@ showWordCount: false
 This lab was about getting **Unity ML-Agents** working end to end: setting up Python and Unity, running an official reinforcement-learning example, and extending it to a new situation. I chose **3DBall**, where an agent tilts a platform to keep a ball from falling.
 
 After verifying the standard example, I made a second training run with randomly changing ball **mass** and **size**. I wanted to see whether the policy could learn in a less predictable physical environment. Both trained models were then tested in Unity using ONNX inference.
+
+## Image gallery
+
+This visual index brings together **all eight screenshots** from the lab folder and the **reward comparison chart** derived from the training logs. Select any image to open it at full size. The two MP4 demonstrations can be played in [Running the trained policies in Unity](#running-the-trained-policies-in-unity) below.
+
+{{< mlagents-gallery >}}
 
 ## Environment and setup
 
