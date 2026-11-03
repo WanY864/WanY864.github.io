@@ -108,7 +108,7 @@ A later Android build log failed at the ARM64 task named configureCMakeRelWithDe
 
 These problems taught me to separate Unity script compilation from the Android native build pipeline. A project can compile its C# scripts and still fail later when Gradle, CMake, Prefab, the SDK, or the NDK are invoked.
 
-The APK in the lab folder is a test artifact, but the later CMake / Prefab failures mean that I do not yet consider the latest source-to-APK build fully reproducible. The final Android build should be checked again after the build environment is stable.
+The [CaptionNote.apk test package](https://drive.google.com/file/d/1c-8c1-AXjC2lyUHLJgoALZi5lFwkcOcV/view) is available in the lab materials. However, the later CMake / Prefab failures mean that I do not yet consider the latest source-to-APK build fully reproducible. The final Android build should be checked again after the build environment is stable.
 
 ## Evaluation and limitations
 
