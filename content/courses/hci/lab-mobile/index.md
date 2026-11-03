@@ -7,7 +7,7 @@ tags: ["HCI", "Lab", "Mobile", "Unity", "Android", "Accessibility", "Captions", 
 categories: ["Human-Computer Interaction"]
 draft: false
 workType: lab
-workStatus: in-progress
+workStatus: completed
 workSubtitle: "Unity 6 · Android · Sticky notes · Live captions · Classroom accessibility"
 weight: 40
 linkTitle: "HCI — Lab_mobile"
@@ -28,9 +28,9 @@ For this project, I explored how **live captions and personal notes could suppor
 
 I initially focused on an English-only live-caption interface. Thinking about the classroom scenario made me realise that showing the spoken words is only part of the problem. A student may follow a sentence in real time but still want to save a definition, a question, or a key point for later.
 
-My main evaluation is that **combining notes and captions has the greatest potential to improve the classroom experience**, especially for students whose first language is different from the language used in the lecture. Captions can make spoken information easier to follow in the moment; notes let students preserve the information they want to review afterwards.
+I asked other people to try the concept and evaluate how useful it would be in a classroom. **The feedback identified the combination of notes and captions as the most valuable part of the app**, especially for students whose first language is different from the language used in the lecture. Captions can make spoken information easier to follow in the moment; notes let students preserve the information they want to review afterwards.
 
-This is a qualitative design evaluation based on the classroom scenario and my prototype experience, not a claim based on a large or statistically controlled user study. A formal study with participants and comprehension measures would be a useful next step.
+This was a qualitative user evaluation based on people trying the prototype and discussing the classroom scenario. I did not run a controlled comprehension experiment or collect quantitative performance measurements, so I treat the feedback as design evidence rather than a statistical result.
 
 ## Design: two modes in one mobile app
 
@@ -107,13 +107,13 @@ A later Android build log failed at the ARM64 task named configureCMakeRelWithDe
 
 These problems taught me to separate Unity script compilation from the Android native build pipeline. A project can compile its C# scripts and still fail later when Gradle, CMake, Prefab, the SDK, or the NDK are invoked.
 
-The [CaptionNote.apk test package](https://drive.google.com/file/d/1c-8c1-AXjC2lyUHLJgoALZi5lFwkcOcV/view) is available in the lab materials. However, the later CMake / Prefab failures mean that I do not yet consider the latest source-to-APK build fully reproducible. The final Android build should be checked again after the build environment is stable.
+The [CaptionNote.apk test package](https://drive.google.com/file/d/1c-8c1-AXjC2lyUHLJgoALZi5lFwkcOcV/view) was installed and checked on my vivo Y37. I confirmed four core parts of the mobile workflow: the app installs and launches; notes can be created, edited, and deleted; notes and stickers can be moved; and saved note data remains after reopening the app. The earlier CMake / Prefab errors were part of the build process and are documented here, but they did not prevent me from testing this APK.
 
 ## Evaluation and limitations
 
 ### 1. Notes and captions are most useful together in a classroom
 
-The strongest part of the concept is the combination of listening support and personal note-taking. Captions provide immediate access to spoken information, while notes let students capture key ideas in their own words. This combination seems particularly valuable for students whose native language differs from the lecture language.
+Feedback from people who tried the app highlighted the combination of listening support and personal note-taking as its strongest classroom benefit. Captions provide immediate access to spoken information, while notes let students capture key ideas in their own words. The testers considered this combination particularly valuable for students whose native language differs from the lecture language.
 
 However, the current caption mode only recognises English. It does not automatically translate the lecture into another language, so the benefit for multilingual students is limited when they need translation rather than transcription.
 
@@ -121,7 +121,7 @@ However, the current caption mode only recognises English. It does not automatic
 
 I noticed that notes and newly added components do not always appear in consistent positions on different devices. A layout that looks acceptable in one Unity Game view can shift or become crowded on a phone with a different aspect ratio or usable screen area.
 
-The current prototype uses a Canvas Scaler, but some note positions are still assigned with fixed anchored offsets. That is not enough to guarantee consistent placement across all screens. The next iteration should use normalised or layout-driven positions, respect Android safe areas, constrain dragged notes to the board, and test the same set of notes on multiple screen sizes.
+The current prototype uses a Canvas Scaler, but some note positions are still assigned with fixed anchored offsets. That is not enough to guarantee consistent placement across all screens. This is the main remaining implementation issue I identified: the four core checks above passed, but I have not confirmed consistent positioning on different screen sizes. The next iteration should use normalised or layout-driven positions, respect Android safe areas, constrain dragged notes to the board, and test the same set of notes on multiple screen sizes.
 
 ### 3. Captions need translation support
 
@@ -149,7 +149,7 @@ The Sticky Board does not depend on speech recognition and remains the main usab
 | Stickers | Add and move decorative stickers | Placement needs stronger board boundaries |
 | Captions | English caption UI and retained Android bridge | Requires a compatible speech-recognition service |
 | Data | Local JSON persistence | No cloud backup or synchronisation |
-| Deployment | Unity Android project and a test APK artifact | Latest source build still needs a clean, reproducible Android build |
+| Deployment | APK installed and four core mobile workflows checked on vivo Y37 | Cross-device layout still needs testing |
 
 ## Future improvements
 
@@ -164,4 +164,4 @@ I would prioritise four improvements:
 
 This lab changed how I think about a mobile classroom tool. At first, I treated captions as the main feature. After considering the actual classroom situation, I found that **captions and notes are more useful as complementary tools**: one supports following the lecture, and the other supports remembering and reviewing it.
 
-The main lesson from implementation is that mobile interaction needs more than shrinking a desktop interface. Touch targets, dragging, text entry, safe areas, screen proportions, and device services all affect whether the app works in practice. The prototype now has a clear direction, but responsive placement and multilingual speech support are the two areas I would address before treating it as a finished classroom tool.
+The main lesson from implementation is that mobile interaction needs more than shrinking a desktop interface. Touch targets, dragging, text entry, safe areas, screen proportions, and device services all affect whether the app works in practice. I completed the core mobile checks on my vivo Y37 and used feedback from other people to evaluate the classroom concept. Responsive placement across different screen sizes and multilingual speech support remain the main areas for future improvement.
