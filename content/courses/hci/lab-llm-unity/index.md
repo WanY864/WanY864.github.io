@@ -1,137 +1,188 @@
 ---
 title: "HCI — Lab: Talking LLM Character in Unity"
-summary: "Unity 6, LLMUnity, a streaming chat interface, and a plan for two HCI interaction exercises."
-tags: ["HCI", "Lab", "Unity", "LLMUnity", "LLM", "Usability"]
+date: 2026-11-04
+lastmod: 2026-11-04
+summary: "Building Douni, a two-character Unity chat prototype, and comparing Typing and Streaming through a four-condition HCI ablation study."
+tags: ["HCI", "Lab", "Unity", "Conversational AI", "Typing Indicator", "Streaming", "Ablation Study"]
 categories: ["Human-Computer Interaction"]
 draft: false
 workType: lab
-workStatus: in-progress
-workSubtitle: "Unity 6 · Local LLM · Chat UI · HCI exercises"
+workStatus: completed
+workSubtitle: "Unity 6 · Douni AI Chat · DeepSeek · Typing × Streaming"
 weight: 50
+linkTitle: "HCI — Talking LLM Character"
 showDate: false
 showTableOfContents: true
 showReadingTime: true
-showWordCount: true
+showWordCount: false
 ---
 
+## Goal and choice of HCI exercises
 
-## Goal and brief
+The lab **Building a Talking LLM Character in Unity** is about more than obtaining a response from a language model. It asks how an interface communicates **latency, turn-taking, transparency, anthropomorphism, and readability** while a person talks to an AI character. The teaching example connects **Unity 6, LLMUnity, LLMAgent, a C# controller, and a scrollable chat panel**, then asks each group to explore two HCI exercises and explain its findings.
 
-The lab handout, **Building a Talking LLM Character in Unity**, describes a locally running language model and a chat interface made with **Unity 6**, **LLMUnity** and **TextMeshPro**.
+For my lab, I focused on the two exercises that are closely connected:
 
-The intended result is an AI character whose answer appears progressively in a conversation window. The HCI focus is not simply whether a model produces text, but how people perceive **latency, turn-taking, trust, transparency, anthropomorphism and readability**.
+1. **Measure latency:** distinguish the delay before the first visible response from the time until the complete response is displayed.
+2. **Typing indicator:** investigate how an explicit waiting cue changes the clarity of the interaction while the AI is preparing its reply.
 
-The slides also specify that **each group chooses two HCI exercises and presents its findings at the next session**.
+I extended these exercises by making **Typing** and **Streaming** independent switches. This allowed me to study four UI configurations rather than comparing only two screens. The primary evidence is **22 screenshots** from the Douni chat interface; each shows the experimental switches at the bottom.
 
-[Lab materials: LLM_Unity folder](https://drive.google.com/drive/folders/1M9TuVJU10GAa2rJej6nNNlPJspALEBUE)
+## What I built: Douni AI Chat Experiment
 
-## Interface Design and Implementation
+I built a conversational UI around two illustrated companions, **Red Scarf Douni** and **Blue Scarf Douni**. Both remain visible, while the selected character provides the response. The friendly visual identity makes the interface feel less like a raw text console, but it also raises an HCI question: could an appealing character make an uncertain or slow answer seem more acceptable?
 
-### 1. Prepare Unity and the local model
+The main interface contains a central conversation panel, distinct user and AI message bubbles, a text field and **Send** button, a scrollable chat history, and a **Jump to latest** action. The navigation also exposes **Memory Manager**, **Experiment Data**, **Experiment Settings**, and **Settings**. The bottom bar is especially important in this lab: it contains the **Typing**, **Streaming**, and **Record data** switches alongside the connection and frame-time labels.
 
-- Install and open **Unity 6 (6000.0.x)** and create a **3D (URP)** project.
-- In Package Manager, add LLMUnity from the Git URL provided by the slides: https://github.com/undreamai/LLMUnity.git
-- Accept the TextMeshPro essentials import.
-- Create an empty object, **LLM_GameObject**, with the **LLM** component.
-- Select and download a local model through LLMUnity. The slides compare a small Qwen model with a DeepSeek reasoning model; any actual model name and version should be recorded from the real installation.
-- Verify the model loads in Play Mode before building the chat interface.
+![Douni chat interface showing the red and blue companions, conversation bubbles, and the bottom experiment switches.](screenshots/1.png "Figure 1. Douni interface; the bottom bar in screenshot 1 shows Typing ON and Streaming ON.")
 
-**Why this order?** If model loading does not work, UI debugging cannot establish whether a blank screen is caused by the interface or the model.
+### Implementation and the difference from the teaching example
 
-### 2. Create the AI character
+The supplied teaching slides use **LLMUnity with a locally downloaded GGUF model**. My actual Douni project is a **Unity 6 interface connected to the DeepSeek cloud API through a local Node.js proxy**. I am documenting that substitution explicitly rather than presenting it as the same offline setup.
 
-Create an **AI Character** GameObject with the **LLMAgent** component. Assign the LLM reference and provide a short, neutral System Prompt.
+The project folder includes a Unity scene and C# scripts for the character, UI, network handling, conversation state and trial metrics. The documented Unity baseline is **6000.0.40f1**; the interface has a **mock proxy mode** for UI checks and a **live proxy mode** for actual DeepSeek requests. In the screenshots, the footer says **“DeepSeek verified this session”**, indicating the live connection state shown by the application. This is a UI observation, not proof of an independently measured server response time.
 
-A short response target makes it easier to observe the delay between submitting a message and seeing the first visible token. The lab also points out that some reasoning-style models may output a visible thinking block, raising a transparency question.
+The chat design separates three events that are sometimes treated as one: **request submitted**, **first answer text becomes visible**, and **complete answer is visible**. In the documented implementation, the upstream response can be received incrementally even when the **Streaming** display toggle is OFF; the toggle controls whether those chunks are **shown immediately or buffered**. This helps isolate the HCI effect of **presentation**, although the real network and server still introduce variability.
 
-### 3. Assemble the conversation UI
+The project documentation also describes bounded scrolling, separate character histories, and ears that move when answer text is being displayed rather than simply during a silent wait. Those details matter for feedback design: an animation should not accidentally become a second waiting indicator in an otherwise “Typing OFF” condition. The screenshots establish the visible interface, not all of these dynamic behaviors.
 
-The teaching slides specify this basic hierarchy:
+## Experimental design: a 2 × 2 ablation
 
-~~~text
-Canvas
-├── InputField_UserMessage  (TextMeshPro input)
-├── Button_Send
-└── ChatScrollView
-    ├── Viewport
-    │   └── Content
-    │       └── ChatLogText
-    └── Scrollbar Vertical
-~~~
+Instead of changing the model or character for each test, I treated the two bottom switches as **independent interface factors**:
 
-A practical UI should preserve the following relationships:
+| Condition | Typing indicator | Streaming display | Screenshots | Intended user experience |
+| --- | :---: | :---: | --- | --- |
+| **A — Baseline** | OFF | OFF | **5–10** | No dedicated typing cue; the answer appears as a completed block. |
+| **B — Typing only** | ON | OFF | **11–16** | A waiting cue can signal that a reply is being prepared, followed by a complete answer. |
+| **C — Streaming only** | OFF | ON | **17–22** | Partial answer text can appear as it arrives, without a separate typing cue. |
+| **D — Combined** | ON | ON | **1–4** | A waiting cue can bridge the delay before the first visible text, then the answer appears progressively. |
 
-| Element | Responsibility |
+This is a **2 × 2 factorial ablation of visible UI feedback**, not a comparison of four different LLMs. I checked the bottom controls in each original screenshot rather than assigning conditions based on file order alone.
+
+My research questions were:
+
+- **RQ1 — Latency perception:** Can displaying part of the answer sooner make a conversational AI feel more responsive, even if the whole answer is not finished sooner?
+- **RQ2 — Turn-taking clarity:** Can an “AI is typing…” cue make it clearer that the system received a message and is working on a response?
+- **RQ3 — Interaction between the two cues:** Is the transition from an explicit waiting state to streaming text clearer than either mechanism alone?
+
+The corresponding expectations are **hypotheses**. Screenshots by themselves cannot establish a measured improvement in perceived wait, satisfaction, or trust.
+
+## Visual comparison of the four conditions
+
+### A. Baseline — Typing OFF, Streaming OFF (screenshots 5–10)
+
+![Baseline red-character conversation, with Typing OFF and Streaming OFF in the footer.](screenshots/5.png "Figure 2. Condition A, screenshot 5: Red Scarf Douni; both interface-feedback switches OFF.")
+
+![Baseline blue-character conversation, with Typing OFF and Streaming OFF in the footer.](screenshots/10.png "Figure 3. Condition A, screenshot 10: Blue Scarf Douni; both switches OFF.")
+
+Condition A removes both explicit waiting feedback and progressive text display. The completed exchanges in screenshots **5** and **10** show that replies can be presented within the same chat layout. However, the period between pressing **Send** and the response appearing would be relatively uninformative if the interface showed no other status. The still images do **not** show that waiting interval, so I treat confusion or impatience here as a risk to evaluate, not an observed user reaction.
+
+### B. Typing only — Typing ON, Streaming OFF (screenshots 11–16)
+
+![Red-character conversation with Typing ON and Streaming OFF in the bottom bar.](screenshots/11.png "Figure 4. Condition B, screenshot 11: Typing ON, Streaming OFF.")
+
+![Blue-character conversation with Typing ON and Streaming OFF in the bottom bar.](screenshots/16.png "Figure 5. Condition B, screenshot 16: Typing ON, Streaming OFF.")
+
+Condition B isolates the **explicit waiting indicator**. Conceptually, a typing cue can reassure a person that the request has been received, even before the system is ready to display its answer. The completed-response screenshots verify the **switch state**, but do not capture the cue itself during the wait. Consequently, I cannot infer how long the indicator stayed visible or how participants reacted to it.
+
+### C. Streaming only — Typing OFF, Streaming ON (screenshots 17–22)
+
+![Red-character conversation with Typing OFF and Streaming ON in the bottom bar.](screenshots/17.png "Figure 6. Condition C, screenshot 17: Typing OFF, Streaming ON.")
+
+![Blue-character conversation with Typing OFF and Streaming ON in the bottom bar.](screenshots/22.png "Figure 7. Condition C, screenshot 22: Typing OFF, Streaming ON.")
+
+Condition C isolates **progressive text presentation**. Once the first fragment is visible, the user gains direct evidence that the answer is arriving. However, **Streaming ON does not eliminate the wait before the first fragment**. If the model or network is slow to produce that first content, there can still be a silent interval in this condition. Screenshots **17** and **22** verify the selected display mode, not its timing.
+
+### D. Combined — Typing ON, Streaming ON (screenshots 1–4)
+
+![Red-character conversation with both Typing and Streaming ON.](screenshots/1.png "Figure 8. Condition D, screenshot 1: both feedback options ON.")
+
+![Blue-character conversation with both Typing and Streaming ON.](screenshots/4.png "Figure 9. Condition D, screenshot 4: both feedback options ON.")
+
+Condition D is designed to provide feedback through both parts of the interaction: **an explicit processing cue while waiting**, followed by **visible incremental content when the response begins**. This seems like a promising design because each cue communicates a different state. It is **not** legitimate to call it the “winner” without users' ratings or comparable measured trials.
+
+## Findings from the screenshots
+
+The clearest result is that **all four UI configurations were demonstrated**. The footer gives an auditable record of the two manipulated switches, and the two characters appear across different conditions. The same broad layout — companions, conversation bubbles, input, Send button and footer — is maintained. This makes the intended UI comparison easy to understand.
+
+A second observation is that **similar questions receive different wording**. Across the captures, Douni's replies are not identical even when the user asks a comparable question. Therefore, differences in reply length or phrasing should **not** be attributed to Typing or Streaming. Those switches change how a response is displayed, not necessarily what advice the model generates.
+
+A third observation concerns **information during a delay**. Each mode covers a different portion of the timeline:
+
+| Moment | Typing cue helps? | Streaming helps? |
+| --- | --- | --- |
+| Immediately after pressing Send, before any text is available | Potentially **yes**: explains the pending state | **Not yet**: no content exists to reveal |
+| After the first response fragment arrives | Usually no longer necessary | Potentially **yes**: shows progress in the answer |
+| Once the answer is complete | Should disappear | Should stop updating and leave a readable complete reply |
+
+This is an HCI interpretation of the design, **not a measurement of participants' behavior**. The distinction matters: users may experience an interface as more responsive without the model actually computing any faster.
+
+The screenshots also reveal an evaluation limitation: the width and scaling of captures **1–4** differ from many of the other images. Line wrapping and visible chat history vary. For a stronger comparison, all four conditions should be recorded at the same Game View resolution with the same prompt and controlled conversation context.
+
+## Exercise 1 — Measuring latency correctly
+
+The course asks us to distinguish **time to first token** from the total completion time. For this UI, I would also distinguish when text arrives over the network from when the user **actually sees** it:
+
+| Timestamp | Definition |
 | --- | --- |
-| Input field | Accept a message and allow the next turn only when appropriate |
-| Send button | Trigger the same send action as the Enter key |
-| Scroll view | Keep the conversation in a bounded, scrollable area |
-| Speaker labels | Visually distinguish the user from the model |
-| Streaming output | Reveal the reply progressively and keep the latest text visible |
+| **t_send** | Send is activated. |
+| **t_first_delta** | The first nonempty content arrives at the client. |
+| **t_first_display** | The first answer text becomes visible in the chat bubble. |
+| **t_network_done** | The network response completes. |
+| **t_display_done** | The last response character has appeared in the interface. |
 
-### 4. Wire the interaction script
+The useful measures are **first visible delay = t_first_display − t_send** and **full visible delay = t_display_done − t_send**. I would also record **network time = t_network_done − t_send**. In a buffered mode, the first network content may have arrived long before it is shown; streaming separates those events.
 
-The slide deck supplies an example called **NPCController.cs**. In the Inspector it connects **LLMAgent**, **TMP_InputField**, **TextMeshProUGUI**, **Button**, and **ScrollRect**.
+The small **“Live frame time”** number printed in the screenshots is a rendering/frame-time indicator measured in milliseconds. **It is not LLM time-to-first-token, total generation latency, or perceived waiting time.** Treating it as a response-latency result would be incorrect.
 
-The expected control flow is:
+## Exercise 2 — Evaluating the typing indicator and turn-taking
 
-1. Read and validate a nonempty user message.
-2. Append a labelled user turn to the chat log.
-3. Clear and temporarily disable input while the model answers.
-4. Start generation; update the visible answer as tokens arrive.
-5. Scroll to the newest content.
-6. Restore input focus and button availability when the response finishes.
+For the typing-indicator exercise, the useful question is not just whether the cue exists, but **whether a person understands what the system is doing**. A future evaluation should compare the four conditions using the same short prompts and ask users to rate, for example, **“I knew the AI was processing my message”** and **“The waiting time felt acceptable”** on a 1–7 scale. I would also observe repeated attempts to send, uncertainty about whether the application has frozen, and preferences after trying all conditions.
 
-**Version check:** LLMUnity callback signatures can vary. The handout warns that an API mismatch may cause a Chat method argument error. Any code copied from the teaching slides must be checked against the installed package version rather than assumed to compile unchanged.
+The documented experimental plan proposes a within-participant comparison, counterbalanced order, comparable prompts, and clearing conversation memory between conditions. This is a sensible next step, but I am **not claiming it was carried out with participants** merely because the four switch combinations appear in screenshots. Such short custom ratings are also **not a System Usability Scale (SUS) score**.
 
-## HCI research questions
+## What was measured, and what was not
 
-**Latency perception.** A response that streams immediately may feel faster than a response displayed in one block, even if the total generation time is similar. The first-token delay and complete-response delay should be measured separately.
+The screenshot set establishes **22 visible interface states**, with these exact groups: **A = 5–10, B = 11–16, C = 17–22, D = 1–4**. In **every screenshot**, the third switch reads **Record data: OFF**. There is no attached CSV of completed live timing trials, no synchronized recording of the waiting/streaming phase, and no documented participant satisfaction data for these comparisons.
 
-**Turn-taking.** Temporarily disabling inputs can avoid overlapping requests, but if the interface has no clear state indicator, the user may think it has frozen. The application should explain what it is currently doing.
+For that reason I do **not** report invented averages, milliseconds, percentages, significance tests, participant counts, or a preferred condition. What I have completed here is a **four-condition exploratory UI ablation and evidence-based HCI interpretation**. A controlled latency and usability study remains follow-up work.
 
-**Trust and transparency.** Models can confidently generate incorrect answers. The UI should not encourage users to treat fluency as evidence of correctness. Showing internal-looking reasoning text can also confuse the conversation.
+The cloud-based DeepSeek implementation also differs from the original course's local-model example: network fluctuations and remote server load can affect times. The documented proxy checks used mocked upstream responses, which is useful for software verification but cannot substitute for real timing observations or Unity Play Mode evaluation.
 
-**Anthropomorphism.** Changing a character's name or conversational style may change user expectations even if the model and data are unchanged.
+## Problems, design decisions, and improvements
 
-**Readability.** Scroll behaviour, text contrast, font size, response spacing and input placement directly affect whether the conversation is usable.
+The major design lesson for me was that **feedback is not the same as performance**. A typing cue can reduce uncertainty without shortening computation. Streaming can reveal content earlier without reducing the time needed to finish the whole answer. Combining them should be evaluated for clarity, not automatically assumed to be faster.
 
-## HCI Interaction Exercises
+There were also important interface considerations. The chat needs a bounded, scrollable region so long messages do not overlap the input. A **Jump to latest** control is useful when someone has scrolled up to reread an earlier answer. Distinct bubble colors and named avatars support turn-taking, although the visual personality could also influence perceived trust and should be held constant in a controlled experiment.
 
-Two possible studies focus on response timing and the effect of a typing indicator on turn-taking.
+For the next iteration, I would:
 
-### Exercise A — Measure latency
+1. Enable **Record data ON** and export genuine per-request timings for all four conditions, without storing API keys or message content in the trial log.
+2. Record a short **screen video** of each condition so that the typing cue, first character, incremental text and completion are visible over time.
+3. Fix the model, prompt, output limit, network setting, character and resolution while changing **only** the two experimental switches; clear conversation history between conditions.
+4. Conduct a small counterbalanced within-participant test, keeping qualitative feedback separate from measured timings.
+5. Make waiting, response arrival, errors and cancellation distinguishable states, with the typing cue removed as soon as real response text is visible.
 
-**Question:** How does time to first visible token differ from total response time, and how do participants perceive this wait?
+## Reflection
 
-**Suggested procedure:** Log Unity timestamps when Send is pressed, when the first text arrives, and when the reply finishes. Repeat with a few comparable prompts on the same machine.
+This lab changed my focus from **“Can the character reply?”** to **“Can the person tell what is happening while it replies?”** A completed answer is only one part of a conversational interaction. The moments before the first word, during progressive output and at completion all affect how users understand the system.
 
-For each trial, the relevant measures are send time, time of first visible token, completion time and perceived wait.
+I successfully organized my prototype into a **2 × 2 comparison of Typing and Streaming**, supported by 22 screenshots with explicit switch states. The evidence supports that design comparison, while the absence of recorded timings and participant data limits any claim about actual improvements. My main takeaway is to design **clear, truthful feedback for each stage of the response** and test whether that feedback improves real user experience.
 
-Compute first-token delay as **first-token time − send time** and completion delay as **completion time − send time**. Interpret measurements only after running the application.
+## Materials and screenshot index
 
-### Exercise B — Typing indicator
+- [Course lab slide deck — Building a Talking LLM Character in Unity](https://docs.google.com/presentation/d/1jrL7pdQ2JOt8BcIjLqaodLd5q0tsmxWv/edit)
+- [Unity/DeepSeek Douni project and implementation notes](https://drive.google.com/drive/folders/1dxMTcIGbLs1m1BeI5S1qi6QgUsyiCVuO)
+- [Experiment protocol](https://drive.google.com/file/d/1vn5G3o4xUCNIaYFpgKVtqjcdIW6-k41v/view)
+- [Original screenshot folder on Google Drive](https://drive.google.com/drive/folders/1VPT5pNLsNKvsdX5dnIixwUt_LVFkXUAm)
+- [LLMUnity repository (the original course approach)](https://github.com/undreamai/LLMUnity)
 
-**Question:** Does an explicit “AI is typing…” status change how clear or tolerable the wait feels?
+All **22 original screenshots** are included in this page bundle and can be opened individually. In the list below, the image number is the original filename, not a chronological response-time measurement.
 
-**Suggested comparison:** Use the same interface in two conditions: without an indicator and with an indicator displayed from Send until the first token. Keep the prompt and local model configuration comparable. Ask users whether they know if the system is processing a reply.
+**A — Typing OFF / Streaming OFF:** [5](screenshots/5.png) · [6](screenshots/6.png) · [7](screenshots/7.png) · [8](screenshots/8.png) · [9](screenshots/9.png) · [10](screenshots/10.png).
 
-**What to observe:** attempts to press Send again, comments about uncertainty, perceived delay, and whether the indicator disappears when the actual reply begins.
+**B — Typing ON / Streaming OFF:** [11](screenshots/11.png) · [12](screenshots/12.png) · [13](screenshots/13.png) · [14](screenshots/14.png) · [15](screenshots/15.png) · [16](screenshots/16.png).
 
-No differences in satisfaction or speed are asserted here. Those are **hypotheses to evaluate**, not results.
+**C — Typing OFF / Streaming ON:** [17](screenshots/17.png) · [18](screenshots/18.png) · [19](screenshots/19.png) · [20](screenshots/20.png) · [21](screenshots/21.png) · [22](screenshots/22.png).
 
-### Alternative Exercises
-
-The slides additionally suggest a **persona A/B test**, showing versus hiding a reasoning-style model's thinking text, a **five-person think-aloud and SUS usability study**, or a **multimodal speech-input/output comparison**. The handout asks each group to choose two exercises.
-
-## Technical Notes
-
-The teaching materials discuss several technical issues to consider:
-
-- A Unity editor stall during domain reload when memory is heavily used.
-- Missing Android SDK build tools in an unrelated Unity configuration.
-- UI fields left unassigned, leading to null references.
-- A chat log that grows outside the intended Scroll View.
-- TextMeshPro not having glyphs for some emoji.
-- Game view not receiving keyboard events unless it has focus.
-- Different LLMUnity package versions providing different callback signatures.
+**D — Typing ON / Streaming ON:** [1](screenshots/1.png) · [2](screenshots/2.png) · [3](screenshots/3.png) · [4](screenshots/4.png).
