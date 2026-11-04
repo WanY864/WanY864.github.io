@@ -77,7 +77,7 @@ The corresponding expectations are **hypotheses**. Screenshots by themselves can
 
 **Answer:** A typing indicator can explain the otherwise silent period after **Send**, helping users understand that the AI has received their message. My comparison isolates this cue using **Typing OFF** in screenshots **5–10** and **17–22**, and **Typing ON** in screenshots **11–16** and **1–4**. Conceptually, the indicator is useful before the first answer fragment appears, even when Streaming is enabled. **My qualitative observation was that turning Typing ON made the interaction feel faster and smoother**, because the UI acknowledged the request while the first answer text was still pending. This is an observation about **perceived responsiveness**, not evidence that the model generated characters faster. Since the images are static end states and include **no recorded participant ratings**, I cannot quantify a satisfaction improvement or make a controlled causal claim.
 
-**What I changed and what I found:** I changed the **two presentation switches**, producing four combinations while retaining the same basic interface. I verified **22 screenshots** by checking the bottom toggle states. The **observed result** is a complete four-condition UI comparison, an approximate displayed pace of **30 characters per second** during hands-on use, and a qualitative impression of **smoother, faster-feeling interaction with Typing ON**. The **design conclusion** is that typing feedback and streaming cover different stages of waiting and may complement each other. The **unanswered empirical question** is which option people actually prefer—this needs controlled timings and participant responses. Therefore, I do **not** label the combined condition as statistically best.
+**What I changed and what I found:** I changed the **two presentation switches**, producing four combinations while retaining the same basic interface. Separate user testing also found that the interface felt gentle and inviting, that the red/blue characters appeared to differ in rational and emotional approaches to decisions, and that low text resolution made the interface harder to use. I verified **22 screenshots** by checking the bottom toggle states. The **observed result** is a complete four-condition UI comparison, an approximate displayed pace of **30 characters per second** during hands-on use, and a qualitative impression of **smoother, faster-feeling interaction with Typing ON**. The **design conclusion** is that typing feedback and streaming cover different stages of waiting and may complement each other. The **unanswered empirical question** is which option people actually prefer—this needs controlled timings and participant responses. Therefore, I do **not** label the combined condition as statistically best.
 
 ## Visual comparison of the four conditions
 
@@ -159,9 +159,25 @@ For the typing-indicator exercise, the useful question is not just whether the c
 
 The documented experimental plan proposes a within-participant comparison, counterbalanced order, comparable prompts, and clearing conversation memory between conditions. This is a sensible next step, but I am **not claiming it was carried out with participants** merely because the four switch combinations appear in screenshots. Such short custom ratings are also **not a System Usability Scale (SUS) score**.
 
+## User testing feedback — appeal, character differentiation, and readability
+
+In hands-on user testing, the feedback was **positive about the visual concept but critical of text legibility**:
+
+| Area | What users reported | HCI interpretation |
+| --- | --- | --- |
+| Visual appeal | The interface feels **gentle and welcoming**, making users **want to try and continue using it**. | A friendly visual style can increase initial motivation and make the AI less intimidating. |
+| Two characters | Users could sense a **rational-versus-emotional difference** between the **red-scarf and blue-scarf Douni** when they approached decisions, and considered the two styles suitable for **different kinds of questions**. | Character presentation and conversational style affect expectations; a choice of companions can support different preferences and tasks. |
+| Readability and usability | The **interface resolution was too low**; text was **difficult to read**, which made interaction **harder**. | Readability is a core usability requirement. Attractive characters and useful answers cannot compensate for an interface whose text is hard to see. |
+
+This is **reported qualitative user feedback**. I have not recorded a participant count, questionnaire scores, task-completion times, or a controlled evaluation of character personality. In particular, the feedback does **not** establish which scarf color is inherently “rational” or “emotional,” or whether the users consistently preferred one character. It does show that **users noticed a meaningful distinction** between them.
+
+**Design response:** My first visual fix should be to **increase the effective UI resolution and text legibility**, adjust font sizes and contrast, and recheck the conversation at the actual display resolution. I should also verify line wrapping, bubble width, and scaling in the Unity Game View. Then I can retest reading and message entry with users. This issue deserves priority over adding more decorative features.
+
+These comments are also **separate from the Typing/Streaming ablation**. They strengthen the overall usability evaluation, but cannot substitute for timing data or condition-by-condition satisfaction ratings.
+
 ## What was measured, and what was not
 
-The screenshot set establishes **22 visible interface states**, with these exact groups: **A = 5–10, B = 11–16, C = 17–22, D = 1–4**. In **every screenshot**, the third switch reads **Record data: OFF**. There is no attached CSV of completed live timing trials, no synchronized recording of the waiting/streaming phase, and no documented participant satisfaction ratings for these comparisons. The additional information available is an **informal observation of roughly 30 visible characters per second** and the **subjective impression that Typing ON made the interaction feel quicker and smoother**. Neither is a controlled latency statistic or a scored user study.
+The screenshot set establishes **22 visible interface states**, with these exact groups: **A = 5–10, B = 11–16, C = 17–22, D = 1–4**. In **every screenshot**, the third switch reads **Record data: OFF**. There is no attached CSV of completed live timing trials, no synchronized recording of the waiting/streaming phase, and no **condition-by-condition participant satisfaction ratings** for the Typing/Streaming comparison. The evidence now includes an **informal observation of roughly 30 visible characters per second**, the **subjective impression that Typing ON felt quicker and smoother**, and **qualitative user-test feedback** about the gentle visual design, perceived rational-versus-emotional differences between the two Douni characters, and a low-resolution readability problem. None of these constitute controlled latency statistics or a scored user study.
 
 For that reason I do **not** report invented averages, milliseconds, percentages, significance tests, participant counts, or a preferred condition. What I have completed here is a **four-condition exploratory UI ablation and evidence-based HCI interpretation**. A controlled latency and usability study remains follow-up work.
 
@@ -171,21 +187,22 @@ The cloud-based DeepSeek implementation also differs from the original course's 
 
 The major design lesson for me was that **feedback is not the same as performance**. A typing cue can reduce uncertainty without shortening computation. Streaming can reveal content earlier without reducing the time needed to finish the whole answer. Combining them should be evaluated for clarity, not automatically assumed to be faster.
 
-There were also important interface considerations. The chat needs a bounded, scrollable region so long messages do not overlap the input. A **Jump to latest** control is useful when someone has scrolled up to reread an earlier answer. Distinct bubble colors and named avatars support turn-taking, although the visual personality could also influence perceived trust and should be held constant in a controlled experiment.
+There were also important interface considerations. The chat needs a bounded, scrollable region so long messages do not overlap the input. A **Jump to latest** control is useful when someone has scrolled up to reread an earlier answer. Distinct bubble colors and named avatars support turn-taking. User testing suggests that the two companions are experienced as different in rational versus emotional decision-making; that difference may be useful for different tasks, but should be controlled when evaluating Typing and Streaming. Testers also reported that low interface resolution made the text hard to read, so improving legibility is an immediate usability priority.
 
 For the next iteration, I would:
 
 1. Enable **Record data ON** and export genuine per-request timings for all four conditions, without storing API keys or message content in the trial log.
 2. Record a short **screen video** of each condition so that the typing cue, first character, incremental text and completion are visible over time.
 3. Fix the model, prompt, output limit, network setting, character and resolution while changing **only** the two experimental switches; clear conversation history between conditions.
-4. Conduct a small counterbalanced within-participant test, keeping qualitative feedback separate from measured timings.
-5. Make waiting, response arrival, errors and cancellation distinguishable states, with the typing cue removed as soon as real response text is visible.
+4. **Prioritize the user-reported readability problem:** improve effective resolution, font size and contrast, then test reading and input tasks at the actual screen size.
+5. Conduct a small counterbalanced within-participant test, keeping qualitative feedback separate from measured timings.
+6. Make waiting, response arrival, errors and cancellation distinguishable states, with the typing cue removed as soon as real response text is visible.
 
 ## Reflection
 
 This lab changed my focus from **“Can the character reply?”** to **“Can the person tell what is happening while it replies?”** A completed answer is only one part of a conversational interaction. The moments before the first word, during progressive output and at completion all affect how users understand the system.
 
-I successfully organized my prototype into a **2 × 2 comparison of Typing and Streaming**, supported by 22 screenshots with explicit switch states. The evidence supports that design comparison, while the absence of recorded timings and participant data limits any claim about actual improvements. My main takeaway is to design **clear, truthful feedback for each stage of the response** and test whether that feedback improves real user experience.
+I successfully organized my prototype into a **2 × 2 comparison of Typing and Streaming**, supported by 22 screenshots with explicit switch states. User testing also gave me two valuable insights: the **gentle design encouraged use**, and the **red- and blue-scarf Douni characters felt distinct in rational-versus-emotional decision-making**, making them seem useful for different questions. At the same time, users found the **low-resolution text difficult to read**, which increased interaction difficulty. I therefore need to improve legibility before treating visual appeal as sufficient usability. The absence of recorded latency trials and condition-specific satisfaction ratings still limits claims about which Typing/Streaming condition performs best. My main takeaway is that an AI companion needs both **clear feedback about its state and readable content**; personality and visual warmth should support, not obstruct, interaction.
 
 ## Materials and screenshot index
 
