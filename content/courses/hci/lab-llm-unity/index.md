@@ -71,13 +71,13 @@ The corresponding expectations are **hypotheses**. Screenshots by themselves can
 
 **Question 1 — Does streaming make waiting feel shorter? What is the difference between first-token delay and complete-response delay?**
 
-**Answer:** Streaming can make an AI *appear* more responsive because users can start reading once the first text is available, instead of waiting for the complete answer. With my implementation, **Streaming ON** displays incoming content progressively, while **Streaming OFF** buffers it before display. This affects **time to first visible text**, not necessarily the actual model computation or total network completion time. Screenshots **5–10** (OFF) and **17–22** (ON) confirm the intended modes. However, screenshots show completed conversations rather than send-to-first-word recordings; I **cannot calculate actual latency or prove that anyone perceived a shorter wait** from these images. That would require the request, first-visible-text and completion timestamps plus user feedback.
+**Answer:** Streaming can make an AI *appear* more responsive because users can start reading once the first text is available, instead of waiting for the complete answer. With my implementation, **Streaming ON** displays incoming content progressively, while **Streaming OFF** buffers it before display. This affects **time to first visible text**, not necessarily the actual model computation or total network completion time. Screenshots **5–10** (OFF) and **17–22** (ON) confirm the intended modes. In informal hands-on use, the visible response progressed at roughly **30 characters per second**; longer answers therefore took noticeably longer to finish. This is an **approximate observation**, not a logged cross-condition average or a fixed model throughput. Streaming allows reading to begin during that generation/display process, but the screenshots show completed conversations rather than send-to-first-word recordings. I **cannot calculate an exact first-token latency or quantify any reduction in perceived waiting** from these images. That would require the request, first-visible-text and completion timestamps plus user feedback.
 
 **Question 2 — Does showing an “AI is typing…” indicator change satisfaction or understanding of the wait?**
 
-**Answer:** A typing indicator can explain the otherwise silent period after **Send**, helping users understand that the AI has received their message. My comparison isolates this cue using **Typing OFF** in screenshots **5–10** and **17–22**, and **Typing ON** in screenshots **11–16** and **1–4**. Conceptually, the indicator is useful before the first answer fragment appears, even when Streaming is enabled. But because the supplied images are static end states and include **no participant ratings**, I **cannot claim that it increased satisfaction or trust**. The evidence supports that the UI feature was configurable and demonstrated, not a measured psychological effect.
+**Answer:** A typing indicator can explain the otherwise silent period after **Send**, helping users understand that the AI has received their message. My comparison isolates this cue using **Typing OFF** in screenshots **5–10** and **17–22**, and **Typing ON** in screenshots **11–16** and **1–4**. Conceptually, the indicator is useful before the first answer fragment appears, even when Streaming is enabled. **My qualitative observation was that turning Typing ON made the interaction feel faster and smoother**, because the UI acknowledged the request while the first answer text was still pending. This is an observation about **perceived responsiveness**, not evidence that the model generated characters faster. Since the images are static end states and include **no recorded participant ratings**, I cannot quantify a satisfaction improvement or make a controlled causal claim.
 
-**What I changed and what I found:** I changed the **two presentation switches**, producing four combinations while retaining the same basic interface. I verified **22 screenshots** by checking the bottom toggle states. The **observed result** is a complete four-condition UI comparison; the **design conclusion** is that typing feedback and streaming cover different stages of waiting and may complement each other. The **unanswered empirical question** is which option people actually prefer—this needs controlled timings and participant responses. Therefore, I do **not** label the combined condition as statistically best.
+**What I changed and what I found:** I changed the **two presentation switches**, producing four combinations while retaining the same basic interface. I verified **22 screenshots** by checking the bottom toggle states. The **observed result** is a complete four-condition UI comparison, an approximate displayed pace of **30 characters per second** during hands-on use, and a qualitative impression of **smoother, faster-feeling interaction with Typing ON**. The **design conclusion** is that typing feedback and streaming cover different stages of waiting and may complement each other. The **unanswered empirical question** is which option people actually prefer—this needs controlled timings and participant responses. Therefore, I do **not** label the combined condition as statistically best.
 
 ## Visual comparison of the four conditions
 
@@ -117,9 +117,11 @@ Condition D is designed to provide feedback through both parts of the interactio
 
 The clearest result is that **all four UI configurations were demonstrated**. The footer gives an auditable record of the two manipulated switches, and the two characters appear across different conditions. The same broad layout — companions, conversation bubbles, input, Send button and footer — is maintained. This makes the intended UI comparison easy to understand.
 
-A second observation is that **similar questions receive different wording**. Across the captures, Douni's replies are not identical even when the user asks a comparable question. Therefore, differences in reply length or phrasing should **not** be attributed to Typing or Streaming. Those switches change how a response is displayed, not necessarily what advice the model generates.
+A second observation from hands-on use is that **response length is a major driver of complete-response duration**. The reply appeared to progress at approximately **30 characters per second**, so a longer answer naturally takes more time to finish. This is a rough operational estimate, not a stopwatch-based measurement; it should not be treated as an exact model speed or used to compare Typing conditions without matching output length.
 
-A third observation concerns **information during a delay**. Each mode covers a different portion of the timeline:
+A third observation is that **similar questions receive different wording**. Across the captures, Douni's replies are not identical even when the user asks a comparable question. Therefore, differences in reply length or phrasing should **not** be attributed to Typing or Streaming. Those switches change how a response is displayed, not necessarily what advice the model generates.
+
+A fourth observation concerns **information during a delay**. Each mode covers a different portion of the timeline:
 
 | Moment | Typing cue helps? | Streaming helps? |
 | --- | --- | --- |
@@ -127,7 +129,9 @@ A third observation concerns **information during a delay**. Each mode covers a 
 | After the first response fragment arrives | Usually no longer necessary | Potentially **yes**: shows progress in the answer |
 | Once the answer is complete | Should disappear | Should stop updating and leave a readable complete reply |
 
-This is an HCI interpretation of the design, **not a measurement of participants' behavior**. The distinction matters: users may experience an interface as more responsive without the model actually computing any faster.
+In my qualitative use of the prototype, **Typing ON felt faster and more fluid**, despite there being no evidence that the actual character-generation rate changed. The typing cue helps communicate activity during the otherwise silent period; the feedback changes the experience of waiting rather than necessarily its physical duration.
+
+This is an HCI interpretation supported by an informal hands-on impression, **not a quantitative measurement of participants' behavior**. The distinction matters: users may experience an interface as more responsive without the model actually computing any faster.
 
 The screenshots also reveal an evaluation limitation: the width and scaling of captures **1–4** differ from many of the other images. Line wrapping and visible chat history vary. For a stronger comparison, all four conditions should be recorded at the same Game View resolution with the same prompt and controlled conversation context.
 
@@ -143,6 +147,8 @@ The course asks us to distinguish **time to first token** from the total complet
 | **t_network_done** | The network response completes. |
 | **t_display_done** | The last response character has appeared in the interface. |
 
+Because the observed pace is only an approximate **30 characters per second**, output length would need to be recorded or controlled before comparing total response durations. The approximate rate is not a substitute for timestamped observations.
+
 The useful measures are **first visible delay = t_first_display − t_send** and **full visible delay = t_display_done − t_send**. I would also record **network time = t_network_done − t_send**. In a buffered mode, the first network content may have arrived long before it is shown; streaming separates those events.
 
 The small **“Live frame time”** number printed in the screenshots is a rendering/frame-time indicator measured in milliseconds. **It is not LLM time-to-first-token, total generation latency, or perceived waiting time.** Treating it as a response-latency result would be incorrect.
@@ -155,7 +161,7 @@ The documented experimental plan proposes a within-participant comparison, count
 
 ## What was measured, and what was not
 
-The screenshot set establishes **22 visible interface states**, with these exact groups: **A = 5–10, B = 11–16, C = 17–22, D = 1–4**. In **every screenshot**, the third switch reads **Record data: OFF**. There is no attached CSV of completed live timing trials, no synchronized recording of the waiting/streaming phase, and no documented participant satisfaction data for these comparisons.
+The screenshot set establishes **22 visible interface states**, with these exact groups: **A = 5–10, B = 11–16, C = 17–22, D = 1–4**. In **every screenshot**, the third switch reads **Record data: OFF**. There is no attached CSV of completed live timing trials, no synchronized recording of the waiting/streaming phase, and no documented participant satisfaction ratings for these comparisons. The additional information available is an **informal observation of roughly 30 visible characters per second** and the **subjective impression that Typing ON made the interaction feel quicker and smoother**. Neither is a controlled latency statistic or a scored user study.
 
 For that reason I do **not** report invented averages, milliseconds, percentages, significance tests, participant counts, or a preferred condition. What I have completed here is a **four-condition exploratory UI ablation and evidence-based HCI interpretation**. A controlled latency and usability study remains follow-up work.
 
