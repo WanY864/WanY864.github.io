@@ -62,7 +62,7 @@ After the import, the piano was visible in the scene. I captured several views t
 
 ![Piano reconstruction viewed near the keyboard and front of the instrument.](1.png "Imported piano, front and keyboard view.")
 
-![Piano reconstruction from the side, showing the top and outer body.](2.png "Imported piano from a side viewpoint.")
+![Back view of the piano reconstruction, showing the rear of the instrument.](2.png "Imported piano viewed from the back.")
 
 ![Lower viewpoint of the piano showing its legs and underside.](3.png "Imported piano from a lower viewpoint.")
 
