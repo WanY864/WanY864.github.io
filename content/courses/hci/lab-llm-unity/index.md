@@ -67,6 +67,18 @@ My research questions were:
 
 The corresponding expectations are **hypotheses**. Screenshots by themselves cannot establish a measured improvement in perceived wait, satisfaction, or trust.
 
+## Direct answers to the two selected HCI questions
+
+**Question 1 — Does streaming make waiting feel shorter? What is the difference between first-token delay and complete-response delay?**
+
+**Answer:** Streaming can make an AI *appear* more responsive because users can start reading once the first text is available, instead of waiting for the complete answer. With my implementation, **Streaming ON** displays incoming content progressively, while **Streaming OFF** buffers it before display. This affects **time to first visible text**, not necessarily the actual model computation or total network completion time. Screenshots **5–10** (OFF) and **17–22** (ON) confirm the intended modes. However, screenshots show completed conversations rather than send-to-first-word recordings; I **cannot calculate actual latency or prove that anyone perceived a shorter wait** from these images. That would require the request, first-visible-text and completion timestamps plus user feedback.
+
+**Question 2 — Does showing an “AI is typing…” indicator change satisfaction or understanding of the wait?**
+
+**Answer:** A typing indicator can explain the otherwise silent period after **Send**, helping users understand that the AI has received their message. My comparison isolates this cue using **Typing OFF** in screenshots **5–10** and **17–22**, and **Typing ON** in screenshots **11–16** and **1–4**. Conceptually, the indicator is useful before the first answer fragment appears, even when Streaming is enabled. But because the supplied images are static end states and include **no participant ratings**, I **cannot claim that it increased satisfaction or trust**. The evidence supports that the UI feature was configurable and demonstrated, not a measured psychological effect.
+
+**What I changed and what I found:** I changed the **two presentation switches**, producing four combinations while retaining the same basic interface. I verified **22 screenshots** by checking the bottom toggle states. The **observed result** is a complete four-condition UI comparison; the **design conclusion** is that typing feedback and streaming cover different stages of waiting and may complement each other. The **unanswered empirical question** is which option people actually prefer—this needs controlled timings and participant responses. Therefore, I do **not** label the combined condition as statistically best.
+
 ## Visual comparison of the four conditions
 
 ### A. Baseline — Typing OFF, Streaming OFF (screenshots 5–10)
