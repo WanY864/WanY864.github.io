@@ -372,7 +372,55 @@ Frequency limits are not equivalent to PL1/PL2 wattage limits, and retaining 80%
 
 To remove the added CPU frequency ceilings, set both values back to 0 and reactivate the Balanced plan.
 
-## 9. Where things stand
+## 9. Verification: confirming the limits actually work
+
+A successful configuration command is not the same as verified runtime enforcement. Use an elevated PowerShell window for the following checks.
+
+### GPU: verify the configured startup action
+
+```powershell
+schtasks /query /tn "MX550_ClockLimit" /v /fo list
+Get-ScheduledTaskInfo -TaskName "MX550_ClockLimit"
+```
+
+Confirm that the task action contains `-i 0 -lgc 300,1320`, that its last run time corresponds to the latest startup or manual execution, and that LastTaskResult is 0. A successful task result is evidence of execution, not proof of ongoing enforcement.
+
+### GPU: verify actual operating frequency
+
+```powershell
+nvidia-smi --query-gpu=pstate,clocks.gr,clocks.mem,power.draw,utilization.gpu,temperature.gpu --format=csv -l 1
+```
+
+While monitoring, run a normal GPU workload with scene changes if practical. The graphics clock (clocks.gr) should not exceed the requested 1320 MHz ceiling in the sampled data. Lower clocks are normal, especially on battery. The memory clock is separate and was not deliberately limited. Press Ctrl+C to stop monitoring. This is a sampled behavioral check, not proof that no shorter transient exceeded the limit.
+
+The following diagnostic command provides additional clock information, although the reported maximum supported clock may remain 2100 MHz; that hardware/driver capability is not the applied runtime ceiling.
+
+```powershell
+nvidia-smi -q -d CLOCK
+```
+
+Repeat the task and runtime checks after a normal restart on AC and a separate restart on battery, allowing at least the configured 30-second startup delay. If the GPU is unavailable on battery, reconnect AC and rerun the task, then repeat the monitoring check. Also recheck after sleep/resume or a driver update. Do not deliberately reproduce repeated crashes just to validate the limit.
+
+### CPU: verify the saved power plan
+
+```powershell
+powercfg /getactivescheme
+powercfg /qh SCHEME_CURRENT SUB_PROCESSOR PROCFREQMAX
+powercfg /qh SCHEME_CURRENT SUB_PROCESSOR PROCFREQMAX1
+```
+
+The active plan should be Balanced (GUID 381b4222-f694-41f0-9685-ff5bb260df2e). The expected current AC power setting indices are:
+
+| Setting | Hexadecimal index | Decimal frequency |
+| --- | --- | ---: |
+| PROCFREQMAX | 0x00000a8c | 2700 MHz |
+| PROCFREQMAX1 | 0x00000e74 | 3700 MHz |
+
+These commands verify saved policy values, not instantaneous core frequencies. DC values were deliberately left unchanged. To check actual enforcement, use a per-core monitoring utility such as HWiNFO in Sensors-only mode during ordinary AC workloads, observing P-core and E-core clock readings separately. Effective clock readings may be lower due to idle periods. Windows Task Manager's aggregate CPU speed cannot establish individual core-class ceilings. If the observed behavior differs from the policy, investigate firmware or driver enforcement rather than assuming the limits are active.
+
+The verification procedure is reproducible, but the revised 1320 MHz configuration has not yet been independently validated by a documented battery-only boot or a long-duration workload.
+
+## 10. Where things stand
 
 | Setting | Final configuration |
 | --- | --- |
