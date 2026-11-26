@@ -15,7 +15,7 @@ The problem was particularly noticeable during transitions: loading a new map, r
 
 On November 26, 2026, I decided to investigate the problem systematically with ChatGPT. I operated the machine, collected logs, changed settings and ran experiments; ChatGPT helped interpret the evidence, propose tests and revise hypotheses. This article documents our joint debugging session, including unsuccessful attempts rather than just the eventual workaround.
 
-**Result:** limiting the MX550 core clock to 1200 MHz produced a successful short test, including near-30 W GPU operation. I subsequently chose a 1350 MHz startup limit and reduced CPU frequency limits for daily use. At the time of writing, the problem appears mitigated, but the underlying hardware or software fault has not been conclusively identified.
+**Result:** limiting the MX550 core clock to 1200 MHz produced a successful short test, including near-30 W GPU operation. I subsequently chose a 1350 MHz startup limit, reduced CPU frequency limits, and finally revised the GPU ceiling to 1320 MHz as a conservative daily-use setting. At the time of writing, the problem appears mitigated, but the underlying hardware or software fault has not been conclusively identified.
 
 ## 1. Hardware and software environment
 
@@ -243,16 +243,60 @@ The key observation is that the GPU could approach 30 W while maintaining the re
 
 This supports a hypothesis involving core-clock-dependent stability, voltage/frequency transitions or the transient response of the GPU power supply. It does not prove that the GPU silicon is defective, nor does it rule out driver behavior, VRAM issues or board-level power delivery. The successful log spans less than three minutes, not a formal long-duration reliability test.
 
-I later chose 1350 MHz as a practical daily ceiling. This is a provisional setting, not a proven universal safe frequency. Start with the more conservative 1200 MHz if reproducing the experiment; stop if the machine hangs or the GPU disappears. Clock control may not be supported on other laptop GPUs or drivers.
+I initially chose 1350 MHz as a practical daily ceiling, then lowered it to 1320 MHz on November 26, 2026. Both are supported clock steps on this device. The latest setting is provisional, not a proven universal safe frequency. Start with the more conservative 1200 MHz if reproducing the experiment; stop if the machine hangs or the GPU disappears. Clock control may not be supported on other laptop GPUs or drivers.
+
+### Understanding base clock, boost clock and the operating envelope
+
+A GPU does not run at a single fixed frequency. NVIDIA GPU Boost dynamically selects operating points according to workload, temperature, power, voltage and firmware constraints. The voltage-frequency (V/F) curve describes the associated operating points, whereas a frequency-versus-time trace describes transitions between them. They answer different questions.
+
+| Parameter | Frequency | Interpretation |
+| --- | ---: | --- |
+| Low-power core clock observed on this laptop | 300 MHz | Observed on battery under restrictive platform policy |
+| Base clock in a Dell MX550 reference configuration | 1065 MHz | Nominal base frequency, not an absolute minimum |
+| Advertised boost clock in that configuration | 1320 MHz | Nominal boost specification, not a hard maximum |
+| High core clock observed before a failure | 1770 MHz | Actual automatic operating point |
+| Highest supported clock reported by our driver | 2100 MHz | Reported clock range, not a guarantee of sustained operation |
+| First successful short-test ceiling | 1200 MHz | Directly tested workaround |
+| Initial daily ceiling | 1350 MHz | Intermediate configuration |
+| Latest daily ceiling | 1320 MHz | Conservative revised configuration |
+
+The 1065/1320 MHz reference is from a Dell technical guide for an MX550 configuration, not a Lenovo guarantee for this ThinkPad. OEM power limits and VBIOS settings may differ. Automatic operation above an advertised boost clock is not inherently manual overclocking and does not itself demonstrate a defect. I chose 1320 MHz because it is a supported 15 MHz clock step and a slightly more conservative limit than 1350 MHz, not because it is a proven electrical safety threshold.
+
+NVIDIA's public consumer specifications do not provide a complete chip-level electrical datasheet for this laptop's MX550. We have not obtained its actual V/F table, validated operating envelope, voltage slew-rate limits or regulator transient-response requirements. A generic V/F curve would therefore be illustrative rather than measured evidence.
+
+### Why reducing frequency can improve stability
+
+The switching component of CMOS dynamic power can be approximated by:
+
+```text
+P_dynamic ≈ α × C_eff × V² × f
+```
+
+- P_dynamic: dynamic switching power, in watts.
+- α: switching activity factor.
+- C_eff: effective switched capacitance, in farads.
+- V: supply voltage, in volts.
+- f: clock frequency, in hertz.
+
+The clock period is T = 1/f. Higher frequency leaves less time for signals to propagate through critical paths. Higher operating points may also require higher voltage, so dynamic switching power can increase faster than frequency alone. The formula excludes leakage, memory power, voltage-regulator losses and other components of total GPU power; it is not a fitted model of our MX550. Since activity and voltage can vary with workload, a lower clock does not imply a proportional reduction in reported board power.
+
+There are two particularly relevant hypotheses for the scene-change crashes:
+
+1. **Marginal high-frequency stability.** The GPU or its supply may have insufficient timing or voltage margin at some automatically selected operating points. A failure may occur only after a particular workload or temperature change, rather than immediately.
+2. **Transient instability.** A scene change can rapidly alter GPU activity and current demand. During load increases or decreases, voltage regulation and dynamic voltage/frequency transitions may produce temporary undershoot or overshoot, or a voltage-frequency mismatch. A lower frequency ceiling may reduce exposure to demanding operating points and narrow the possible frequency excursion, but it does not directly control the clock slew rate.
+
+The near-30 W successful test at 1200 MHz argues against sustained average power alone as the sole explanation. However, one-second telemetry cannot resolve millisecond or microsecond transients, and the experiment does not isolate the rate or direction of clock changes. We cannot determine whether an upward transition, a downward transition, high-frequency operation itself, or another mechanism caused the disconnection. No voltage waveform was measured. The frequency-wall and marginal-stability explanations are hypotheses, not confirmed root causes.
+
+A GPU that fails only after manual overclocking is not necessarily defective. A GPU that repeatedly disappears under its factory automatic boost policy is behaving abnormally, even if limiting its frequency restores usability.
 
 ## 7. Making the GPU limit persistent
 
-The frequency command is a runtime setting, not a VBIOS modification. To reapply it at boot, I created a Windows scheduled task in elevated PowerShell. The following version uses the final 1350 MHz ceiling; substitute 1200 if necessary.
+The frequency command is a runtime setting, not a VBIOS modification. To reapply it at boot, I created a Windows scheduled task in elevated PowerShell. The following version uses the revised 1320 MHz ceiling; substitute 1200 if necessary. Run these commands from an elevated PowerShell window with GPU workloads closed.
 
 ```powershell
 $exe = (Get-Command nvidia-smi.exe -ErrorAction Stop).Source
 
-schtasks /create /tn "MX550_ClockLimit" /tr "`"$exe`" -i 0 -lgc 300,1350" /sc onstart /delay 0000:30 /ru SYSTEM /rl HIGHEST /f
+schtasks /create /tn "MX550_ClockLimit" /tr "`"$exe`" -i 0 -lgc 300,1320" /sc onstart /delay 0000:30 /ru SYSTEM /rl HIGHEST /f
 
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
@@ -263,7 +307,32 @@ Set-ScheduledTask -TaskName "MX550_ClockLimit" -Settings $settings
 schtasks /run /tn "MX550_ClockLimit"
 ```
 
-The battery settings matter: the task initially created by schtasks did not allow starting on battery power. I also encountered a Get-ScheduledTask query error despite the task being present, so schtasks was useful as an alternative inspection tool.
+### Updating an existing 1350 MHz task to 1320 MHz
+
+There is no need to delete and recreate the scheduled task. On this machine NVIDIA's executable is located in Windows System32. In elevated PowerShell:
+
+```powershell
+schtasks /change /tn "MX550_ClockLimit" /tr "C:\Windows\System32\nvidia-smi.exe -i 0 -lgc 300,1320"
+nvidia-smi -i 0 -lgc 300,1320
+```
+
+The first command updates the persistent startup action while preserving its trigger and battery conditions; the second applies the new runtime limit immediately. Check the command output for success. The 30 MHz reduction is about 2.2% of the previous ceiling, not necessarily a 2.2% performance reduction.
+
+### Starting the laptop without AC power
+
+The scheduled task runs as SYSTEM with elevated privileges, approximately 30 seconds after system startup. By default a task may be prevented from starting on battery, or stopped when AC power is disconnected. The settings above explicitly allow battery starts, prevent stopping solely because the laptop switches to battery, and permit a missed eligible start to run when available.
+
+The task therefore attempts to apply 300–1320 MHz whether the laptop boots on AC or battery. On battery the firmware had already imposed a 10 W GPU power limit, compared with 30 W on AC. The frequency setting does not override that policy, and does not force the GPU to run at 1320 MHz continuously. The observed battery workload was much slower at 300 MHz.
+
+An important distinction: permission to start on battery is not proof of successful GPU initialization. If the discrete GPU is powered down, the driver is not ready, or the command fails, the startup task may not establish the requested limit. StartWhenAvailable is not an automatic retry for every failed command. A subsequent plug-in event or resume does not necessarily rerun a startup-only task.
+
+To verify, boot normally on battery and inspect the task after its startup delay. When the GPU is available, check its clock behavior during a normal workload. If necessary, reapply the task after connecting AC:
+
+```powershell
+schtasks /run /tn "MX550_ClockLimit"
+```
+
+I encountered a Get-ScheduledTask query error despite the task being present, so schtasks was useful as an alternative inspection tool. The original startup task was verified after reboot at 1350 MHz; a separate battery-only boot test at 1320 MHz has not yet been documented.
 
 ```powershell
 schtasks /query /tn "MX550_ClockLimit" /v /fo list
@@ -313,10 +382,12 @@ To remove the added CPU frequency ceilings, set both values back to 0 and reacti
 | NVIDIA driver | Lenovo-provided 596.52 |
 | Windows power plan | Balanced |
 | NVIDIA power-management mode | Prefer consistent performance |
-| GPU core clock | 300–1350 MHz via a startup task |
+| GPU core clock | 300–1320 MHz via a startup task |
+| Battery startup | Explicitly allowed; independent battery-boot verification pending |
+| Observed GPU power limits | 30 W on AC / 10 W on battery |
 | GPU memory and power limit | Default settings |
 
-At the end of the session, the machine was usable and I considered the immediate problem resolved. The strongest directly logged result remains the 1200 MHz trial; long-term stability at 1350 MHz with CPU turbo restored still needs observation. If it fails again, returning to 1200 MHz is the first step. If failures persist even with conservative settings, professional hardware diagnosis or a separate operating-system test would be more informative than repeatedly forcing crashes.
+At the end of the session, the machine was usable and I considered the immediate problem resolved. The strongest directly logged result remains the 1200 MHz trial; long-term stability at the revised 1320 MHz ceiling with CPU turbo restored still needs observation. If it fails again, returning to 1200 MHz is the first step. If failures persist even with conservative settings, professional hardware diagnosis or a separate operating-system test would be more informative than repeatedly forcing crashes.
 
 The lesson from this investigation is that a workaround and a root-cause diagnosis are different things. Firmware updates, driver replacement and lower CPU power demand did not eliminate the failure on their own. Measuring the GPU during real workloads and limiting one of its operating parameters finally provided a useful result without replacing hardware.
 
@@ -328,6 +399,8 @@ This is a case study of one laptop, not evidence of a model-wide defect. No over
 - [Microsoft: Bug check 0x19C — WIN32K_POWER_WATCHDOG_TIMEOUT](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/bug-check-0x19c--win32k-power-watchdog-timeout)
 - [Microsoft: NVIDIA-independent PnP Code 31 documentation](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/cm-prob-failed-add)
 - [NVIDIA System Management Interface documentation](https://docs.nvidia.com/deploy/nvidia-smi/)
+- [NVIDIA GPU Boost technology](https://www.nvidia.com/en-us/geforce/technologies/gpu-boost/technology/)
+- [Dell Latitude 5530 Technical Guidebook (manufacturer document, third-party PDF mirror)](https://dell.hrp.hu/wp-content/uploads/2022/06/latitude-5530-technical-guidebook.pdf)
 - [Lenovo ThinkPad BIOS update utility and release notes](https://support.lenovo.com/us/en/downloads/ds557163)
 - [Lenovo ThinkPad T14 Gen 3 Intel specifications](https://psref.lenovo.com/product/ThinkPad/ThinkPad_T14_Gen_3_Intel)
 
